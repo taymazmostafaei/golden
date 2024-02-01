@@ -1,13 +1,64 @@
 {
   "menu": [
     {
+      "url": "app/email",
+      "name": "لیست کاربران",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "app-email"
+    },
+    {
+      "name": "لیست سفارش",
+      "icon": "menu-icon tf-icons ti ti-layout-grid",
+      "slug": "dashboard",
+      "badge": ["primary", "2"],
+      "submenu": [
+        {
+          "url": "/",
+          "name": "بنکداری",
+          "slug": "dashboard-analytics"
+        },
+        {
+          "url": "dashboard/crm",
+          "name": "آبشده",
+          "slug": "dashboard-crm"
+        }
+      ]
+    },
+    {
+      "url": "app/email",
+      "name": "تنظیمات",
+      "icon": "menu-icon tf-icons ti ti-settings",
+      "slug": "app-email"
+    },
+    {
+      "name": "محصولات بنکداری",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "dashboard",
+      "badge": ["primary", "2"],
+      "submenu": [
+        {
+          "url": "/",
+          "name": "تعریف دسته بندی",
+          "slug": "dashboard-analytics"
+        },
+        {
+          "url": "dashboard/crm",
+          "name": "تعریف محصول",
+          "slug": "dashboard-crm"
+        }
+      ]
+    },
+    {
+      "url": "app/email",
+      "name": "اخبار(وبلاگ)",
+      "icon": "menu-icon tf-icons ti ti-map",
+      "slug": "app-email"
+    },
+    {
       "name": "Dashboards",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "dashboard",
-      "badge": [
-        "primary",
-        "5"
-      ],
+      "badge": ["primary", "5"],
       "submenu": [
         {
           "url": "/",
@@ -341,10 +392,7 @@
       "name": "Invoice",
       "icon": "menu-icon tf-icons ti ti-file-dollar",
       "slug": "app-invoice",
-      "badge": [
-        "danger",
-        "4"
-      ],
+      "badge": ["danger", "4"],
       "submenu": [
         {
           "url": "app/invoice/list",
@@ -688,10 +736,7 @@
       "name": "Cards",
       "icon": "menu-icon tf-icons ti ti-id",
       "slug": "cards",
-      "badge": [
-        "primary",
-        "5"
-      ],
+      "badge": ["primary", "5"],
       "submenu": [
         {
           "url": "cards/basic",
