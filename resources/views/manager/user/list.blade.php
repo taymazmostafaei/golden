@@ -129,11 +129,11 @@
       <thead class="border-top">
         <tr>
           <th></th>
-          <th>User</th>
-          <th>Role</th>
-          <th>Plan</th>
-          <th>Billing</th>
-          <th>Status</th>
+          <th>نام و نام خانوادگی</th>
+          <th>کدملی</th>
+          <th>شماره موبایل</th>
+          <th>شماره ثابت</th>
+          <th>وضعیت</th>
           <th>Actions</th>
         </tr>
       </thead>

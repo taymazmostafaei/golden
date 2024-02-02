@@ -23,9 +23,10 @@ $(function () {
     select2 = $('.select2'),
     userView = baseUrl + 'app/user/view/account',
     statusObj = {
-      1: { title: 'Pending', class: 'bg-label-warning' },
-      2: { title: 'Active', class: 'bg-label-success' },
-      3: { title: 'Inactive', class: 'bg-label-secondary' }
+      
+      1: { title: 'تایید شده', class: 'bg-label-success' },
+      2: { title: 'در انتظار', class: 'bg-label-warning' },
+      3: { title: 'رد شده', class: 'bg-label-danger' }
     };
 
   if (select2.length) {
@@ -44,9 +45,9 @@ $(function () {
         // columns according to JSON
         { data: '' },
         { data: 'full_name' },
-        { data: 'role' },
-        { data: 'current_plan' },
-        { data: 'billing' },
+        { data: 'national_code' },
+        { data: 'phone_num' },
+        { data: 'tel_phone' },
         { data: 'status' },
         { data: 'action' }
       ],
@@ -63,12 +64,12 @@ $(function () {
           }
         },
         {
-          // User full name and email
+          // User full name and date_register
           targets: 1,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
             var $name = full['full_name'],
-              $email = full['email'],
+              $date_register = full['date_register'],
               $image = full['avatar'];
             if ($image) {
               // For Avatar image
@@ -99,42 +100,42 @@ $(function () {
               $name +
               '</span></a>' +
               '<small class="text-muted">' +
-              $email +
+              $date_register +
               '</small>' +
               '</div>' +
               '</div>';
             return $row_output;
           }
         },
-        {
-          // User Role
-          targets: 2,
-          render: function (data, type, full, meta) {
-            var $role = full['role'];
-            var roleBadgeObj = {
-              Subscriber:
-                '<span class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2"><i class="ti ti-user ti-sm"></i></span>',
-              Author:
-                '<span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2"><i class="ti ti-circle-check ti-sm"></i></span>',
-              Maintainer:
-                '<span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2"><i class="ti ti-chart-pie-2 ti-sm"></i></span>',
-              Editor:
-                '<span class="badge badge-center rounded-pill bg-label-info w-px-30 h-px-30 me-2"><i class="ti ti-edit ti-sm"></i></span>',
-              Admin:
-                '<span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30 me-2"><i class="ti ti-device-laptop ti-sm"></i></span>'
-            };
-            return "<span class='text-truncate d-flex align-items-center'>" + roleBadgeObj[$role] + $role + '</span>';
-          }
-        },
-        {
-          // Plans
-          targets: 3,
-          render: function (data, type, full, meta) {
-            var $plan = full['current_plan'];
+        // {
+        //   // User Role
+        //   targets: 2,
+        //   render: function (data, type, full, meta) {
+        //     var $role = full['role'];
+        //     var roleBadgeObj = {
+        //       Subscriber:
+        //         '<span class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2"><i class="ti ti-user ti-sm"></i></span>',
+        //       Author:
+        //         '<span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2"><i class="ti ti-circle-check ti-sm"></i></span>',
+        //       Maintainer:
+        //         '<span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2"><i class="ti ti-chart-pie-2 ti-sm"></i></span>',
+        //       Editor:
+        //         '<span class="badge badge-center rounded-pill bg-label-info w-px-30 h-px-30 me-2"><i class="ti ti-edit ti-sm"></i></span>',
+        //       Admin:
+        //         '<span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30 me-2"><i class="ti ti-device-laptop ti-sm"></i></span>'
+        //     };
+        //     return "<span class='text-truncate d-flex align-items-center'>" + roleBadgeObj[$role] + $role + '</span>';
+        //   }
+        // },
+        // {
+        //   // Plans
+        //   targets: 3,
+        //   render: function (data, type, full, meta) {
+        //     var $plan = full['current_plan'];
 
-            return '<span class="fw-medium">' + $plan + '</span>';
-          }
-        },
+        //     return '<span class="fw-medium">' + $plan + '</span>';
+        //   }
+        // },
         {
           // User Status
           targets: 5,
@@ -153,7 +154,7 @@ $(function () {
         {
           // Actions
           targets: -1,
-          title: 'Actions',
+          title: 'عملیات',
           searchable: false,
           orderable: false,
           render: function (data, type, full, meta) {
@@ -163,10 +164,10 @@ $(function () {
               '<a href="javascript:;" class="text-body delete-record"><i class="ti ti-trash ti-sm mx-2"></i></a>' +
               '<a href="javascript:;" class="text-body dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical ti-sm mx-1"></i></a>' +
               '<div class="dropdown-menu dropdown-menu-end m-0">' +
-              '<a href="' +
-              userView +
-              '" class="dropdown-item">View</a>' +
-              '<a href="javascript:;" class="dropdown-item">Suspend</a>' +
+              '<span class="p-3">تغییر وضعیت</span>'+
+              '<a href="javascript:;" class="dropdown-item bg-label-success">در انتظار</a>' +
+              '<a href="javascript:;" class="dropdown-item bg-label-warning">تایید شده</a>' +
+              '<a href="javascript:;" class="dropdown-item bg-label-danger">رد شده</a>' +
               '</div>' +
               '</div>'
             );
