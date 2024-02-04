@@ -363,3 +363,5 @@ Route::resource('/user-list', UserManagement::class);
 
 Route::view('/manager/user/list', 'manager.user.list');
 Route::view('/manager/user/show', 'manager.user.show');
+Route::view('/manager/setting/possibilities', 'manager.setting.possibilities');
+Route::view('/manager/setting/setFy', 'manager.setting.setFy');
