@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/sweetalert2/sweetalert2.css')}}" />
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/select2/select2.css')}}" />
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/@form-validation/umd/styles/index.min.css')}}" />
+<link rel="stylesheet" href="{{asset('assets/vendor/libs/dropzone/dropzone.css')}}" />
+
 @endsection
 
 @section('page-style')
@@ -26,12 +28,15 @@
 <script src="{{asset('assets/vendor/libs/@form-validation/umd/bundle/popular.min.js')}}"></script>
 <script src="{{asset('assets/vendor/libs/@form-validation/umd/plugin-bootstrap5/index.min.js')}}"></script>
 <script src="{{asset('assets/vendor/libs/@form-validation/umd/plugin-auto-focus/index.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/dropzone/dropzone.js')}}"></script>
+
 @endsection
 
 @section('page-script')
 <script src="{{asset('assets/js/modal-edit-user.js')}}"></script>
 <script src="{{asset('assets/js/app-user-view.js')}}"></script>
 <script src="{{asset('assets/js/app-user-view-account.js')}}"></script>
+<script src="{{asset('assets/js/forms-file-upload.js')}}"></script>
 @endsection
 
 @section('content')
@@ -48,59 +53,45 @@
           <div class=" d-flex align-items-center flex-column">
             <img class="img-fluid rounded mb-3 pt-1 mt-4" src="{{ asset('assets/img/avatars/15.png') }}" height="100" width="100" alt="User avatar" />
             <div class="user-info text-center">
-              <h4 class="mb-2">علیرضا مردادی</h4>
+              <h4 class="mb-2">حسین غفوری</h4>
               <span class="badge bg-label-warning" text-capitalized="">در انتظار</span>
             </div>
           </div>
         </div>
         <div class="d-flex justify-content-around flex-wrap mt-3 pt-3 pb-4 border-bottom">
           <div class="d-flex align-items-start me-4 mt-3 gap-2">
-            <span class="badge bg-label-primary p-2 rounded"><i class='ti ti-checkbox ti-sm'></i></span>
+            <span class="badge bg-label-primary p-2 rounded"><i class='ti ti-user-code'></i></span>
             <div>
-              <p class="mb-0 fw-medium">کدملی:</p>
+              <p class="mb-0 fw-medium">کدملی</p>
               <small>1366987745</small>
             </div>
           </div>
+          <div class="d-flex align-items-start me-4 mt-3 gap-2">
+            <span class="badge bg-label-primary p-2 rounded"><i class='ti ti-phone'></i></span>
+            <div>
+              <p class="mb-0 fw-medium">شماره ثابت</p>
+              <small>1366987745</small>
+            </div>
+          </div>
+          <div class="d-flex align-items-start me-4 mt-3 gap-2">
+            <span class="badge bg-label-primary p-2 rounded"><i class='ti ti-device-mobile'></i></span>
+            <div>
+              <p class="mb-0 fw-medium">شماره موبایل</p>
+              <small>1366987745</small>
+            </div>
+          </div>
+          <div class="d-flex align-items-start me-4 mt-3 gap-2">
+            <span class="badge bg-label-primary p-2 rounded"><i class="ti ti-calendar"></i></span>
+            <div>
+              <p class="mb-0 fw-medium">تاریخ ثبت نام</p>
+              <small>1383/6/23</small>
+            </div>
+          </div>
         </div>
-        <p class="mt-4 small text-uppercase text-muted">Details</p>
-        <div class="info-container">
-          <ul class="list-unstyled">
-            <li class="mb-2">
-              <span class="fw-medium me-1">Username:</span>
-              <span>violet.dev</span>
-            </li>
-            <li class="mb-2 pt-1">
-              <span class="fw-medium me-1">Email:</span>
-              <span>vafgot@vultukir.org</span>
-            </li>
-            <li class="mb-2 pt-1">
-              <span class="fw-medium me-1">Status:</span>
-              <span class="badge bg-label-success">Active</span>
-            </li>
-            <li class="mb-2 pt-1">
-              <span class="fw-medium me-1">Role:</span>
-              <span>Author</span>
-            </li>
-            <li class="mb-2 pt-1">
-              <span class="fw-medium me-1">Tax id:</span>
-              <span>Tax-8965</span>
-            </li>
-            <li class="mb-2 pt-1">
-              <span class="fw-medium me-1">Contact:</span>
-              <span>(123) 456-7890</span>
-            </li>
-            <li class="mb-2 pt-1">
-              <span class="fw-medium me-1">Languages:</span>
-              <span>French</span>
-            </li>
-            <li class="pt-1">
-              <span class="fw-medium me-1">Country:</span>
-              <span>England</span>
-            </li>
-          </ul>
+        <div class="info-container p-4">
           <div class="d-flex justify-content-center">
-            <a href="javascript:;" class="btn btn-primary me-3" data-bs-target="#editUser" data-bs-toggle="modal">Edit</a>
-            <a href="javascript:;" class="btn btn-label-danger suspend-user">Suspended</a>
+            <a href="javascript:;" class="btn btn-primary me-3" data-bs-target="#editUser" data-bs-toggle="modal">ویرایش</a>
+            {{-- <a href="javascript:;" class="btn btn-label-danger suspend-user">Suspended</a> --}}
           </div>
         </div>
       </div>
@@ -120,132 +111,72 @@
       <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="ti ti-user-check ti-xs me-1"></i>حساب کاربری</a></li>
     </ul>
     <!--/ User Pills -->
-
-    <!-- Project table -->
+    <!-- Change Password -->
     <div class="card mb-4">
-      <h5 class="card-header">User's Projects List</h5>
-      <div class="table-responsive mb-3">
-        <table class="table datatable-project border-top">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Project</th>
-              <th class="text-nowrap">Total Task</th>
-              <th>Progress</th>
-              <th>Hours</th>
-            </tr>
-          </thead>
-        </table>
+        <h5 class="card-header">تغییر رمز عبور</h5>
+        <div class="card-body">
+          <form id="formChangePassword" method="POST" onsubmit="return false">
+            <div class="alert alert-warning" role="alert">
+              <h5 class="alert-heading mb-2">اطمینان حاصل کنید که این الزامات برآورده شده است</h5>
+              <span>حداقل 8 کاراکتر طول، بزرگ و نماد</span>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-12 col-sm-6 form-password-toggle">
+                <label class="form-label" for="newPassword">پسورد جدید</label>
+                <div class="input-group input-group-merge">
+                  <input class="form-control" type="password" id="newPassword" name="newPassword" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                  <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                </div>
+              </div>
+  
+              <div class="mb-3 col-12 col-sm-6 form-password-toggle">
+                <label class="form-label" for="confirmPassword">تکرار پسورد جدید</label>
+                <div class="input-group input-group-merge">
+                  <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                  <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                </div>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary me-2">تغییر رمز عبور</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--/ Change Password -->
+  <!-- Basic  -->
+  <div class="col-12">
+    <div class="card mb-4">
+      <h5 class="card-header">بارگذاری عکس کارت زرگری یا پروانه کسب</h5>
+      <div class="card-body">
+        <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
+          <div class="dz-message needsclick">
+            فایل ها را اینجا رها کنید یا برای آپلود کلیک کنید
+          </div>
+          <div class="fallback">
+            <input name="file" type="file" />
+          </div>
+          <button type="submit" class="btn btn-primary me-2">ذخیره</button>
+        </form>
       </div>
     </div>
-    <!-- /Project table -->
-
-    <!-- Activity Timeline -->
-    <div class="card mb-4">
-      <h5 class="card-header">User Activity Timeline</h5>
-      <div class="card-body pb-0">
-        <ul class="timeline mb-0">
-          <li class="timeline-item timeline-item-transparent">
-            <span class="timeline-point timeline-point-primary"></span>
-            <div class="timeline-event">
-              <div class="timeline-header mb-1">
-                <h6 class="mb-0">12 Invoices have been paid</h6>
-                <small class="text-muted">12 min ago</small>
-              </div>
-              <p class="mb-2">Invoices have been paid to the company</p>
-              <div class="d-flex">
-                <a href="javascript:void(0)" class="me-3">
-                  <img src="{{asset('assets/img/icons/misc/pdf.png')}}" alt="PDF image" width="15" class="me-2">
-                  <span class="fw-medium text-heading">invoices.pdf</span>
-                </a>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-item timeline-item-transparent">
-            <span class="timeline-point timeline-point-warning"></span>
-            <div class="timeline-event">
-              <div class="timeline-header mb-1">
-                <h6 class="mb-0">Client Meeting</h6>
-                <small class="text-muted">45 min ago</small>
-              </div>
-              <p class="mb-2">Project meeting with john @10:15am</p>
-              <div class="d-flex flex-wrap">
-                <div class="avatar me-3">
-                  <img src="{{ asset('assets/img/avatars/3.png') }}" alt="Avatar" class="rounded-circle" />
-                </div>
-                <div>
-                  <h6 class="mb-0">Lester McCarthy (Client)</h6>
-                  <small>CEO of {{ config('variables.creatorName') }}</small>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-item timeline-item-transparent">
-            <span class="timeline-point timeline-point-info"></span>
-            <div class="timeline-event">
-              <div class="timeline-header mb-1">
-                <h6 class="mb-0">Create a new project for client</h6>
-                <small class="text-muted">2 Day Ago</small>
-              </div>
-              <p class="mb-2">5 team members in a project</p>
-              <div class="d-flex align-items-center avatar-group">
-                <div class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="Vinnie Mostowy">
-                  <img src="{{ asset('assets/img/avatars/5.png') }}" alt="Avatar" class="rounded-circle">
-                </div>
-                <div class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="Marrie Patty">
-                  <img src="{{ asset('assets/img/avatars/12.png') }}" alt="Avatar" class="rounded-circle">
-                </div>
-                <div class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="Jimmy Jackson">
-                  <img src="{{ asset('assets/img/avatars/9.png') }}" alt="Avatar" class="rounded-circle">
-                </div>
-                <div class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="Kristine Gill">
-                  <img src="{{ asset('assets/img/avatars/6.png') }}" alt="Avatar" class="rounded-circle">
-                </div>
-                <div class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="Nelson Wilson">
-                  <img src="{{ asset('assets/img/avatars/4.png') }}" alt="Avatar" class="rounded-circle">
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-item timeline-item-transparent border-transparent">
-            <span class="timeline-point timeline-point-success"></span>
-            <div class="timeline-event">
-              <div class="timeline-header mb-1">
-                <h6 class="mb-0">Design Review</h6>
-                <small class="text-muted">5 days Ago</small>
-              </div>
-              <p class="mb-0">Weekly review of freshly prepared design for our new app.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+    <div class="col-12">
+        <div class="card mb-4">
+            <h5 class="card-header">عکس کارت زرگری یا پروانه کسب</h5>  
+            <img class="img-fluid d-flex mx-auto my-4 rounded" src="//localhost:3000/assets/img/elements/4.jpg" alt="Card image cap">
+          
+        </div>
     </div>
-    <!-- /Activity Timeline -->
-
-    <!-- Invoice table -->
-    <div class="card mb-4">
-      <div class="table-responsive mb-3">
-        <table class="table datatable-invoice border-top">
-          <thead>
-            <tr>
-              <th></th>
-              <th>ID</th>
-              <th><i class='ti ti-trending-up text-secondary'></i></th>
-              <th>Total</th>
-              <th>Issued Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
-    <!-- /Invoice table -->
+    
+  </div>
+  <!-- /Basic  -->
+  
   </div>
   <!--/ User Content -->
 </div>
 
 <!-- Modal -->
-@include('_partials/_modals/modal-edit-user')
-@include('_partials/_modals/modal-upgrade-plan')
+@include('_partials/_modals/manage-modal-edit-user')
+{{-- @include('_partials/_modals/modal-upgrade-plan') --}}
 <!-- /Modal -->
 @endsection
