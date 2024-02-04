@@ -42,15 +42,15 @@ $customizerHidden = 'customizer-hide';
           </a>
         </div>
         <!-- /Logo -->
-        <h4 class="mb-1 pt-2">Two Step Verification 💬</h4>
+        <h4 class="mb-1 pt-2">تایید دو مرحله ای 💬</h4>
         <p class="text-start mb-4">
-          We sent a verification code to your mobile. Enter the code from the mobile in the field below.
+          ما یک کد تأیید به تلفن همراه شما ارسال کردیم. کد تأیید را در فیلد زیر وارد کنید.
           <span class="fw-medium d-block mt-2">******1234</span>
         </p>
-        <p class="mb-0 fw-medium">Type your 6 digit security code</p>
+        <p class="mb-0 fw-medium">کد امنیتی 6 رقمی را تایپ کنید</p>
         <form id="twoStepsForm" action="{{url('/')}}" method="GET">
           <div class="mb-3">
-            <div class="auth-input-wrapper d-flex align-items-center justify-content-sm-between numeral-mask-wrapper">
+            <div style="direction: ltr" class="auth-input-wrapper d-flex align-items-center justify-content-sm-between numeral-mask-wrapper">
               <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1" autofocus>
               <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
               <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
@@ -62,11 +62,11 @@ $customizerHidden = 'customizer-hide';
             <input type="hidden" name="otp" />
           </div>
           <button class="btn btn-primary d-grid w-100 mb-3">
-            Verify my account
+            تایید
           </button>
-          <div class="text-center">Didn't get the code?
+          <div class="text-center">کد را دریافت نکردید؟
             <a href="javascript:void(0);">
-              Resend
+              ارسال دوباره
             </a>
           </div>
         </form>
