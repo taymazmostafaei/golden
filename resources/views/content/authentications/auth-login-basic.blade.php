@@ -50,7 +50,7 @@ $customizerHidden = 'customizer-hide';
           <form id="formAuthentication" class="mb-3" action="{{url('/')}}" method="GET">
             <div class="mb-3">
               <label for="email" class="form-label"> شماره موبایل </label>
-              <input type="text" style="direction: ltr" class="form-control" id="phone" name="phone" placeholder=" 09" autofocus>
+              <input type="tel" style="direction: ltr" class="form-control" id="phone" name="phone" placeholder=" 09" autofocus>
             </div>
             <div class="mb-3">
               <button class="btn btn-primary d-grid w-100" type="submit">ادامه</button>

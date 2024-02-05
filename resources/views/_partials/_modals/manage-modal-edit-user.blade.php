@@ -30,7 +30,7 @@
               <label class="form-label" for="modalEditUserPhone">شماره موبایل</label>
               <div class="input-group">
                 <span class="input-group-text">IR (+98)</span>
-                <input type="text" id="modalEditUserPhone" name="modalEditUserPhone" class="form-control phone-number-mask" placeholder="202 555 0111" />
+                <input style="direction: ltr" type="text" id="modalEditUserPhone" name="modalEditUserPhone" class="form-control phone-number-mask" placeholder="202 555 0111" />
               
             </div>
             </div>
@@ -38,7 +38,7 @@
                 <label class="form-label" for="modalEditUserPhone">شماره ثابت</label>
                 <div class="input-group">
                   <span class="input-group-text">IR (+98)</span>
-                  <input type="text" id="modalEditUserPhone" name="modalEditUserPhone" class="form-control phone-number-mask" placeholder="202 555 0111" />
+                  <input type="text" style="direction: ltr" id="modalEditUserPhone" name="modalEditUserPhone" class="form-control phone-number-mask" placeholder="202 555 0111" />
                 
               </div>
               </div>
