@@ -42,20 +42,20 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <div class="card-title m-0">
-                                <h5 class="m-0">امکانات</h5>
+                                <h4 class="m-0">امکانات</h4>
                                 <p class="text-muted mb-0">در این بخش می توانید امکانات زیر را فعال یا غیر فعال کنید</p>
                             </div>
                         </div>
 
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-column">
                             <label class="switch switch-square">
                                 <input type="checkbox" class="switch-input">
                                 <span class="switch-toggle-slider">
                                     <span class="switch-on"><i class="ti ti-check"></i></span>
                                     <span class="switch-off"><i class="ti ti-x"></i></span>
                                 </span>
-                                <span class="switch-label">امکان ثبت نام</span>
+                                <h5 class="switch-label">امکان ثبت نام</h5>
                             </label>
                             <label class="switch switch-square">
                                 <input type="checkbox" class="switch-input">
@@ -63,7 +63,7 @@
                                     <span class="switch-on"><i class="ti ti-check"></i></span>
                                     <span class="switch-off"><i class="ti ti-x"></i></span>
                                 </span>
-                                <span class="switch-label">امکان ثبت سفارش آبشده</span>
+                                <h5 class="switch-label">امکان ثبت سفارش آبشده</h5>
                             </label>
                             <label class="switch switch-square">
                                 <input type="checkbox" class="switch-input">
@@ -71,7 +71,7 @@
                                     <span class="switch-on"><i class="ti ti-check"></i></span>
                                     <span class="switch-off"><i class="ti ti-x"></i></span>
                                 </span>
-                                <span class="switch-label">امکان ثبت سفارش بنکداری</span>
+                                <h5 class="switch-label">امکان ثبت سفارش بنکداری</h5>
                             </label>
                         </div>
                             <div class="d-flex justify-content-start mt-4 gap-3">

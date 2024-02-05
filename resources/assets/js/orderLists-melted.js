@@ -40,15 +40,14 @@ $(function () {
   // Users datatable
   if (dt_user_table.length) {
     var dt_user = dt_user_table.DataTable({
-      ajax: assetsPath + 'json/userList.json', // JSON file to add data
+      ajax: assetsPath + 'json/orderLists-melted.json', // JSON file to add data
       columns: [
         // columns according to JSON
         { data: '' },
         { data: 'full_name' },
-        { data: 'national_code' },
-        { data: 'phone_num' },
-        { data: 'tel_phone' },
-        { data: 'status' },
+        { data: 'date' },
+        { data: 'value_grams' },
+        { data: 'price' },
         { data: 'action' }
       ],
       columnDefs: [
@@ -64,12 +63,12 @@ $(function () {
           }
         },
         {
-          // User full name and date_register
+          // User full name and phoneNum
           targets: 1,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
             var $name = full['full_name'],
-              $date_register = full['date_register'],
+              $phoneNum = full['phoneNum'],
               $image = full['avatar'];
             if ($image) {
               // For Avatar image
@@ -100,7 +99,7 @@ $(function () {
               $name +
               '</span></a>' +
               '<small class="text-muted">' +
-              $date_register +
+              $phoneNum +
               '</small>' +
               '</div>' +
               '</div>';
@@ -137,38 +136,31 @@ $(function () {
         //   }
         // },
         {
-          // User Status
-          targets: 5,
-          render: function (data, type, full, meta) {
-            var $status = full['status'];
+          // // User Status
+          // targets: 5,
+          // render: function (data, type, full, meta) {
+          //   var $status = full['status'];
 
-            return (
-              '<span class="badge ' +
-              statusObj[$status].class +
-              '" text-capitalized>' +
-              statusObj[$status].title +
-              '</span>'
-            );
-          }
+          //   return (
+          //     '<span class="badge ' +
+          //     statusObj[$status].class +
+          //     '" text-capitalized>' +
+          //     statusObj[$status].title +
+          //     '</span>'
+          //   );
+          // }
         },
         {
           // Actions
           targets: -1,
-          title: 'عملیات',
+          title: 'تایید یا رد',
           searchable: false,
           orderable: false,
           render: function (data, type, full, meta) {
             return (
               '<div class="d-flex align-items-center">' +
-              '<a href="javascript:;" class="text-body"><i class="ti ti-edit ti-sm me-2"></i></a>' +
-              '<a href="javascript:;" class="text-body delete-record"><i class="ti ti-trash ti-sm mx-2"></i></a>' +
-              '<a href="javascript:;" class="text-body dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical ti-sm mx-1"></i></a>' +
-              '<div class="dropdown-menu dropdown-menu-end m-0">' +
-              '<span class="p-3">تغییر وضعیت</span>'+
-              '<a href="javascript:;" class="dropdown-item bg-label-success">در انتظار</a>' +
-              '<a href="javascript:;" class="dropdown-item bg-label-warning">تایید شده</a>' +
-              '<a href="javascript:;" class="dropdown-item bg-label-danger">رد شده</a>' +
-              '</div>' +
+              '<a href="javascript:;" class="text-body"><i class="ti ti-check ti-sm me-2"></i></a>' +
+              '<a href="javascript:;" class="text-body"><i class="ti ti-x ti-sm mx-2"></i></a>' +
               '</div>'
             );
           }
@@ -332,7 +324,7 @@ $(function () {
           ]
         },
         {
-          text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">افزودن کاربر جدید</span>',
+          text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">افزودن سفارش جدید</span>',
           className: 'add-new btn btn-primary waves-effect waves-light',
           attr: {
             'data-bs-toggle': 'offcanvas',
@@ -420,7 +412,7 @@ $(function () {
         //   });
         // Adding status filter once table initialized
         this.api()
-          .columns(5)
+          .columns(6)
           .every(function () {
             var column = this;
             var select = $(
