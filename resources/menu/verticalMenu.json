@@ -4,13 +4,13 @@
       "url": "manager/dashboard",
       "name": "داشبورد",
       "icon": "menu-icon tf-icons ti ti-dashboard",
-      "slug": "dashboard"
+      "slug": "manager-dashboard"
     },
     {
       "url": "manager/user/list",
       "name": "لیست کاربران",
       "icon": "menu-icon tf-icons ti ti-users",
-      "slug": "user-list"
+      "slug": "manager-user-list"
     },
     {
       "name": "لیست سفارش",
@@ -39,7 +39,7 @@
         {
           "url": "/manager/bonakdary_product/create_cat",
           "name": "تعریف دسته بندی",
-          "slug": "dashboard-analytics"
+          "slug": "manager-bonak-cat-create"
         },
         {
           "url": "/manager/bonakdary_product/create_pro",
@@ -56,14 +56,14 @@
       "badge": ["primary", "2"],
       "submenu": [
         {
-          "url": "/manager/blog/show",
+          "url": "/manager/blog/list",
           "name": "لیست",
-          "slug": "manager-order-melted"
+          "slug": "manager-order-list"
         },
         {
           "url": "/manager/blog/create",
           "name": "وبلاگ جدید",
-          "slug": "dashboard-analytics"
+          "slug": "manager-order-create"
         }
       ]
     },
@@ -71,7 +71,7 @@
       "url": "manager/setting/setFy",
       "name": "تنظیمات",
       "icon": "menu-icon tf-icons ti ti-settings",
-      "slug": "app-email"
+      "slug": "manager-setting"
     }
    
   ]

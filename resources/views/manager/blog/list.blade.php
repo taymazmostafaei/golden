@@ -34,12 +34,10 @@
       </div>
       <div class="app-academy-md-50 card-body d-flex align-items-md-center flex-column text-md-center">
         <h3 class="card-title mb-4 lh-sm px-md-5 lh-lg">
-          Education, talents, and career opportunities.
-          <span class="text-primary fw-medium text-nowrap">All in one place</span>.
+          جست و جوی وبلاگ
         </h3>
         <p class="mb-3">
-          Grow your skill with the most reliable online courses and certifications in marketing, information technology,
-          programming, and data science.
+بین مطلب های که نوشتید جست و جو کنید
         </p>
         <div class="d-flex align-items-center justify-content-between app-academy-md-80">
           <button type="submit" class="btn btn-primary btn-icon me-2"><i class="ti ti-search"></i></button>
@@ -56,9 +54,9 @@
     <div class="card-header d-flex flex-wrap justify-content-between gap-3">
       <div class="card-title mb-0 me-1">
         <h5 class="mb-1">لیست وبلاگ ها</h5>
-        <p class="text-muted mb-0">Total 6 course you have purchased</p>
+        {{-- <p class="text-muted mb-0">Total 6 course you have purchased</p> --}}
       </div>
-      <div class="d-flex justify-content-md-end align-items-center gap-4 flex-wrap">
+      {{-- <div class="d-flex justify-content-md-end align-items-center gap-4 flex-wrap">
         <select id="select2_course_select" class="select2 form-select" data-placeholder="All Courses">
           <option value="">All Courses</option>
           <option value="ui/ux">UI/UX</option>
@@ -76,7 +74,7 @@
           </span>
           <span class="switch-label text-nowrap mb-0">Hide completed</span>
         </label>
-      </div>
+      </div> --}}
     </div>
     <div class="card-body">
       <div class="row gy-4 mb-4">
