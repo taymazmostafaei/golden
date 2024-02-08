@@ -24,9 +24,8 @@ $(function () {
     userView = baseUrl + 'manager/user/show',
     statusObj = {
       
-      1: { title: 'تایید شده', class: 'bg-label-success' },
-      2: { title: 'در انتظار', class: 'bg-label-warning' },
-      3: { title: 'رد شده', class: 'bg-label-danger' }
+      1: { title: 'خرید', class: 'bg-label-danger' },
+      2: { title: 'فروش', class: 'bg-label-success' }
     };
 
   if (select2.length) {
@@ -45,6 +44,7 @@ $(function () {
         // columns according to JSON
         { data: '' },
         { data: 'full_name' },
+        { data: 'status' },
         { data: 'date' },
         { data: 'value_grams' },
         { data: 'price' },
@@ -64,7 +64,7 @@ $(function () {
         },
         {
           // User full name and phoneNum
-          targets: 1,
+          targets: 2,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
             var $name = full['full_name'],
@@ -136,19 +136,19 @@ $(function () {
         //   }
         // },
         {
-          // // User Status
-          // targets: 5,
-          // render: function (data, type, full, meta) {
-          //   var $status = full['status'];
+          // User status
+          targets: 1,
+          render: function (data, type, full, meta) {
+            var $status = full['status'];
 
-          //   return (
-          //     '<span class="badge ' +
-          //     statusObj[$status].class +
-          //     '" text-capitalized>' +
-          //     statusObj[$status].title +
-          //     '</span>'
-          //   );
-          // }
+            return (
+              '<span class="badge ' +
+              statusObj[$status].class +
+              '" text-capitalized>' +
+              statusObj[$status].title +
+              '</span>'
+            );
+          }
         },
         {
           // Actions
@@ -412,7 +412,7 @@ $(function () {
         //   });
         // Adding status filter once table initialized
         this.api()
-          .columns(6)
+          .columns(2)
           .every(function () {
             var column = this;
             var select = $(
@@ -437,6 +437,7 @@ $(function () {
                     '</option>'
                 );
               });
+
           });
       }
     });

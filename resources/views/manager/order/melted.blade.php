@@ -103,6 +103,7 @@
       <thead class="border-top">
         <tr>
           <th></th>
+          <th>نوع سفارش</th>
           <th>سفارش دهنده</th>
           <th>تاریخ</th>
           <th>مقدار گرم</th>
@@ -120,6 +121,13 @@
     </div>
     <div class="offcanvas-body mx-0 flex-grow-0 pt-0 h-100">
       <form class="add-new-user pt-0" id="addNewUserForm" onsubmit="return false">
+        <div class="mb-3">
+          <label for="exampleFormControlSelect1" class="form-label">نوع سفارش</label>
+          <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+            <option value="1">خرید</option>
+            <option value="2">فروش</option>
+          </select>
+        </div>
         <div class="mb-3">
           <label class="form-label" for="add-user-fullname">نام و نام خانوادگی</label>
           <input type="text" class="form-control" id="add-user-fullname" placeholder="علی تیموری" name="userFullname" aria-label="John Doe" />

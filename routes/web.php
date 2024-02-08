@@ -359,10 +359,13 @@ Route::get('/laravel/user-management', [UserManagement::class, 'UserManagement']
 Route::resource('/user-list', UserManagement::class);
 
 
-
-
+// manager / dashboard
+Route::view('/manager/dashboard', 'manager.dashboard');
+// manager / user
 Route::view('/manager/user/list', 'manager.user.list');
 Route::view('/manager/user/show', 'manager.user.show');
+// manager / setting
 Route::view('/manager/setting/possibilities', 'manager.setting.possibilities');
 Route::view('/manager/setting/setFy', 'manager.setting.setFy');
+// manager / order
 Route::view('/manager/order/melted', 'manager.order.melted');

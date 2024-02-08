@@ -8,8 +8,17 @@
       "date": "1383/6/23",
       "value_grams": "89",
       "price": "100 تومان",
-      "current_plan": "Enterprise",
-      "billing": "Manual - Credit Card",
+      "status":1,
+      "avatar": ""
+    },
+    {
+      "id": 2,
+      "full_name": "علی زرگر",
+      "phoneNum": "09149988745",
+      "date": "1383/6/23",
+      "value_grams": "89",
+      "price": "100 تومان",
+      "status":2,
       "avatar": ""
     }
   ]
