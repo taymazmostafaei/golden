@@ -40,7 +40,7 @@
             <div class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
               <div>
                 <h4 class="mb-2">56</h4>
-                <p class="mb-0 fw-medium">Pending Payment</p>
+                <p class="mb-0 fw-medium">سفارشات امروز</p>
               </div>
               <span class="avatar me-sm-4">
                 <span class="avatar-initial bg-label-secondary rounded">
@@ -54,7 +54,7 @@
             <div class="d-flex justify-content-between align-items-start card-widget-2 border-end pb-3 pb-sm-0">
               <div>
                 <h4 class="mb-2">12,689</h4>
-                <p class="mb-0 fw-medium">Completed</p>
+                <p class="mb-0 fw-medium">تایید شده</p>
               </div>
               <span class="avatar p-2 me-lg-4">
                 <span class="avatar-initial bg-label-secondary rounded"><i class="ti-md ti ti-checks text-body"></i></span>
@@ -66,10 +66,10 @@
             <div class="d-flex justify-content-between align-items-start border-end pb-3 pb-sm-0 card-widget-3">
               <div>
                 <h4 class="mb-2">124</h4>
-                <p class="mb-0 fw-medium">Refunded</p>
+                <p class="mb-0 fw-medium">فروشنده</p>
               </div>
               <span class="avatar p-2 me-sm-4">
-                <span class="avatar-initial bg-label-secondary rounded"><i class="ti-md ti ti-wallet text-body"></i></span>
+                <span class="avatar-initial bg-label-secondary rounded"><i class="ti-md ti ti-user-down text-body"></i></span>
               </span>
             </div>
           </div>
@@ -77,10 +77,10 @@
             <div class="d-flex justify-content-between align-items-start">
               <div>
                 <h4 class="mb-2">32</h4>
-                <p class="mb-0 fw-medium">Failed</p>
+                <p class="mb-0 fw-medium">خریدار</p>
               </div>
               <span class="avatar p-2">
-                <span class="avatar-initial bg-label-secondary rounded"><i class="ti-md ti ti-alert-octagon text-body"></i></span>
+                <span class="avatar-initial bg-label-secondary rounded"><i class="ti-md ti ti-user-up text-body"></i></span>
               </span>
             </div>
           </div>

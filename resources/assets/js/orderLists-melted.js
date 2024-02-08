@@ -24,8 +24,8 @@ $(function () {
     userView = baseUrl + 'manager/user/show',
     statusObj = {
       
-      1: { title: 'خرید', class: 'bg-label-danger' },
-      2: { title: 'فروش', class: 'bg-label-success' }
+      1: { title: 'خرید', class: 'bg-label-success' },
+      2: { title: 'فروش', class: 'bg-label-danger' }
     };
 
   if (select2.length) {
