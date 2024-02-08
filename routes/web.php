@@ -369,3 +369,9 @@ Route::view('/manager/setting/possibilities', 'manager.setting.possibilities');
 Route::view('/manager/setting/setFy', 'manager.setting.setFy');
 // manager / order
 Route::view('/manager/order/melted', 'manager.order.melted');
+// manager / bonakdaryProduct
+Route::view('/manager/bonakdary_product/create_cat', 'manager.bonakdary_product.create_cat');
+Route::view('/manager/bonakdary_product/create_pro', 'manager.bonakdary_product.create_pro');
+// manager / blog
+Route::view('/manager/blog/show', 'manager.blog.show');
+Route::view('/manager/blog/create', 'manager.blog.create');

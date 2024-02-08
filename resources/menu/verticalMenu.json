@@ -16,6 +16,7 @@
       "name": "لیست سفارش",
       "icon": "menu-icon tf-icons ti ti-layout-grid",
       "slug": "dashboard",
+      "badge": ["primary", "2"],
       "submenu": [
         {
           "url": "/",
@@ -36,12 +37,12 @@
       "badge": ["primary", "2"],
       "submenu": [
         {
-          "url": "/",
+          "url": "/manager/bonakdary_product/create_cat",
           "name": "تعریف دسته بندی",
           "slug": "dashboard-analytics"
         },
         {
-          "url": "dashboard/crm",
+          "url": "/manager/bonakdary_product/create_pro",
           "name": "تعریف محصول",
           "slug": "dashboard-crm"
         }
@@ -49,9 +50,22 @@
     },
     {
       "url": "app/email",
-      "name": "اخبار(وبلاگ)",
+      "name": "اخبار(وبلاگ)", 
       "icon": "menu-icon tf-icons ti ti-map",
-      "slug": "app-email"
+      "slug": "app-email",
+      "badge": ["primary", "2"],
+      "submenu": [
+        {
+          "url": "/manager/blog/show",
+          "name": "لیست",
+          "slug": "manager-order-melted"
+        },
+        {
+          "url": "/manager/blog/create",
+          "name": "وبلاگ جدید",
+          "slug": "dashboard-analytics"
+        }
+      ]
     },
     {
       "url": "manager/setting/setFy",
