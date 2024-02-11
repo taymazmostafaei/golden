@@ -19,9 +19,9 @@
       "badge": ["primary", "2"],
       "submenu": [
         {
-          "url": "/",
+          "url": "manager/order/bonakDary",
           "name": "بنکداری",
-          "slug": "dashboard-analytics"
+          "slug": "manager-order-bonakDary"
         },
         {
           "url": "manager/order/melted",
@@ -44,7 +44,7 @@
         {
           "url": "/manager/bonakdary_product/create_pro",
           "name": "تعریف محصول",
-          "slug": "dashboard-crm"
+          "slug": "manager-bonak-pro-create"
         }
       ]
     },
