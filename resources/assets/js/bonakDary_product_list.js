@@ -1,5 +1,5 @@
 /**
- * Page User List
+ * app-ecommerce-product-list
  */
 
 'use strict';
@@ -19,37 +19,47 @@ $(function () {
   }
 
   // Variable declaration for table
-  var dt_user_table = $('.datatables-users'),
-    select2 = $('.select2'),
-    userView = baseUrl + 'manager/user/show';
+  var dt_product_table = $('.datatables-products'),
+    productAdd = baseUrl + 'manager/bonakdary_product/create_pro',
     // statusObj = {
-      
-    //   1: { title: 'خرید', class: 'bg-label-success' },
-    //   2: { title: 'فروش', class: 'bg-label-danger' }
-    // };
+    //   1: { title: 'Scheduled', class: 'bg-label-warning' },
+    //   2: { title: 'Publish', class: 'bg-label-success' },
+    //   3: { title: 'Inactive', class: 'bg-label-danger' }
+    // },
+    categoryObj = {
+      0: { title: 'Household' },
+      1: { title: 'Office' },
+      2: { title: 'Electronics' },
+      3: { title: 'Shoes' },
+      4: { title: 'Accessories' },
+      5: { title: 'Game' }
+    };
+  // stockObj = {
+  //   0: { title: 'Out_of_Stock' },
+  //   1: { title: 'In_Stock' }
+  // },
+  // stockFilterValObj = {
+  //   0: { title: 'Out of Stock' },
+  //   1: { title: 'In Stock' }
+  // };
 
-  if (select2.length) {
-    var $this = select2;
-    $this.wrap('<div class="position-relative"></div>').select2({
-      placeholder: 'Select Country',
-      dropdownParent: $this.parent()
-    });
-  }
+  // E-commerce Products datatable
 
-  // Users datatable
-  if (dt_user_table.length) {
-    var dt_user = dt_user_table.DataTable({
-      ajax: assetsPath + 'json/orderLists-bonakDary.json', // JSON file to add data
+  if (dt_product_table.length) {
+    var dt_products = dt_product_table.DataTable({
+      ajax: assetsPath + 'json/bonakDary_product_list.json', // JSON file to add data
       columns: [
         // columns according to JSON
-        { data: '' },
-        { data: 'full_name' },
-        // { data: 'status' },
-        { data: 'date' },
+        { data: 'id' },
+        { data: 'id' },
         { data: 'product_name' },
-        { data: 'product_categury' },
+        { data: 'category' },
+        // { data: 'stock' },
+        // { data: 'sku' },
         { data: 'price' },
-        { data: 'action' }
+        // { data: 'quantity' },
+        // { data: 'status' },
+        { data: '' }
       ],
       columnDefs: [
         {
@@ -64,81 +74,161 @@ $(function () {
           }
         },
         {
-          // User full name and phoneNum
+          // For Checkboxes
           targets: 1,
-          responsivePriority: 4,
+          orderable: false,
+          checkboxes: {
+            selectAllRender: '<input type="checkbox" class="form-check-input">'
+          },
+          render: function () {
+            return '<input type="checkbox" class="dt-checkboxes form-check-input" >';
+          },
+          searchable: false
+        },
+        {
+          // Product name and product_brand
+          targets: 2,
+          responsivePriority: 1,
           render: function (data, type, full, meta) {
-            var $name = full['full_name'],
-              $phoneNum = full['phoneNum'],
-              $image = full['avatar'];
+            var $name = full['product_name'],
+              $id = full['id'],
+              $product_brand = full['product_brand'],
+              $image = full['image'];
             if ($image) {
-              // For Avatar image
+              // For Product image
+
               var $output =
-                '<img src="' + assetsPath + 'img/avatars/' + $image + '" alt="Avatar" class="rounded-circle">';
+                '<img src="' +
+                assetsPath +
+                'img/ecommerce-images/' +
+                $image +
+                '" alt="Product-' +
+                $id +
+                '" class="rounded-2">';
             } else {
-              // For Avatar badge
+              // For Product badge
               var stateNum = Math.floor(Math.random() * 6);
-              var states = ['success', 'danger', 'warning', 'info', 'primary', 'secondary'];
+              var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
               var $state = states[stateNum],
-                $name = full['full_name'],
+                $name = full['product_brand'],
                 $initials = $name.match(/\b\w/g) || [];
               $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
-              $output = '<span class="avatar-initial rounded-circle bg-label-' + $state + '">' + $initials + '</span>';
+              $output = '<span class="avatar-initial rounded-2 bg-label-' + $state + '">' + $initials + '</span>';
             }
-            // Creates full output for row
+            // Creates full output for Product name and product_brand
             var $row_output =
-              '<div class="d-flex justify-content-start align-items-center user-name">' +
+              '<div class="d-flex justify-content-start align-items-center product-name">' +
               '<div class="avatar-wrapper">' +
-              '<div class="avatar me-3">' +
+              '<div class="avatar avatar me-2 rounded-2 bg-label-secondary">' +
               $output +
               '</div>' +
               '</div>' +
               '<div class="d-flex flex-column">' +
-              '<a href="' +
-              userView +
-              '" class="text-body text-truncate"><span class="fw-medium">' +
+              '<h6 class="text-body text-nowrap mb-0">' +
               $name +
-              '</span></a>' +
-              '<small class="text-muted">' +
-              $phoneNum +
+              '</h6>' +
+              '<small class="text-muted text-truncate d-none d-sm-block">' +
+              $product_brand +
               '</small>' +
               '</div>' +
               '</div>';
             return $row_output;
           }
         },
-        // {
-        //   // User Role
-        //   targets: 2,
-        //   render: function (data, type, full, meta) {
-        //     var $role = full['role'];
-        //     var roleBadgeObj = {
-        //       Subscriber:
-        //         '<span class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2"><i class="ti ti-user ti-sm"></i></span>',
-        //       Author:
-        //         '<span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2"><i class="ti ti-circle-check ti-sm"></i></span>',
-        //       Maintainer:
-        //         '<span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2"><i class="ti ti-chart-pie-2 ti-sm"></i></span>',
-        //       Editor:
-        //         '<span class="badge badge-center rounded-pill bg-label-info w-px-30 h-px-30 me-2"><i class="ti ti-edit ti-sm"></i></span>',
-        //       Admin:
-        //         '<span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30 me-2"><i class="ti ti-device-laptop ti-sm"></i></span>'
-        //     };
-        //     return "<span class='text-truncate d-flex align-items-center'>" + roleBadgeObj[$role] + $role + '</span>';
-        //   }
-        // },
-        // {
-        //   // Plans
-        //   targets: 3,
-        //   render: function (data, type, full, meta) {
-        //     var $plan = full['current_plan'];
+        {
+          // Product Category
 
-        //     return '<span class="fw-medium">' + $plan + '</span>';
+          targets: 3,
+          responsivePriority: 5,
+          render: function (data, type, full, meta) {
+            var $category = categoryObj[full['category']].title;
+            var categoryBadgeObj = {
+              Household:
+                '<span class="avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-warning me-2 p-3"><i class="ti ti-home-2 ti-xs"></i></span>',
+              Office:
+                '<span class="avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-info me-2 p-3"><i class="ti ti-briefcase ti-xs"></i></span>',
+              Electronics:
+                '<span class="avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-danger me-2 p-3"><i class="ti ti-device-mobile ti-xs"></i></span>',
+              Shoes:
+                '<span class="avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-success me-2"><i class="ti ti-shoe ti-xs"></i></span>',
+              Accessories:
+                '<span class="avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-secondary me-2"><i class="ti ti-device-watch ti-xs"></i></span>',
+              Game: '<span class="avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-primary me-2"><i class="ti ti-device-gamepad-2 ti-xs"></i></span>'
+            };
+            return (
+              "<span class='text-truncate d-flex align-items-center'>" +
+              categoryBadgeObj[$category] +
+              $category +
+              '</span>'
+            );
+          }
+        },
+        // {
+        //   // Stock
+        //   targets: 4,
+        //   orderable: false,
+        //   responsivePriority: 3,
+        //   render: function (data, type, full, meta) {
+        //     var $stock = full['stock'];
+        //     var stockSwitchObj = {
+        //       Out_of_Stock:
+        //         '<label class="switch switch-primary switch-sm">' +
+        //         '<input type="checkbox" class="switch-input" id="switch">' +
+        //         '<span class="switch-toggle-slider">' +
+        //         '<span class="switch-off">' +
+        //         '</span>' +
+        //         '</span>' +
+        //         '</label>',
+        //       In_Stock:
+        //         '<label class="switch switch-primary switch-sm">' +
+        //         '<input type="checkbox" class="switch-input" checked="">' +
+        //         '<span class="switch-toggle-slider">' +
+        //         '<span class="switch-on">' +
+        //         '</span>' +
+        //         '</span>' +
+        //         '</label>'
+        //     };
+        //     return (
+        //       "<span class='text-truncate'>" +
+        //       stockSwitchObj[stockObj[$stock].title] +
+        //       '<span class="d-none">' +
+        //       stockObj[$stock].title +
+        //       '</span>' +
+        //       '</span>'
+        //     );
         //   }
         // },
         // {
-        //   // User status
-        //   targets: 1,
+        //   // Sku
+        //   targets: 5,
+        //   render: function (data, type, full, meta) {
+        //     var $sku = full['sku'];
+
+        //     return '<span>' + $sku + '</span>';
+        //   }
+        // },
+        {
+          // price
+          targets: 4,
+          render: function (data, type, full, meta) {
+            var $price = full['price'];
+
+            return '<span>' + $price + '</span>';
+          }
+        },
+        // {
+        //   // qty
+        //   targets: 7,
+        //   responsivePriority: 4,
+        //   render: function (data, type, full, meta) {
+        //     var $qty = full['qty'];
+
+        //     return '<span>' + $qty + '</span>';
+        //   }
+        // },
+        // {
+        //   // Status
+        //   targets: -2,
         //   render: function (data, type, full, meta) {
         //     var $status = full['status'];
 
@@ -153,35 +243,36 @@ $(function () {
         // },
         {
           // Actions
-          targets: -1,
+          targets: 5,
           title: 'عملیات',
           searchable: false,
           orderable: false,
           render: function (data, type, full, meta) {
             return (
-              '<div class="d-flex align-items-center">' +
-              '<a href="javascript:;" class="text-body"><i class="ti ti-check ti-sm me-2"></i></a>' +
-
-              '<a href="javascript:;" class="text-body"><i class="ti ti-trash text-danger ti-sm me-2"></i></a>' +
-              '</div>'
+              `<div class="d-inline-block text-nowrap">
+              <a href="${productAdd}" button class="btn btn-sm btn-icon"><i class="ti ti-edit"></i></button></a> 
+              <button class="btn btn-sm btn-icon delete-record"><i class="ti ti-trash"></i></button>
+              </div>`
             );
           }
         }
       ],
-      order: [[1, 'desc']],
+      order: [2, 'asc'], //set any columns order asc/desc
       dom:
-        '<"row me-2"' +
-        '<"col-md-2"<"me-3"l>>' +
-        '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"fB>>' +
+        '<"card-header d-flex border-top rounded-0 flex-wrap py-2"' +
+        '<"me-5 ms-n2 pe-5"f>' +
+        '<"d-flex justify-content-start justify-content-md-end align-items-baseline"<"dt-action-buttons d-flex flex-column align-items-start align-items-md-center justify-content-sm-center mb-3 mb-md-0 pt-0 gap-4 gap-sm-0 flex-sm-row"lB>>' +
         '>t' +
         '<"row mx-2"' +
         '<"col-sm-12 col-md-6"i>' +
         '<"col-sm-12 col-md-6"p>' +
         '>',
+      lengthMenu: [7, 10, 20, 50, 70, 100], //for length of menu
       language: {
         sLengthMenu: '_MENU_',
         search: '',
-        searchPlaceholder: 'جست و جو...'
+        searchPlaceholder: 'جست و جوی محصول',
+        info: 'Displaying _START_ to _END_ of _TOTAL_ entries'
       },
       // Buttons with Dropdown
       buttons: [
@@ -325,14 +416,13 @@ $(function () {
             }
           ]
         },
-        // {
-        //   text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">افزودن سفارش جدید</span>',
-        //   className: 'add-new btn btn-primary waves-effect waves-light',
-        //   attr: {
-        //     'data-bs-toggle': 'offcanvas',
-        //     'data-bs-target': '#offcanvasAddUser'
-        //   }
-        // }
+        {
+          text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">محصول جدید</span>',
+          className: 'add-new btn btn-primary ms-2 ms-sm-0 waves-effect waves-light',
+          action: function () {
+            window.location.href = productAdd;
+          }
+        }
       ],
       // For responsive popup
       responsive: {
@@ -340,7 +430,7 @@ $(function () {
           display: $.fn.dataTable.Responsive.display.modal({
             header: function (row) {
               var data = row.data();
-              return 'Details of ' + data['full_name'];
+              return 'Details of ' + data['product_name'];
             }
           }),
           type: 'column',
@@ -368,59 +458,15 @@ $(function () {
         }
       },
       initComplete: function () {
-        // // Adding role filter once table initialized
-        // this.api()
-        //   .columns(2)
-        //   .every(function () {
-        //     var column = this;
-        //     var select = $(
-        //       '<select id="UserRole" class="form-select text-capitalize"><option value=""> Select Role </option></select>'
-        //     )
-        //       .appendTo('.user_role')
-        //       .on('change', function () {
-        //         var val = $.fn.dataTable.util.escapeRegex($(this).val());
-        //         column.search(val ? '^' + val + '$' : '', true, false).draw();
-        //       });
-
-        //     column
-        //       .data()
-        //       .unique()
-        //       .sort()
-        //       .each(function (d, j) {
-        //         select.append('<option value="' + d + '">' + d + '</option>');
-        //       });
-        //   });
-        // // Adding plan filter once table initialized
-        // this.api()
-        //   .columns(3)
-        //   .every(function () {
-        //     var column = this;
-        //     var select = $(
-        //       '<select id="UserPlan" class="form-select text-capitalize"><option value=""> Select Plan </option></select>'
-        //     )
-        //       .appendTo('.user_plan')
-        //       .on('change', function () {
-        //         var val = $.fn.dataTable.util.escapeRegex($(this).val());
-        //         column.search(val ? '^' + val + '$' : '', true, false).draw();
-        //       });
-
-        //     column
-        //       .data()
-        //       .unique()
-        //       .sort()
-        //       .each(function (d, j) {
-        //         select.append('<option value="' + d + '">' + d + '</option>');
-        //       });
-        //   });
         // // Adding status filter once table initialized
         // this.api()
-        //   .columns(2)
+        //   .columns(-2)
         //   .every(function () {
         //     var column = this;
         //     var select = $(
-        //       '<select id="FilterTransaction" class="form-select text-capitalize"><option value="">همه</option></select>'
+        //       '<select id="ProductStatus" class="form-select text-capitalize"><option value="">Status</option></select>'
         //     )
-        //       .appendTo('.user_status')
+        //       .appendTo('.product_status')
         //       .on('change', function () {
         //         var val = $.fn.dataTable.util.escapeRegex($(this).val());
         //         column.search(val ? '^' + val + '$' : '', true, false).draw();
@@ -431,23 +477,62 @@ $(function () {
         //       .unique()
         //       .sort()
         //       .each(function (d, j) {
-        //         select.append(
-        //           '<option value="' +
-        //             statusObj[d].title +
-        //             '" class="text-capitalize">' +
-        //             statusObj[d].title +
-        //             '</option>'
-        //         );
+        //         select.append('<option value="' + statusObj[d].title + '">' + statusObj[d].title + '</option>');
+        //       });
+        //   });
+        // Adding category filter once table initialized
+        this.api()
+          .columns(3)
+          .every(function () {
+            var column = this;
+            var select = $(
+              '<select id="ProductCategory" class="form-select text-capitalize"><option value="">دسته بندی</option></select>'
+            )
+              .appendTo('.product_category')
+              .on('change', function () {
+                var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                column.search(val ? '^' + val + '$' : '', true, false).draw();
+              });
+
+            column
+              .data()
+              .unique()
+              .sort()
+              .each(function (d, j) {
+                select.append('<option value="' + categoryObj[d].title + '">' + categoryObj[d].title + '</option>');
+              });
+          });
+        // // Adding stock filter once table initialized
+        // this.api()
+        //   .columns(4)
+        //   .every(function () {
+        //     var column = this;
+        //     var select = $(
+        //       '<select id="ProductStock" class="form-select text-capitalize"><option value=""> Stock </option></select>'
+        //     )
+        //       .appendTo('.product_stock')
+        //       .on('change', function () {
+        //         var val = $.fn.dataTable.util.escapeRegex($(this).val());
+        //         column.search(val ? '^' + val + '$' : '', true, false).draw();
         //       });
 
+        //     column
+        //       .data()
+        //       .unique()
+        //       .sort()
+        //       .each(function (d, j) {
+        //         select.append('<option value="' + stockObj[d].title + '">' + stockFilterValObj[d].title + '</option>');
+        //       });
         //   });
       }
     });
+    $('.dataTables_length').addClass('mt-2 mt-sm-0 mt-md-3 me-2');
+    $('.dt-buttons').addClass('d-flex flex-wrap');
   }
 
   // Delete Record
-  $('.datatables-users tbody').on('click', '.delete-record', function () {
-    dt_user.row($(this).parents('tr')).remove().draw();
+  $('.datatables-products tbody').on('click', '.delete-record', function () {
+    dt_products.row($(this).parents('tr')).remove().draw();
   });
 
   // Filter form control to default size
@@ -457,56 +542,3 @@ $(function () {
     $('.dataTables_length .form-select').removeClass('form-select-sm');
   }, 300);
 });
-
-// Validation & Phone mask
-(function () {
-  const phoneMaskList = document.querySelectorAll('.phone-mask'),
-    addNewUserForm = document.getElementById('addNewUserForm');
-
-  // Phone Number
-  if (phoneMaskList) {
-    phoneMaskList.forEach(function (phoneMask) {
-      new Cleave(phoneMask, {
-        phone: true,
-        phoneRegionCode: 'US'
-      });
-    });
-  }
-  // Add New User Form Validation
-  const fv = FormValidation.formValidation(addNewUserForm, {
-    fields: {
-      userFullname: {
-        validators: {
-          notEmpty: {
-            message: 'Please enter fullname '
-          }
-        }
-      },
-      userEmail: {
-        validators: {
-          notEmpty: {
-            message: 'Please enter your email'
-          },
-          emailAddress: {
-            message: 'The value is not a valid email address'
-          }
-        }
-      }
-    },
-    plugins: {
-      trigger: new FormValidation.plugins.Trigger(),
-      bootstrap5: new FormValidation.plugins.Bootstrap5({
-        // Use this for enabling/changing valid/invalid class
-        eleValidClass: '',
-        rowSelector: function (field, ele) {
-          // field is the field name & ele is the field element
-          return '.mb-3';
-        }
-      }),
-      submitButton: new FormValidation.plugins.SubmitButton(),
-      // Submit the form when all fields are valid
-      // defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-      autoFocus: new FormValidation.plugins.AutoFocus()
-    }
-  });
-})();

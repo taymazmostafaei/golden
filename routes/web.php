@@ -373,6 +373,7 @@ Route::view('/manager/order/bonakDary', 'manager.order.bonakDary')->name('manage
 // manager / bonakdaryProduct
 Route::view('/manager/bonakdary_product/create_cat', 'manager.bonakdary_product.create_cat')->name('manager-bonak-cat-create');
 Route::view('/manager/bonakdary_product/create_pro', 'manager.bonakdary_product.create_pro')->name('manager-bonak-pro-create');
+Route::view('/manager/bonakdary_product/list', 'manager.bonakdary_product.list')->name('manager-bonak-list');
 // manager / blog
 Route::view('/manager/blog/list', 'manager.blog.list')->name('manager-order-list');
 Route::view('/manager/blog/create', 'manager.blog.create')->name('manager-order-create');

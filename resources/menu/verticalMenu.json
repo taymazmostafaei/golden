@@ -34,11 +34,16 @@
       "name": "محصولات بنکداری",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "dashboard",
-      "badge": ["primary", "2"],
+      "badge": ["primary", "3"],
       "submenu": [
         {
+          "url": "/manager/bonakdary_product/list",
+          "name": "لیست محصولات",
+          "slug": "manager-bonak-list"
+        },
+        {
           "url": "/manager/bonakdary_product/create_cat",
-          "name": "تعریف دسته بندی",
+          "name": "دسته بندی",
           "slug": "manager-bonak-cat-create"
         },
         {

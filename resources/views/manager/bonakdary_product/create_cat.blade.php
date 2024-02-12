@@ -34,7 +34,7 @@
 
 @section('content')
 <h4 class="py-3 mb-2">
-  <span class="text-muted fw-light">محصولات بنکداری /</span> تعریف دسته بندی
+  <span class="text-muted fw-light">محصولات بنکداری /</span> دسته بندی
 </h4>
 
 <div class="app-ecommerce-category">
