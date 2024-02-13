@@ -358,7 +358,7 @@ Route::get('/maps/leaflet', [Leaflet::class, 'index'])->name('maps-leaflet');
 Route::get('/laravel/user-management', [UserManagement::class, 'UserManagement'])->name('laravel-example-user-management');
 Route::resource('/user-list', UserManagement::class);
 
-
+// Manager Part
 // manager / dashboard
 Route::view('/manager/dashboard', 'manager.dashboard')->name('manager-dashboard');
 // manager / user
@@ -377,3 +377,9 @@ Route::view('/manager/bonakdary_product/list', 'manager.bonakdary_product.list')
 // manager / blog
 Route::view('/manager/blog/list', 'manager.blog.list')->name('manager-order-list');
 Route::view('/manager/blog/create', 'manager.blog.create')->name('manager-order-create');
+
+// User Part
+// user / melted
+Route::view('/user/melted', 'user.melted')->name('user-melted');
+// user / melted
+Route::view('/user/bonakDary', 'user.bonakDary')->name('user-bonakDary');
