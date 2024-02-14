@@ -23,7 +23,7 @@ $(function () {
     select2 = $('.select2'),
     userView = baseUrl + 'manager/user/show',
     statusObj = {
-      
+
       1: { title: 'تایید شده', class: 'bg-label-success' },
       2: { title: 'در انتظار', class: 'bg-label-warning' },
       3: { title: 'رد شده', class: 'bg-label-danger' }
@@ -40,14 +40,14 @@ $(function () {
   // Users datatable
   if (dt_user_table.length) {
     var dt_user = dt_user_table.DataTable({
-      ajax: assetsPath + 'json/userList.json', // JSON file to add data
+      ajax: assetsPath + '/api/manager/user/list', // JSON file to add data
       columns: [
         // columns according to JSON
         { data: '' },
-        { data: 'full_name' },
-        { data: 'national_code' },
-        { data: 'phone_num' },
-        { data: 'tel_phone' },
+        { data: 'firtname' },
+        { data: 'national_id' },
+        { data: 'phone' },
+        { data: 'telphone' },
         { data: 'status' },
         { data: 'action' }
       ],
