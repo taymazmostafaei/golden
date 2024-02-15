@@ -84,11 +84,24 @@
       "name": "آبشده",
       "icon": "menu-icon tf-icons fa-solid fa-icicles",
       "slug": "user-melted"
-    },    {
-      "url": "user/bonakDary",
+    },
+    {
       "name": "بنکداری",
       "icon": "menu-icon tf-icons ti ti-diamond",
-      "slug": "user-bonakDary"
+      "slug": "user-bonakDary",
+      "badge": ["primary", "2"],
+      "submenu": [
+        {
+          "url": "user/bonakDary/category",
+          "name": "دسته بندی",
+          "slug": "user-bonakDary-category"
+        },
+        {
+          "url": "user/bonakDary/products_list",
+          "name": "لیست محصولات",
+          "slug": "user-bonakDary-products_list"
+        }
+      ]
     }
   ]
 }

@@ -382,5 +382,6 @@ Route::view('/manager/blog/create', 'manager.blog.create')->name('manager-order-
 // User Part
 // user / melted
 Route::view('/user/melted', 'user.melted')->name('user-melted');
-// user / melted
-Route::view('/user/bonakDary', 'user.bonakDary')->name('user-bonakDary');
+// user / bonakDary
+Route::view('/user/bonakDary/category', 'user.bonakDary.category')->name('user-bonakDary-category');
+Route::view('/user/bonakDary/products_list', 'user.bonakDary.products_list')->name('user-bonakDary-products_list');
