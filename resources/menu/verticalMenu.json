@@ -102,6 +102,12 @@
           "slug": "user-bonakDary-products_list"
         }
       ]
+    },
+    {
+      "url": "/user/myProfile",
+      "name": "پروفایل من",
+      "icon": "menu-icon tf-icons ti ti-user",
+      "slug": "user-myProfile"
     }
   ]
 }

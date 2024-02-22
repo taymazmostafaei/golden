@@ -385,3 +385,5 @@ Route::view('/user/melted', 'user.melted')->name('user-melted');
 // user / bonakDary
 Route::view('/user/bonakDary/category', 'user.bonakDary.category')->name('user-bonakDary-category');
 Route::view('/user/bonakDary/products_list', 'user.bonakDary.products_list')->name('user-bonakDary-products_list');
+// user / my profile
+Route::view('/user/myProfile', 'user.myProfile')->name('user-myProfile');
