@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\laravel_example\UserManagement;
 use App\Http\Controllers\dashboard\Analytics;
 use App\Http\Controllers\dashboard\Crm;
@@ -387,3 +388,5 @@ Route::view('/user/bonakDary/category', 'user.bonakDary.category')->name('user-b
 Route::view('/user/bonakDary/products_list', 'user.bonakDary.products_list')->name('user-bonakDary-products_list');
 // user / my profile
 Route::view('/user/myProfile', 'user.myProfile')->name('user-myProfile');
+
+Auth::routes();
