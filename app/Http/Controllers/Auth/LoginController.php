@@ -84,9 +84,10 @@ class LoginController extends Controller
                 'phone' => ['required', 'ir_mobile:zero', 'exists:users']
             ]);
 
-            $code = rand(100000,999999);
+            $otp = new OtpController($request->phone);
+            $code = $otp->Send();
+
             $mobile = $request->phone;
-            Cache::put($request->phone, $code, 120);
             return view('auth.mobilecode',compact('code','mobile'), ['pageConfigs' => ['myLayout' => 'blank']]);
         }
 
@@ -101,17 +102,19 @@ class LoginController extends Controller
             ]);
             #plus each input code
             $sendedCode = $request->code1 . $request->code2 . $request->code3 . $request->code4 . $request->code5 . $request->code6;
-            $cachedCode = Cache::get($request->codecheck);
-            if ($sendedCode == $cachedCode) {
+            
+            $otp = new OtpController($request->codecheck);
+            if ($otp->Verify($sendedCode)) {
+
                 $user = User::where('phone', $request->codecheck)->first();
                 Auth::loginUsingId($user->id, remember:true);
-                $token = Str::random(120);
                 return redirect(RouteServiceProvider::PANEL);
             }
-            $code = $cachedCode;
+            
+            $code = 111111;
             $mobile = $request->codecheck;
             $wrongcode = 'کد تایید نامعتبر است';
-            return view('auth.mobilecode', compact('mobile', 'code', 'wrongcode'), ['myLayout' => 'blank']);
+            return view('auth.mobilecode', compact('mobile', 'code', 'wrongcode'), ['pageConfigs' => ['myLayout' => 'blank']]);
         }
 
     }

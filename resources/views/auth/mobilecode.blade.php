@@ -13,6 +13,7 @@ $customizerHidden = 'customizer-hide';
 
 @section('page-style')
 <!-- Page -->
+@livewireStyles
 <link rel="stylesheet" href="{{asset('assets/vendor/css/pages/page-auth.css')}}">
 @endsection
 
@@ -24,8 +25,43 @@ $customizerHidden = 'customizer-hide';
 @endsection
 
 @section('page-script')
+@livewireScripts
 <script src="{{asset('assets/js/pages-auth.js')}}"></script>
 <script src="{{asset('assets/js/pages-auth-two-steps.js')}}"></script>
+<script>
+    document.addEventListener('livewire:load', function () {
+        Livewire.on('displayDivAfter120Seconds', function () {
+            // Call your JavaScript function here
+            document.getElementById("code-again").style.display = "none"; // Show the div
+            document.getElementById("countdown").style.display = "block"; // Hide the countdown display
+            displayDivAfter120Seconds();
+        });
+    });
+  // Function to display the div after 120 seconds
+  function displayDivAfter120Seconds() {
+    var countdown = 120; // Countdown duration in seconds
+
+    // Function to update countdown and display div
+    function updateCountdown() {
+      countdown--;
+      document.getElementById("countdown").innerText = countdown + " ثانیه تا ارسال مجدد کد " ; // Update countdown display
+      if (countdown <= 0) {
+        clearInterval(timer); // Stop the timer
+        document.getElementById("code-again").style.display = "block"; // Show the div
+        document.getElementById("countdown").style.display = "none"; // Hide the countdown display
+      }
+    }
+
+    // Initial call to updateCountdown
+    updateCountdown();
+
+    // Timer to call updateCountdown every second
+    var timer = setInterval(updateCountdown, 1000);
+  }
+
+  // Call the function to start the countdown
+  displayDivAfter120Seconds();
+</script>
 @endsection
 
 @section('content')
@@ -48,29 +84,14 @@ $customizerHidden = 'customizer-hide';
           <span class="fw-medium d-block mt-2">******1234</span><span>{{$code}}</span>
         </p>
         <p class="mb-0 fw-medium">کد امنیتی 6 رقمی را تایپ کنید</p>
-        <form id="twoStepsForm" action="{{route('login')}}" method="POST">
-          @csrf
-          <div class="mb-3">
-            <div style="direction: ltr" class="auth-input-wrapper d-flex align-items-center justify-content-sm-between numeral-mask-wrapper">
-              <input name="code1" type="tel" name="code" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1" autofocus>
-              <input name="code2" type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-              <input name="code3" type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-              <input name="code4" type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-              <input name="code5" type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-              <input name="code6" type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-            </div>
-            <!-- Create a hidden field which is combined by 3 fields above -->
-            <input type="hidden" name="codecheck" value="{{$mobile}}"/>
-          </div>
-          <button class="btn btn-primary d-grid w-100 mb-3">
-            تایید
-          </button>
-          <div class="text-center">کد را دریافت نکردید؟
-            <a href="javascript:void(0);">
-              ارسال دوباره
-            </a>
-          </div>
-        </form>
+        @if ( isset($wrongcode) )
+				<div class="alert alert-danger">
+					<ul>
+						{{$wrongcode}}
+					</ul>
+				</div>
+				@endif
+        <livewire:mobilecode :mobile=$mobile /> 
       </div>
     </div>
     <!-- / Two Steps Verification -->
