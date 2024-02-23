@@ -187,6 +187,13 @@ return [
         'last_name' => 'نام خانوادگی',
         'password' => 'رمز عبور',
         'password_confirmation' => 'تاییدیه رمز عبور',
+        'firstname' => 'نام',
+        'lastname' => 'نام خانوادگی',
+        'national_id' => 'کدملی',
+        'phone' => 'شماره موبایل',
+        'telphone' => 'تلفن ثابت',
+        'address' => 'آدرس',
+        'cert' => 'گواهی'
     ],
 
 ];

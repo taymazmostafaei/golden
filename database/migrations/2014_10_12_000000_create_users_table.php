@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('firtname');
+            $table->string('firstname');
             $table->string('lastname');
             $table->string('address');
             $table->string('phone')->unique();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('cert');
             $table->enum('role',['user','admin','global'])->default('user');
             $table->enum('status', ['verify','wait','reject']);
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
