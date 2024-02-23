@@ -124,9 +124,15 @@
                                                         alt="tutor image 1" />
                                                 </div>
                                                 <div class="col-9">
+                                                    <div class="position-absolute float-left" style="left: 20px; cursor: pointer;" title="حذف">
+                                                        <button class="btn waves-effect" style="padding: 5px"><i class="ti ti-trash text-danger" style="font-size:25px;"></i></button>
+                                                        
+                                                    </div>
+                                                    
                                                     <h5 class="card-title ms-3">حلقه الماس</h5>
                                                     <p class="d-block text-muted mb-0 ms-3" style="font-size:15px;">
                                                         86,500,00000000 ریال</p>
+                                                        
 
                                                     <div class="input-number d-flex gap-2 text-nowrap ms-3 mt-2">
                                                         <button class="btn btn-primary btn-icon input-number__plus"

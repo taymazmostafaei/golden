@@ -389,4 +389,7 @@ Route::view('/user/bonakDary/products_list', 'user.bonakDary.products_list')->na
 // user / my profile
 Route::view('/user/myProfile', 'user.myProfile')->name('user-myProfile');
 
+// landing page
+Route::view('/index', 'index', ['pageConfigs' => ['myLayout' => 'front']])->name('index');
+
 Auth::routes();

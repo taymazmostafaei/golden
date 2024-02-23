@@ -7,11 +7,11 @@ $isFront = true;
 
 @extends('layouts/commonMaster' )
 
-@include('layouts/sections/navbar/navbar-front')
+@include('header')
 
 <!-- Sections:Start -->
 @yield('content')
 <!-- / Sections:End -->
 
-@include('layouts/sections/footer/footer-front')
+@include('footer')
 @endsection
