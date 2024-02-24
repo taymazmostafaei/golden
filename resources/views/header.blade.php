@@ -52,7 +52,7 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
       <ul class="navbar-nav flex-row align-items-center ms-auto">
         @if($configData['hasCustomizer'] == true)
         <!-- Style Switcher -->
-        <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
+        <li class="nav-item dropdown-style-switcher dropdown me-6 me-xl-0">
           <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
             <i class='ti ti-sm'></i>
           </a>
