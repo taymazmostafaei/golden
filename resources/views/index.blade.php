@@ -28,7 +28,7 @@
     <div data-bs-spy="scroll" class="scrollspy-example">
         <!-- Hero: Start -->
         <section id="hero-animation">
-            <div id="landingHero" class="section-py landing-hero position-relative">
+            <div id="home" class="section-py landing-hero position-relative">
                 <div class="container">
                     <div class="hero-text-box text-center">
                         <h1 class="text-primary hero-title display-6 fw-bold">لورم ایپسوم متن ساختگی با تولید سادگی
@@ -48,15 +48,10 @@
                     <div id="heroDashboardAnimation" class="hero-animation-img">
                         <a href="{{ url('/app/ecommerce/dashboard') }}" target="_blank">
                             <div id="heroAnimationImg" class="position-relative hero-dashboard-img">
-                                <img src="{{ asset('assets/img/front-pages/landing-page/hero-dashboard-' . $configData['style'] . '.png') }}"
+                                <img src="{{ asset('assets/img/front-pages/landing-page/home.png') }}"
                                     alt="hero dashboard" class="animation-img"
-                                    data-app-light-img="front-pages/landing-page/hero-dashboard-light.png"
-                                    data-app-dark-img="front-pages/landing-page/hero-dashboard-dark.png" />
-                                <img src="{{ asset('assets/img/front-pages/landing-page/hero-elements-' . $configData['style'] . '.png') }}"
-                                    alt="hero elements"
-                                    class="position-absolute hero-elements-img animation-img top-0 start-0"
-                                    data-app-light-img="front-pages/landing-page/hero-elements-light.png"
-                                    data-app-dark-img="front-pages/landing-page/hero-elements-dark.png" />
+                                    data-app-light-img="front-pages/landing-page/home.png"
+                                    data-app-dark-img="front-pages/landing-page/home.png" />
                             </div>
                         </a>
                     </div>
@@ -70,73 +65,72 @@
         <section id="landingFeatures" class="section-py landing-features">
             <div class="container">
                 <div class="text-center mb-3 pb-1">
-                    <span class="badge bg-label-primary">Useful Features</span>
+                    <span class="badge bg-label-primary">ویژگی های مفید</span>
                 </div>
                 <h3 class="text-center mb-1">
-                    <span class="section-title">Everything you need</span> to start your next project
+                    <span class="section-title">همه چیزهایی که برای شروع</span>پروژه بعدی خود نیاز دارید
                 </h3>
-                <p class="text-center mb-3 mb-md-5 pb-3">
-                    Not just a set of tools, the package includes ready-to-deploy conceptual application.
+                <p class="text-center mb-3 mb-md-5 p-3">
+                    نه تنها مجموعه ای از ابزارها، این بسته شامل برنامه های مفهومی آماده برای استقرار است.
                 </p>
                 <div class="features-icon-wrapper row gx-0 gy-4 g-sm-5">
-                    <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-                        <div class="text-center mb-3">
-                            <img src="{{ asset('assets/img/front-pages/icons/laptop.png') }}" alt="laptop charging" />
-                        </div>
-                        <h5 class="mb-3">Quality Code</h5>
-                        <p class="features-icon-description">
-                            Code structure that all developers will easily understand and fall in love with.
-                        </p>
-                    </div>
+
                     <div class="col-lg-4 col-sm-6 text-center features-icon-box">
                         <div class="text-center mb-3">
                             <img src="{{ asset('assets/img/front-pages/icons/rocket.png') }}" alt="transition up" />
                         </div>
-                        <h5 class="mb-3">Continuous Updates</h5>
+                        <h5 class="mb-3">به روز رسانی های مداوم</h5>
                         <p class="features-icon-description">
-                            Free updates for the next 12 months, including new demos and features.
+                            به روز رسانی رایگان برای 11 ماه آینده، از جمله نسخه های نمایشی و ویژگی های جدید.
                         </p>
                     </div>
                     <div class="col-lg-4 col-sm-6 text-center features-icon-box">
                         <div class="text-center mb-3">
                             <img src="{{ asset('assets/img/front-pages/icons/paper.png') }}" alt="edit" />
                         </div>
-                        <h5 class="mb-3">Stater-Kit</h5>
+                        <h5 class="mb-3">کیت شروع</h5>
                         <p class="features-icon-description">
-                            Start your project quickly without having to remove unnecessary features.
+                            پروژه خود را به سرعت بدون نیاز به حذف ویژگی های غیر ضروری شروع کنید.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 text-center features-icon-box">
+                        <div class="text-center mb-3">
+                            <img src="{{ asset('assets/img/front-pages/icons/laptop.png') }}" alt="laptop charging" />
+                        </div>
+                        <h5 class="mb-3">لورم ایپسوم</h5>
+                        <p class="features-icon-description">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
                         </p>
                     </div>
                     <div class="col-lg-4 col-sm-6 text-center features-icon-box">
                         <div class="text-center mb-3">
                             <img src="{{ asset('assets/img/front-pages/icons/check.png') }}" alt="3d select solid" />
                         </div>
-                        <h5 class="mb-3">API Ready</h5>
+                        <h5 class="mb-3">لورم ایپسوم</h5>
                         <p class="features-icon-description">
-                            Just change the endpoint and see your own data loaded within seconds.
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
                         </p>
                     </div>
                     <div class="col-lg-4 col-sm-6 text-center features-icon-box">
                         <div class="text-center mb-3">
                             <img src="{{ asset('assets/img/front-pages/icons/user.png') }}" alt="lifebelt" />
                         </div>
-                        <h5 class="mb-3">Excellent Support</h5>
-                        <p class="features-icon-description">An easy-to-follow doc with lots of references and code
-                            examples.</p>
+                        <h5 class="mb-3">پشتیبانی عالی</h5>
+                        <p class="features-icon-description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
                     </div>
                     <div class="col-lg-4 col-sm-6 text-center features-icon-box">
                         <div class="text-center mb-3">
                             <img src="{{ asset('assets/img/front-pages/icons/keyboard.png') }}" alt="google docs" />
                         </div>
-                        <h5 class="mb-3">Well Documented</h5>
-                        <p class="features-icon-description">An easy-to-follow doc with lots of references and code
-                            examples.</p>
+                        <h5 class="mb-3">به خوبی مستند شده است</h5>
+                        <p class="features-icon-description">یک سند ساده برای دنبال کردن با تعداد زیادی مرجع و نمونه کد.</p>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Useful features: End -->
         <!-- Real customers reviews: Start -->
-        <section id="landingReviews" class="section-py bg-body landing-reviews pb-0">
+        <section id="slider" class="section-py bg-body landing-reviews pb-0">
             <!-- What people say slider: Start -->
             <div class="container">
                 <div class="d-flex flex-column row align-items-center">
@@ -152,7 +146,13 @@
 
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="{{ asset('assets/img/front-pages/landing-page/2.webp') }}"
+                                        <img src="{{ asset('assets/img/front-pages/landing-page/5.jpg') }}"
+                                            alt="contact customer service"
+                                            style="width: 100%; height:400px; border-radius:15px;" />
+
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="{{ asset('assets/img/front-pages/landing-page/4.jpg') }}"
                                             alt="contact customer service"
                                             style="width: 100%; height:400px; border-radius:15px;" />
 
@@ -183,7 +183,7 @@
         </section>
         <!-- Real customers reviews: End -->
         <!-- Real customers reviews: Start -->
-        <section id="landingReviews" class="section-py bg-body landing-reviews pb-0" style="border-radius: 0px">
+        <section id="favorites" class="section-py bg-body landing-reviews pb-0" style="border-radius: 0px">
             <!-- What people say slider: Start -->
             <div class="container">
                 <div class="row align-items-center gx-0 gy-4 g-lg-5">
@@ -301,10 +301,10 @@
         <section id="landingTeam" class="section-py landing-team">
             <div class="container">
                 <div class="text-center mb-3 pb-1">
-                    <span class="badge bg-label-primary">Our Great Team</span>
+                    <span class="badge bg-label-primary">تیم بزرگ ما</span>
                 </div>
-                <h3 class="text-center mb-1"><span class="section-title">Supported</span> by Real People</h3>
-                <p class="text-center mb-md-5 pb-3">Who is behind these great-looking interfaces?</p>
+                <h3 class="text-center mb-1"><span class="section-title">پشتیبانی شده</span> توسط افراد واقعی</h3>
+                <p class="text-center mb-md-5 pb-3">چه کسی پشت این تیم عالی است؟</p>
                 <div class="row gy-5 mt-2">
                     <div class="col-lg-3 col-sm-6">
                         <div class="card mt-3 mt-lg-0 shadow-none">
@@ -314,7 +314,7 @@
                                     alt="human image" />
                             </div>
                             <div class="card-body border border-top-0 border-label-primary text-center">
-                                <h5 class="card-title mb-0">Sophie Gilbert</h5>
+                                <h5 class="card-title mb-0">تایماز مصطفایی</h5>
                                 <p class="text-muted mb-0">Project Manager</p>
                             </div>
                         </div>
@@ -327,7 +327,7 @@
                                     alt="human image" />
                             </div>
                             <div class="card-body border border-top-0 border-label-info text-center">
-                                <h5 class="card-title mb-0">Paul Miles</h5>
+                                <h5 class="card-title mb-0">حسین غفوری</h5>
                                 <p class="text-muted mb-0">UI Designer</p>
                             </div>
                         </div>
@@ -340,7 +340,7 @@
                                     alt="human image" />
                             </div>
                             <div class="card-body border border-top-0 border-label-danger text-center">
-                                <h5 class="card-title mb-0">Nannie Ford</h5>
+                                <h5 class="card-title mb-0">شیما علیزاده</h5>
                                 <p class="text-muted mb-0">Development Lead</p>
                             </div>
                         </div>
@@ -353,7 +353,7 @@
                                     alt="human image" />
                             </div>
                             <div class="card-body border border-top-0 border-label-success text-center">
-                                <h5 class="card-title mb-0">Chris Watkins</h5>
+                                <h5 class="card-title mb-0">علی فضلی</h5>
                                 <p class="text-muted mb-0">Marketing Manager</p>
                             </div>
                         </div>
@@ -362,278 +362,6 @@
             </div>
         </section>
         <!-- Our great team: End -->
-
-        <!-- Pricing plans: Start -->
-        <section id="landingPricing" class="section-py bg-body landing-pricing">
-            <div class="container">
-                <div class="text-center mb-3 pb-1">
-                    <span class="badge bg-label-primary">Pricing Plans</span>
-                </div>
-                <h3 class="text-center mb-1"><span class="section-title">Tailored pricing plans</span> designed for you
-                </h3>
-                <p class="text-center mb-4 pb-3">
-                    All plans include 40+ advanced tools and features to boost your product.<br />Choose the best plan to
-                    fit
-                    your needs.
-                </p>
-                <div class="text-center mb-5">
-                    <div class="position-relative d-inline-block pt-3 pt-md-0">
-                        <label class="switch switch-primary me-0">
-                            <span class="switch-label">Pay Monthly</span>
-                            <input type="checkbox" class="switch-input price-duration-toggler" checked />
-                            <span class="switch-toggle-slider">
-                                <span class="switch-on"></span>
-                                <span class="switch-off"></span>
-                            </span>
-                            <span class="switch-label">Pay Annual</span>
-                        </label>
-                        <div class="pricing-plans-item position-absolute d-flex">
-                            <img src="{{ asset('assets/img/front-pages/icons/pricing-plans-arrow.png') }}"
-                                alt="pricing plans arrow" class="scaleX-n1-rtl" />
-                            <span class="fw-medium mt-2 ms-1"> Save 25%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row gy-4 pt-lg-3">
-                    <!-- Basic Plan: Start -->
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="text-center">
-                                    <img src="{{ asset('assets/img/front-pages/icons/paper-airplane.png') }}"
-                                        alt="paper airplane icon" class="mb-4 pb-2" />
-                                    <h4 class="mb-1">Basic</h4>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <span class="price-monthly h1 text-primary fw-bold mb-0">$19</span>
-                                        <span class="price-yearly h1 text-primary fw-bold mb-0 d-none">$14</span>
-                                        <sub class="h6 text-muted mb-0 ms-1">/mo</sub>
-                                    </div>
-                                    <div class="position-relative pt-2">
-                                        <div class="price-yearly text-muted price-yearly-toggle d-none">$ 168 / year</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Timeline
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Basic search
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Live chat widget
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Email marketing
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Custom Forms
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Traffic analytics
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Basic Support
-                                        </h5>
-                                    </li>
-                                </ul>
-                                <div class="d-grid mt-4 pt-3">
-                                    <a href="{{ url('/front-pages/payment') }}" class="btn btn-label-primary">Get
-                                        Started</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Basic Plan: End -->
-
-                    <!-- Favourite Plan: Start -->
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card border border-primary shadow-lg">
-                            <div class="card-header">
-                                <div class="text-center">
-                                    <img src="{{ asset('assets/img/front-pages/icons/plane.png') }}" alt="plane icon"
-                                        class="mb-4 pb-2" />
-                                    <h4 class="mb-1">Team</h4>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <span class="price-monthly h1 text-primary fw-bold mb-0">$29</span>
-                                        <span class="price-yearly h1 text-primary fw-bold mb-0 d-none">$22</span>
-                                        <sub class="h6 text-muted mb-0 ms-1">/mo</sub>
-                                    </div>
-                                    <div class="position-relative pt-2">
-                                        <div class="price-yearly text-muted price-yearly-toggle d-none">$ 264 / year</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Everything in basic
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Timeline with database
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Advanced search
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Marketing automation
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Advanced chatbot
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Campaign management
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Collaboration tools
-                                        </h5>
-                                    </li>
-                                </ul>
-                                <div class="d-grid mt-4 pt-3">
-                                    <a href="{{ url('/front-pages/payment') }}" class="btn btn-primary">Get Started</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Favourite Plan: End -->
-
-                    <!-- Standard Plan: Start -->
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="text-center">
-                                    <img src="{{ asset('assets/img/front-pages/icons/shuttle-rocket.png') }}"
-                                        alt="shuttle rocket icon" class="mb-4 pb-2" />
-                                    <h4 class="mb-1">Enterprise</h4>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <span class="price-monthly h1 text-primary fw-bold mb-0">$49</span>
-                                        <span class="price-yearly h1 text-primary fw-bold mb-0 d-none">$37</span>
-                                        <sub class="h6 text-muted mb-0 ms-1">/mo</sub>
-                                    </div>
-                                    <div class="position-relative pt-2">
-                                        <div class="price-yearly text-muted price-yearly-toggle d-none">$ 444 / year</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Everything in premium
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Timeline with database
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Fuzzy search
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            A/B testing sanbox
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Custom permissions
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Social media automation
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <h5>
-                                            <span class="badge badge-center rounded-pill bg-label-primary p-0 me-2"><i
-                                                    class="ti ti-check ti-xs"></i></span>
-                                            Sales automation tools
-                                        </h5>
-                                    </li>
-                                </ul>
-                                <div class="d-grid mt-4 pt-3">
-                                    <a href="{{ url('/front-pages/payment') }}" class="btn btn-label-primary">Get
-                                        Started</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Standard Plan: End -->
-                </div>
-            </div>
-        </section>
-        <!-- Pricing plans: End -->
 
         <!-- Fun facts: Start -->
         <section id="landingFunFacts" class="section-py landing-fun-facts">
@@ -644,10 +372,11 @@
                             <div class="card-body text-center">
                                 <img src="{{ asset('assets/img/front-pages/icons/laptop.png') }}" alt="laptop"
                                     class="mb-2" />
-                                <h5 class="h2 mb-1">7.1k+</h5>
+                                <h5 class="h2 mb-1">24</h5>
                                 <p class="fw-medium mb-0">
-                                    Support Tickets<br />
-                                    Resolved
+                                    پشتیبانی
+                                    <br />
+                                    24ساعته
                                 </p>
                             </div>
                         </div>
@@ -659,8 +388,8 @@
                                     class="mb-2" />
                                 <h5 class="h2 mb-1">50k+</h5>
                                 <p class="fw-medium mb-0">
-                                    Join creatives<br />
-                                    community
+                                    به خلاقیت ها بپیوندید<br />
+                                    انجمن
                                 </p>
                             </div>
                         </div>
@@ -672,8 +401,8 @@
                                     class="mb-2" />
                                 <h5 class="h2 mb-1">4.8/5</h5>
                                 <p class="fw-medium mb-0">
-                                    Highly Rated<br />
-                                    Products
+                                    دارای رتبه بالا<br />
+                                    محصولات
                                 </p>
                             </div>
                         </div>
@@ -685,8 +414,8 @@
                                     class="mb-2" />
                                 <h5 class="h2 mb-1">100%</h5>
                                 <p class="fw-medium mb-0">
-                                    Money Back<br />
-                                    Guarantee
+                                    برگشت پول<br />
+                                    ضمانت
                                 </p>
                             </div>
                         </div>
@@ -700,10 +429,10 @@
         <section id="landingFAQ" class="section-py bg-body landing-faq">
             <div class="container">
                 <div class="text-center mb-3 pb-1">
-                    <span class="badge bg-label-primary">FAQ</span>
+                    <span class="badge bg-label-primary">سوالات متداول</span>
                 </div>
-                <h3 class="text-center mb-1">Frequently asked <span class="section-title">questions</span></h3>
-                <p class="text-center mb-5 pb-3">Browse through these FAQs to find answers to commonly asked questions.</p>
+                <h3 class="text-center mb-1">پرسش های متداول <span class="section-title">سوالات</span></h3>
+                <p class="text-center mb-5 pb-3">این سؤالات متداول را مرور کنید تا پاسخ سؤالات متداول را بیابید.</p>
                 <div class="row gy-5">
                     <div class="col-lg-5">
                         <div class="text-center">
@@ -717,18 +446,18 @@
                                 <h2 class="accordion-header" id="headingOne">
                                     <button type="button" class="accordion-button" data-bs-toggle="collapse"
                                         data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
-                                        Do you charge for each upgrade?
+                                        آیا برای هر ارتقاء هزینه ای دریافت می کنید؟
                                     </button>
                                 </h2>
 
                                 <div id="accordionOne" class="accordion-collapse collapse show"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        Lemon drops chocolate cake gummies carrot cake chupa chups muffin topping. Sesame
-                                        snaps icing
-                                        marzipan gummi bears macaroon dragée danish caramels powder. Bear claw dragée pastry
-                                        topping
-                                        soufflé. Wafer gummi bears marshmallow pastry pie.
+                                        کیک شکلاتی قطره لیمو کیک هویج چوپا چپس مافین کیک. کنجد
+                                        یخ می زند
+                                        مارزیپان گومی خرس ماکارونی دراژه پودر کارامل دانمارکی. شیرینی دراژه پنجه خرس
+                                        تاپینگ
+                                        سوفله ویفر گامی خرس شیرینی ختمی.
                                     </div>
                                 </div>
                             </div>
@@ -737,80 +466,58 @@
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                         data-bs-target="#accordionTwo" aria-expanded="false"
                                         aria-controls="accordionTwo">
-                                        Do I need to purchase a license for each website?
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ؟
                                     </button>
                                 </h2>
                                 <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        Dessert ice cream donut oat cake jelly-o pie sugar plum cheesecake. Bear claw dragée
-                                        oat cake
-                                        dragée ice cream halvah tootsie roll. Danish cake oat cake pie macaroon tart donut
-                                        gummies. Jelly
-                                        beans candy canes carrot cake. Fruitcake chocolate chupa chups.
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
                                     </div>
                                 </div>
                             </div>
                             <div class="card accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
+                                <h2 class="accordion-header" id="headingTwo">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#accordionThree" aria-expanded="false"
-                                        aria-controls="accordionThree">
-                                        What is regular license?
+                                        data-bs-target="#accordionTwo" aria-expanded="false"
+                                        aria-controls="accordionTwo">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ؟
                                     </button>
                                 </h2>
-                                <div id="accordionThree" class="accordion-collapse collapse"
-                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        Regular license can be used for end products that do not charge users for access or
-                                        service(access
-                                        is free and there will be no monthly subscription fee). Single regular license can
-                                        be used for
-                                        single end product and end product can be used by you or your client. If you want to
-                                        sell end
-                                        product to multiple clients then you will need to purchase separate license for each
-                                        client. The
-                                        same rule applies if you want to use the same end product on multiple domains(unique
-                                        setup). For
-                                        more info on regular license you can check official description.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card accordion-item">
-                                <h2 class="accordion-header" id="headingFour">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#accordionFour" aria-expanded="false"
-                                        aria-controls="accordionFour">
-                                        What is extended license?
-                                    </button>
-                                </h2>
-                                <div id="accordionFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis et aliquid quaerat
-                                        possimus maxime!
-                                        Mollitia reprehenderit neque repellat deleniti delectus architecto dolorum maxime,
-                                        blanditiis
-                                        earum ea, incidunt quam possimus cumque.
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
                                     </div>
                                 </div>
                             </div>
                             <div class="card accordion-item">
-                                <h2 class="accordion-header" id="headingFive">
+                                <h2 class="accordion-header" id="headingTwo">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#accordionFive" aria-expanded="false"
-                                        aria-controls="accordionFive">
-                                        Which license is applicable for SASS application?
+                                        data-bs-target="#accordionTwo" aria-expanded="false"
+                                        aria-controls="accordionTwo">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ؟
                                     </button>
                                 </h2>
-                                <div id="accordionFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi molestias
-                                        exercitationem ab cum
-                                        nemo facere voluptates veritatis quia, eveniet veniam at et repudiandae mollitia
-                                        ipsam quasi
-                                        labore enim architecto non!
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#accordionTwo" aria-expanded="false"
+                                        aria-controls="accordionTwo">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ؟
+                                    </button>
+                                </h2>
+                                <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
                                     </div>
                                 </div>
                             </div>
@@ -826,12 +533,12 @@
             <div class="container">
                 <div class="row align-items-center gy-5 gy-lg-0">
                     <div class="col-lg-6 text-center text-lg-start">
-                        <h6 class="h2 text-primary fw-bold mb-1">Ready to Get Started?</h6>
-                        <p class="fw-medium mb-4">Start your project with a 14-day free trial</p>
-                        <a href="{{ url('/front-pages/payment') }}" class="btn btn-lg btn-primary">Get Started</a>
+                        <h6 class="h2 text-primary fw-bold mb-1">برای شروع آماده اید؟</h6>
+                        <p class="fw-medium mb-4">پروژه خود را با یک دوره آزمایشی رایگان 14 روزه شروع کنید</p>
+                        <a href="{{ url('/front-pages/payment') }}" class="btn btn-lg btn-primary">شروع کنید</a>
                     </div>
                     <div class="col-lg-6 pt-lg-5 text-center text-lg-end">
-                        <img src="{{ asset('assets/img/front-pages/landing-page/cta-dashboard.png') }}"
+                        <img src="{{ asset('assets/img/front-pages/landing-page/ring.png') }}"
                             alt="cta dashboard" class="img-fluid" />
                     </div>
                 </div>
@@ -840,7 +547,7 @@
         <!-- CTA: End -->
 
         <!-- Contact Us: Start -->
-        <section id="landingContact" class="section-py bg-body landing-contact">
+        <section id="contact" class="section-py bg-body landing-contact">
             <div class="container">
                 <div class="text-center mb-3 pb-1">
                     <span class="badge bg-label-primary">تماس با ما</span>

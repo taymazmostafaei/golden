@@ -26,10 +26,10 @@
           <h6 class="footer-title mb-4">بخش ها</h6>
           <ul class="list-unstyled d-flex justify-content-between">
             <li class="mb-3">
-              <a href="/demo-1" target="_blank" class="footer-link">خانه</a>
+              <a href="{{url('index')}}#home" target="_blank" class="footer-link">خانه</a>
             </li>
             <li class="mb-3">
-              <a href="/demo-5" target="_blank" class="footer-link">اسلایدر</a>
+              <a href="{{url('index')}}#slider" target="_blank" class="footer-link">اسلایدر</a>
             </li>
             <li class="mb-3">
               <a href="/demo-2" target="_blank" class="footer-link">آبشده</a>
@@ -38,7 +38,10 @@
               <a href="/demo-3" target="_blank" class="footer-link">بنکداری</a>
             </li>
             <li class="mb-3">
-              <a href="/demo-4" target="_blank" class="footer-link">تماس با ما</a>
+              <a href="{{url('index')}}#favorites" target="_blank" class="footer-link">برگزیده ها</a>
+            </li>
+            <li class="mb-3">
+              <a href="{{url('index')}}#contact"  target="_blank" class="footer-link">تماس با ما</a>
             </li>
           </ul>
           <h6 class="footer-title mb-4">شبکه های اجتماعی</h6>
@@ -93,7 +96,7 @@
 
           </script>
         </span>
-        <span class="footer-text">تمام حقوق محفوظ برای طلای قالیچی محفوظ است .</span>
+        <span class="footer-text">تمامی حقوق برای طلای قالیچی محفوظ است .</span>
       </div>
       {{-- <div>
         <a href="{{config('variables.githubFreeUrl')}}" class="footer-link me-3" target="_blank">

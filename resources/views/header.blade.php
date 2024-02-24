@@ -27,10 +27,10 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
         </button>
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link fw-medium" aria-current="page" href="{{url('front-pages/landing')}}#landingHero">خانه</a>
+            <a class="nav-link fw-medium" aria-current="page" href="{{url('index')}}#home">خانه</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingFeatures">اسلایدر</a>
+            <a class="nav-link fw-medium" href="{{url('index')}}#slider">اسلایدر</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingTeam">آبشده</a>
@@ -39,7 +39,10 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
             <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingFAQ">بنکداری</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingContact">تماس با ما</a>
+            <a class="nav-link fw-medium" href="{{url('index')}}#favorites">برگزیده ها</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium" href="{{url('index')}}#contact">تماس با ما</a>
           </li>
         </ul>
       </div>
