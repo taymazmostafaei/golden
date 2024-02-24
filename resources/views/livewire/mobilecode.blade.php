@@ -18,7 +18,7 @@
         </button>
         <div id="code-again" class="text-center" style="display: none;">
             کد را دریافت نکردید؟
-            <a href="javascript:void(0);" wire:click="SendNewCode">
+            <a href="#" wire:click="SendNewCode">
               ارسال دوباره
             </a>
         </div>

@@ -29,16 +29,15 @@ $customizerHidden = 'customizer-hide';
 <script src="{{asset('assets/js/pages-auth.js')}}"></script>
 <script src="{{asset('assets/js/pages-auth-two-steps.js')}}"></script>
 <script>
-    document.addEventListener('livewire:load', function () {
-        Livewire.on('displayDivAfter120Seconds', function () {
-            // Call your JavaScript function here
-            document.getElementById("code-again").style.display = "none"; // Show the div
-            document.getElementById("countdown").style.display = "block"; // Hide the countdown display
-            displayDivAfter120Seconds();
-        });
-    });
+  
+  Livewire.on('displayDivAfter120Seconds', function () {
+      // Call your JavaScript function here
+      console.log('gt');
+      displayDivAfter120Seconds();
+  });
   // Function to display the div after 120 seconds
   function displayDivAfter120Seconds() {
+    console.log('call');
     var countdown = 120; // Countdown duration in seconds
 
     // Function to update countdown and display div
