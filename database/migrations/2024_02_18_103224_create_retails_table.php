@@ -17,11 +17,12 @@ return new class extends Migration
             $table->foreignIdFor(RetailCategory::class);
             $table->string('product_code')->nullable();
             $table->string('name');
-            $table->double('price')->nullable();
+            $table->double('price');
             $table->double('exsist')->nullable();
             $table->string('desc');
             $table->string('brand')->nullable();
-            $table->text('content');
+            $table->text('content')->nullable();
+            $table->boolean('hide')->default(false);
             $table->json('moreoptions')->nullable();
             $table->timestamps();
         });

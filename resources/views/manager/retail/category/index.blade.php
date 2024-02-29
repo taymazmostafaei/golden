@@ -1,6 +1,6 @@
 @extends('layouts/layoutMaster')
 
-@section('title', 'eCommerce Product Category - Apps')
+@section('title', 'دسته بندی بنک داری')
 
 @section('vendor-style')
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css')}}" />
@@ -14,6 +14,7 @@
 @endsection
 
 @section('page-style')
+@livewireStyles
 <link rel="stylesheet" href="{{asset('assets/vendor/css/pages/app-ecommerce.css')}}" />
 @endsection
 
@@ -29,6 +30,10 @@
 @endsection
 
 @section('page-script')
+@livewireScripts
+<script>
+  var GetCategoryListUrl = "{{route('retail-category-list')}}";
+</script>
 <script src="{{asset('assets/js/create_cat.js')}}"></script>
 @endsection
 
@@ -55,50 +60,10 @@
       </table>
     </div>
   </div>
-  <!-- Offcanvas to add new customer -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEcommerceCategoryList" aria-labelledby="offcanvasEcommerceCategoryListLabel">
-    <!-- Offcanvas Header -->
-    <div class="offcanvas-header py-4">
-      <h5 id="offcanvasEcommerceCategoryListLabel" class="offcanvas-title">اضافه کردن دسته بندی</h5>
-      <button type="button" class="btn-close bg-label-secondary text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <!-- Offcanvas Body -->
-    <div class="offcanvas-body border-top">
-      <form class="pt-0" id="eCommerceCategoryListForm" onsubmit="return true">
-        <!-- Title -->
-        <div class="mb-3">
-          <label class="form-label" for="ecommerce-category-title">نام دسته بندی</label>
-          <input type="text" class="form-control" id="ecommerce-category-title" placeholder="زیورآلات" name="categoryTitle" aria-label="category title">
-        </div>
-        <!-- Description -->
-        <div class="mb-3">
-          <label class="form-label">توضیح کوتاه</label>
-          <div class="form-control p-0 py-1">
-            <div class="comment-editor border-0" id="ecommerce-category-description">
-            </div>
-            <div class="comment-toolbar border-0">
-              <div class="d-flex justify-content-end">
-                <span class="ql-formats me-0">
-                  <button class="ql-bold"></button>
-                  <button class="ql-italic"></button>
-                  <button class="ql-underline"></button>
-                  <button class="ql-list" value="ordered"></button>
-                  <button class="ql-list" value="bullet"></button>
-                  <button class="ql-link"></button>
-                  <button class="ql-image"></button>
-                </span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <!-- Submit and reset -->
-        <div class="mb-3">
-          <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">ذخیره</button>
-          <button type="reset" class="btn btn-label-secondary waves-effect" data-bs-dismiss="offcanvas">لغو</button>
-        </div>
-      </form>
-    </div>
+      <!-- Offcanvas to add new customer -->
+  <div class="offcanvas offcanvas-end addnewcat" tabindex="-1" id="offcanvasEcommerceCategoryList"
+      aria-labelledby="offcanvasEcommerceCategoryListLabel">
+  <livewire:retail.category />
   </div>
 </div>
 @include('_partials/_modals/manage-modal-edit-cat')

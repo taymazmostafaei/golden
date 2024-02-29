@@ -18,6 +18,27 @@ if (commentEditor) {
   });
 }
 
+
+Livewire.on('CloseNewCatModel', function () {
+  setTimeout(()=>{
+    document.getElementById("close-model-im").click();
+  }, 1500)
+});
+
+Livewire.on('CloseEditCatModel', function () {
+  setTimeout(()=>{
+    document.getElementById("close-edit-cat-model").click();
+  }, 1500)
+});
+
+$('#edit_cat').on('show.bs.modal', function (e) {
+
+  let clickedID = $(e.relatedTarget).attr('data-id') * 1;
+  Livewire.dispatch('UpdateCatEditModal', { id: clickedID});
+})
+
+
+
 // Datatable (jquery)
 
 $(function () {
@@ -36,6 +57,10 @@ $(function () {
   // Variable declaration for category list table
   var dt_category_list_table = $('.datatables-category-list');
 
+  Livewire.on('ReloadDataTable', function () {
+    dt_category.ajax.reload();
+  });
+
   //select2 for dropdowns in offcanvas
 
   var select2 = $('.select2');
@@ -48,7 +73,7 @@ $(function () {
       });
     });
   }
-    //select1 for dropdowns in offcanvas
+  //select1 for dropdowns in offcanvas
 
   var select1 = $('.select1');
   if (select1.length) {
@@ -65,7 +90,7 @@ $(function () {
 
   if (dt_category_list_table.length) {
     var dt_category = dt_category_list_table.DataTable({
-      ajax: assetsPath + 'json/create_cat.json', // JSON file to add data
+      ajax: GetCategoryListUrl,
       columns: [
         // columns according to JSON
         { data: '' },
@@ -106,9 +131,9 @@ $(function () {
           targets: 2,
           responsivePriority: 2,
           render: function (data, type, full, meta) {
-            var $name = full['categories'],
-              $category_detail = full['category_detail'],
-              $image = full['cat_image'],
+            var $name = full['name'],
+              $category_detail = full['desc'],
+              $image = full['media_path'],
               $id = full['id'];
             if ($image) {
               // For Product image
@@ -125,7 +150,7 @@ $(function () {
               var stateNum = Math.floor(Math.random() * 6);
               var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
               var $state = states[stateNum],
-                $name = full['category_detail'],
+                $name = full['name'],
                 $initials = $name.match(/\b\w/g) || [];
               $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
               $output = '<span class="avatar-initial rounded-2 bg-label-' + $state + '">' + $initials + '</span>';
@@ -177,8 +202,8 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-flex align-items-sm-center justify-content-sm-center">' +
-              '<button class="btn btn-sm btn-icon" data-bs-target="#edit_cat" data-bs-toggle="modal"><i class="ti ti-edit"></i></button>' +
-              '<button class="btn btn-sm btn-icon delete-record me-2"><i class="ti ti-trash text-danger"></i></button>' +
+              `<button class="btn btn-sm btn-icon cateditor" data-bs-target="#edit_cat" data-bs-toggle="modal" data-id="${full['id']}"><i class="ti ti-edit"></i></button>` +
+              `<button class="btn btn-sm btn-icon delete-record me-2" data-id="${full['id']}"><i class="ti ti-trash text-danger"></i></button>` +
               '</div>'
             );
           }
@@ -225,18 +250,18 @@ $(function () {
             var data = $.map(columns, function (col, i) {
               return col.title !== '' // ? Do not show row in modal popup if title is blank (for check box)
                 ? '<tr data-dt-row="' +
-                    col.rowIndex +
-                    '" data-dt-column="' +
-                    col.columnIndex +
-                    '">' +
-                    '<td> ' +
-                    col.title +
-                    ':' +
-                    '</td> ' +
-                    '<td class="ps-0">' +
-                    col.data +
-                    '</td>' +
-                    '</tr>'
+                col.rowIndex +
+                '" data-dt-column="' +
+                col.columnIndex +
+                '">' +
+                '<td> ' +
+                col.title +
+                ':' +
+                '</td> ' +
+                '<td class="ps-0">' +
+                col.data +
+                '</td>' +
+                '</tr>'
                 : '';
             }).join('');
 
@@ -251,6 +276,8 @@ $(function () {
 
   // Delete Record
   $('.datatables-category-list tbody').on('click', '.delete-record', function () {
+    let clickedID = $(this).attr('data-id') * 1;
+    Livewire.dispatch('DeleteCategory', { id: clickedID});
     dt_category.row($(this).parents('tr')).remove().draw();
   });
 

@@ -1,13 +1,13 @@
 {
   "menu": [
     {
-      "url": "manager/dashboard",
+      "url": "panel",
       "name": "داشبورد",
       "icon": "menu-icon tf-icons ti ti-dashboard",
       "slug": "manager-dashboard"
     },
     {
-      "url": "manager/user/list",
+      "url": "panel/manager/user/list",
       "name": "لیست کاربران",
       "icon": "menu-icon tf-icons ti ti-users",
       "slug": "manager-user-list"
@@ -19,12 +19,12 @@
       "badge": ["primary", "2"],
       "submenu": [
         {
-          "url": "manager/order/bonakDary",
+          "url": "panel/manager/order/bonakDary",
           "name": "بنکداری",
           "slug": "manager-order-bonakDary"
         },
         {
-          "url": "manager/order/melted",
+          "url": "panel/manager/order/melted",
           "name": "آبشده",
           "slug": "manager-order-melted"
         }
@@ -37,17 +37,17 @@
       "badge": ["primary", "3"],
       "submenu": [
         {
-          "url": "/manager/bonakdary_product/list",
+          "url": "panel/manager/bonakdary_product/list",
           "name": "لیست محصولات",
           "slug": "manager-bonak-list"
         },
         {
-          "url": "/manager/bonakdary_product/create_cat",
+          "url": "panel/manager/bonakdary_product/create_cat",
           "name": "دسته بندی",
           "slug": "manager-bonak-cat-create"
         },
         {
-          "url": "/manager/bonakdary_product/create_pro",
+          "url": "panel/manager/bonakdary_product/create_pro",
           "name": "تعریف محصول",
           "slug": "manager-bonak-pro-create"
         }
@@ -61,26 +61,26 @@
       "badge": ["primary", "2"],
       "submenu": [
         {
-          "url": "/manager/blog/list",
+          "url": "panel/manager/blog/list",
           "name": "لیست",
           "slug": "manager-order-list"
         },
         {
-          "url": "/manager/blog/create",
+          "url": "panel/manager/blog/create",
           "name": "وبلاگ جدید",
           "slug": "manager-order-create"
         }
       ]
     },
     {
-      "url": "manager/setting/setFy",
+      "url": "panel/manager/setting/setFy",
       "name": "تنظیمات",
       "icon": "menu-icon tf-icons ti ti-settings",
       "slug": "manager-setting"
     },
     
     {
-      "url": "user/melted",
+      "url": "panel/user/melted",
       "name": "آبشده",
       "icon": "menu-icon tf-icons fa-solid fa-icicles",
       "slug": "user-melted"
@@ -92,19 +92,19 @@
       "badge": ["primary", "2"],
       "submenu": [
         {
-          "url": "user/bonakDary/category",
+          "url": "panel/user/bonakDary/category",
           "name": "دسته بندی",
           "slug": "user-bonakDary-category"
         },
         {
-          "url": "user/bonakDary/products_list",
+          "url": "panel/user/bonakDary/products_list",
           "name": "لیست محصولات",
           "slug": "user-bonakDary-products_list"
         }
       ]
     },
     {
-      "url": "/user/myProfile",
+      "url": "panel/user/myProfile",
       "name": "پروفایل من",
       "icon": "menu-icon tf-icons ti ti-user",
       "slug": "user-myProfile"

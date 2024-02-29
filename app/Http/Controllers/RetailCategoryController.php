@@ -12,7 +12,12 @@ class RetailCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = RetailCategory::all();
+        return response()->json(
+            [
+                "data" => $categories
+            ]
+        );
     }
 
     /**

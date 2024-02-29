@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('desc');
-            $table->string('media_path');
+            $table->string('media_path')->nullable();
             $table->timestamps();
         });
     }
