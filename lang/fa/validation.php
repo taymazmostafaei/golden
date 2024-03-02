@@ -196,7 +196,8 @@ return [
         'cert' => 'گواهی',
         'desc' => 'توضیح کوتاه',
         'price' => 'قیمت',
-        'retail_category_id' => 'انتخاب دسته بندی'
+        'retail_category_id' => 'انتخاب دسته بندی',
+        'hide' => 'عدم نمایش'
     ],
 
 ];

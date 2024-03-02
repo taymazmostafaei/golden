@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Retail;
+use App\Models\RetailCategory;
 use Illuminate\Http\Request;
 
 class RetailController extends Controller
@@ -15,12 +16,23 @@ class RetailController extends Controller
         return view('manager.retail.index');
     }
 
+    public function list()
+    {
+        $retails = Retail::all();
+        return response()->json(
+            [
+                "data" => $retails
+            ]
+        );
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('manager.retail.create');
+        $cats = RetailCategory::all();
+        return view('manager.retail.create', ['cats' => $cats]);
     }
 
     /**
@@ -34,7 +46,7 @@ class RetailController extends Controller
             'name' => 'required|string',
             'price' => 'required|numeric',
             'desc' => 'required|string',
-            'hide' => 'boolean',
+            'hide' => 'sometimes',
         ]);
 
         // Create a new Retail instance
@@ -45,14 +57,13 @@ class RetailController extends Controller
         $retail->name = $request->input('name');
         $retail->price = $request->input('price');
         $retail->desc = $request->input('desc');
-        $retail->hide = $request->input('hide', false); // default to false if not provided
+        $retail->hide = $request->has('hide');
 
         // Save the Retail instance
         $retail->save();
 
         // Optionally, you can return a response indicating success
-        return redirect()->back()->with('success', 'محصول مورد نظر با موفقیت ایجاد شد.');
-        return response()->json(['message' => 'Retail created successfully', 'data' => $retail], 201);
+        return redirect()->route('retail.index')->with('success', 'محصول مورد نظر با موفقیت ایجاد شد.');
     }
 
     /**
@@ -68,7 +79,8 @@ class RetailController extends Controller
      */
     public function edit(Retail $retail)
     {
-        dd('edit');
+        $cats = RetailCategory::all();
+        return view('manager.retail.edit', ['retail' => $retail, 'cats' => $cats]);
     }
 
     /**
@@ -76,7 +88,27 @@ class RetailController extends Controller
      */
     public function update(Request $request, Retail $retail)
     {
-        dd('update');
+        // Validate incoming request
+        $request->validate([
+            'retail_category_id' => 'required|exists:retail_categories,id',
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'desc' => 'required|string',
+            'hide' => 'sometimes',
+        ]);
+
+        // Update the attributes with data from the request
+        $retail->retail_category_id = $request->input('retail_category_id');
+        $retail->name = $request->input('name');
+        $retail->price = $request->input('price');
+        $retail->desc = $request->input('desc');
+        $retail->hide = $request->has('hide');
+
+        // Save the changes
+        $retail->save();
+
+        // Optionally, you can return a response indicating success
+        return redirect()->back()->with('success', 'محصول مورد نظر با موفقیت به‌روزرسانی شد.');
     }
 
     /**
@@ -84,6 +116,8 @@ class RetailController extends Controller
      */
     public function destroy(Retail $retail)
     {
-        dd('destroy');
+        $retail->delete();
+
+        return redirect()->back()->with('success', 'محصول با موفقیت حذف شد.');
     }
 }

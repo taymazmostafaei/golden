@@ -20,6 +20,20 @@ class RetailCategoryController extends Controller
         );
     }
 
+    public function formatedIndex()
+    {
+        $categories = RetailCategory::all();
+
+        // Format the categories into the desired structure
+        $formattedCategories = [];
+        foreach ($categories as $key => $category) {
+            $formattedCategories[$category->id] = ['name' => $category->name];
+        }
+
+        // Return the formatted categories
+        return response()->json($formattedCategories);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

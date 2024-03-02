@@ -379,6 +379,8 @@ Route::prefix('/panel/manager')->middleware('auth')->group(function () {
 
     Route::view('/retail/category', 'manager.retail.category.index')->name('retail.category');
     Route::get('/retail/category/list', [RetailCategoryController::class , 'index'])->name('retail-category-list');
+    Route::get('/retail/category/list/formated', [RetailCategoryController::class , 'formatedIndex'])->name('retail-category-list-formated');
+    Route::get('/retail/list', [RetailController::class , 'list'])->name('retail-list');
     Route::resource('/retail', RetailController::class);
 
     Route::view('/bonakdary_product/create_pro', 'manager.bonakdary_product.create_pro')->name('manager-bonak-pro-create');

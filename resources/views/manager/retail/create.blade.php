@@ -43,7 +43,7 @@
                         {{-- <p class="text-muted">Orders placed across your store</p> --}}
                     </div>
                     <div class="d-flex align-content-center flex-wrap gap-3">
-                        <div class="d-flex gap-3"><button class="btn btn-label-secondary">لغو</button>
+                        <div class="d-flex gap-3"><a href="{{route('retail.index')}}" class="btn btn-label-secondary">لغو</a>
                             {{-- <button class="btn btn-label-primary">ذخیره پیش نویس</button> --}}
                         </div>
                         <button type="submit" class="btn btn-primary">ایجاد محصول</button>
@@ -73,14 +73,16 @@
                                         aria-label="Product title">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="ecommerce-product-name">قیمت</label>
+                                    <label class="form-label" for="ecommerce-product-name">قیمت (ریال)</label>
                                     <input type="number" class="form-control" id="ecommerce-product-name"
                                         placeholder="به ریال وارد کنید" name="price" aria-label="Product title">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="multicol-country">انتخاب دسته بتدی</label>
                                     <select id="multicol-country" name="retail_category_id" class="select2 form-select" data-allow-clear="true">
-                                        <option value="جواهرات">جواهرات</option>
+                                        @foreach ($cats as $cat)
+                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

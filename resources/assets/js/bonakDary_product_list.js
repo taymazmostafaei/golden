@@ -20,20 +20,26 @@ $(function () {
 
   // Variable declaration for table
   var dt_product_table = $('.datatables-products'),
-    productAdd = baseUrl + 'manager/bonakdary_product/create_pro',
+    productAdd = '/panel/manager/retail/create',
     // statusObj = {
     //   1: { title: 'Scheduled', class: 'bg-label-warning' },
     //   2: { title: 'Publish', class: 'bg-label-success' },
     //   3: { title: 'Inactive', class: 'bg-label-danger' }
     // },
-    categoryObj = {
-      0: { title: 'Household' },
-      1: { title: 'Office' },
-      2: { title: 'Electronics' },
-      3: { title: 'Shoes' },
-      4: { title: 'Accessories' },
-      5: { title: 'Game' }
-    };
+
+    categoryObj = null;
+
+    $.ajax({
+      url: categoryLisitUrl, // Assuming this is the endpoint to fetch categories
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        categoryObj = data;
+      },
+      error: function(xhr, status, error) {
+          console.error(error); // Log any errors to the console
+      }
+  });
   // stockObj = {
   //   0: { title: 'Out_of_Stock' },
   //   1: { title: 'In_Stock' }
@@ -47,7 +53,7 @@ $(function () {
 
   if (dt_product_table.length) {
     var dt_products = dt_product_table.DataTable({
-      ajax: assetsPath + 'json/bonakDary_product_list.json', // JSON file to add data
+      ajax: retailLisitUrl, // data
       columns: [
         // columns according to JSON
         { data: 'id' },
@@ -62,6 +68,7 @@ $(function () {
         { data: '' }
       ],
       columnDefs: [
+
         {
           // For Responsive
           className: 'control',
@@ -71,6 +78,13 @@ $(function () {
           targets: 0,
           render: function (data, type, full, meta) {
             return '';
+          }
+        },
+        {
+          targets: 4, // Target the second column (index starts from 0)
+          render: function(data, type, full, meta) {
+              // Convert the price to Iranian Rial format
+              return full['price'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ریال';
           }
         },
         {
@@ -90,9 +104,9 @@ $(function () {
           targets: 2,
           responsivePriority: 1,
           render: function (data, type, full, meta) {
-            var $name = full['product_name'],
+            var $name = full['name'],
               $id = full['id'],
-              $product_brand = full['product_brand'],
+              $product_brand = full['desc'],
               $image = full['image'];
             if ($image) {
               // For Product image
@@ -110,7 +124,7 @@ $(function () {
               var stateNum = Math.floor(Math.random() * 6);
               var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
               var $state = states[stateNum],
-                $name = full['product_brand'],
+                $name = full['name'],
                 $initials = $name.match(/\b\w/g) || [];
               $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
               $output = '<span class="avatar-initial rounded-2 bg-label-' + $state + '">' + $initials + '</span>';
@@ -141,12 +155,12 @@ $(function () {
           targets: 3,
           responsivePriority: 5,
           render: function (data, type, full, meta) {
-            var $category = categoryObj[full['category']].title;
+            var $category = categoryObj[full['retail_category_id']].name;
             var categoryBadgeObj = {
               Household:
                 '<span class="avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-warning me-2 p-3"><i class="ti ti-home-2 ti-xs"></i></span>',
               Office:
-                '<span class="avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-info me-2 p-3"><i class="ti ti-briefcase ti-xs"></i></span>',
+                '<span class="avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-info me-2 p-3"><i class="ti ti-category ti-xs"></i></span>',
               Electronics:
                 '<span class="avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-danger me-2 p-3"><i class="ti ti-device-mobile ti-xs"></i></span>',
               Shoes:
@@ -157,7 +171,7 @@ $(function () {
             };
             return (
               "<span class='text-truncate d-flex align-items-center'>" +
-              categoryBadgeObj[$category] +
+              categoryBadgeObj.Office +
               $category +
               '</span>'
             );
@@ -250,14 +264,14 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               `<div class="d-inline-block text-nowrap">
-              <a href="${productAdd}" button class="btn btn-sm btn-icon"><i class="ti ti-edit"></i></button></a> 
-              <button class="btn btn-sm btn-icon delete-record"><i class="ti ti-trash"></i></button>
+              <a href="${ 'retail/' + full['id'] + '/edit'}" <button class="btn btn-sm btn-icon"><i class="ti ti-edit"></i></button></a>
+              <form action="${retailUrl + '/' + full['id']}" method="post">${csrf}<input type="hidden" name="_method" value="delete"><button class="btn btn-sm btn-icon"><i class="ti ti-trash"></i></button></form>
               </div>`
             );
           }
         }
       ],
-      order: [2, 'asc'], //set any columns order asc/desc
+      order: [2, 'desc'], //set any columns order asc/desc
       dom:
         '<"card-header d-flex border-top rounded-0 flex-wrap py-2"' +
         '<"me-5 ms-n2 pe-5"f>' +
@@ -481,27 +495,7 @@ $(function () {
         //       });
         //   });
         // Adding category filter once table initialized
-        this.api()
-          .columns(3)
-          .every(function () {
-            var column = this;
-            var select = $(
-              '<select id="ProductCategory" class="form-select text-capitalize"><option value="">دسته بندی</option></select>'
-            )
-              .appendTo('.product_category')
-              .on('change', function () {
-                var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                column.search(val ? '^' + val + '$' : '', true, false).draw();
-              });
 
-            column
-              .data()
-              .unique()
-              .sort()
-              .each(function (d, j) {
-                select.append('<option value="' + categoryObj[d].title + '">' + categoryObj[d].title + '</option>');
-              });
-          });
         // // Adding stock filter once table initialized
         // this.api()
         //   .columns(4)
