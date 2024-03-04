@@ -33,16 +33,13 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
             <a class="nav-link fw-medium" href="{{url('index')}}#slider">اسلایدر</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link fw-medium" href="{{url('index')}}#news">اخبار</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingTeam">آبشده</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingFAQ">بنکداری</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-medium" href="{{url('index')}}#favorites">برگزیده ها</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-medium" href="{{url('index')}}#contact">تماس با ما</a>
           </li>
         </ul>
       </div>

@@ -10,15 +10,10 @@
     animationElements = document.querySelectorAll('.hero-elements-img'),
     swiperLogos = document.getElementById('swiper-clients-logos'),
     swiperReviews = document.getElementById('swiper-reviews'),
-    swiperSlider = document.getElementById('swiper-slider'),
     ReviewsPreviousBtn = document.getElementById('reviews-previous-btn'),
     ReviewsNextBtn = document.getElementById('reviews-next-btn'),
-    sliderPreviousBtn = document.getElementById('slider-previous-btn'),
-    sliderNextBtn = document.getElementById('slider-next-btn'),
     ReviewsSliderPrev = document.querySelector('.swiper-button-prev'),
     ReviewsSliderNext = document.querySelector('.swiper-button-next'),
-    ReviewsSliderPrev2 = document.querySelector('.swiper-button-prev2'),
-    ReviewsSliderNext2 = document.querySelector('.swiper-button-next2'),
     priceDurationToggler = document.querySelector('.price-duration-toggler'),
     priceMonthlyList = [].slice.call(document.querySelectorAll('.price-monthly')),
     priceYearlyList = [].slice.call(document.querySelectorAll('.price-yearly'));
@@ -88,33 +83,7 @@
       }
     });
   }
-  if (swiperSlider) {
-    new Swiper(swiperSlider, {
-      slidesPerView: 1,
-      spaceBetween: 5,
-      grabCursor: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false
-      },
-      loop: true,
-      loopAdditionalSlides: 1,
-      navigation: {
-        nextEl: '.swiper-button-next2',
-        prevEl: '.swiper-button-prev2'
-      },
-      breakpoints: {
-        1200: {
-          slidesPerView: 1,
-          spaceBetween: 96
-        },
-        992: {
-          slidesPerView: 1,
-          spaceBetween: 20
-        }
-      }
-    });
-  }
+
   // Reviews slider next and previous
   // -----------------------------------
   // Add click event listener to next button
@@ -123,12 +92,6 @@
   });
   ReviewsPreviousBtn.addEventListener('click', function () {
     ReviewsSliderPrev.click();
-  });
-  sliderPreviousBtn.addEventListener('click', function () {
-    ReviewsSliderNext2.click();
-  });
-  sliderNextBtn.addEventListener('click', function () {
-    ReviewsSliderPrev2.click();
   });
 
   // Review client logo

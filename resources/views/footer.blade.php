@@ -1,65 +1,70 @@
 <!-- Footer: Start -->
 <footer class="landing-footer bg-body footer-text">
-  <div class="footer-top">
-    <div class="container">
-      <div class="row gx-0 gy-4 g-md-5">
-        <div class="col-lg-5">
-          <a href="{{url('front-pages/landing')}}" class="app-brand-link mb-4">
-            <span class="app-brand-logo demo">@include('_partials.macros',['height'=>20,'withbg' => "fill: #fff;"])</span>
-            <span class="app-brand-text demo footer-link fw-bold ms-2 ps-1">{{ config('variables.templateName') }}</span>
-          </a>
-          <p class="footer-text footer-logo-description mb-4">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+    <div class="footer-top">
+        <div class="container">
+            <div class="row gx-0 gy-4 g-md-5">
+                <div class="col-lg-5">
+                    <a href="{{ url('front-pages/landing') }}" class="app-brand-link mb-4">
+                        <span class="app-brand-logo demo">@include('_partials.macros', ['height' => 20, 'withbg' => 'fill: #fff;'])</span>
+                        <span
+                            class="app-brand-text demo footer-link fw-bold ms-2 ps-1">{{ config('variables.templateName') }}</span>
+                    </a>
+                    <p class="footer-text footer-logo-description mb-4">
+                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
 
-          </p>
-          <form class="footer-form">
-            <label for="footer-email" class="small">Subscribe to newsletter</label>
-            <div class="d-flex mt-1">
-              <input type="email" class="form-control rounded-0 rounded-start-bottom rounded-start-top" id="footer-email" placeholder="Your email" />
-              <button type="submit" class="btn btn-primary shadow-none rounded-0 rounded-end-bottom rounded-end-top">
-                Subscribe
-              </button>
-            </div>
-          </form>
-        </div>
-        <div class="col-lg-5 col-md-12 col-sm-12">
-          <h6 class="footer-title mb-4">بخش ها</h6>
-          <ul class="list-unstyled d-flex justify-content-between">
-            <li class="mb-3">
-              <a href="{{url('index')}}#home" target="_blank" class="footer-link">خانه</a>
-            </li>
-            <li class="mb-3">
-              <a href="{{url('index')}}#slider" target="_blank" class="footer-link">اسلایدر</a>
-            </li>
-            <li class="mb-3">
-              <a href="/demo-2" target="_blank" class="footer-link">آبشده</a>
-            </li>
-            <li class="mb-3">
-              <a href="/demo-3" target="_blank" class="footer-link">بنکداری</a>
-            </li>
-            <li class="mb-3">
-              <a href="{{url('index')}}#favorites" target="_blank" class="footer-link">برگزیده ها</a>
-            </li>
-            <li class="mb-3">
-              <a href="{{url('index')}}#contact"  target="_blank" class="footer-link">تماس با ما</a>
-            </li>
-          </ul>
-          <h6 class="footer-title mb-4">شبکه های اجتماعی</h6>
-          <ul class="list-unstyled d-flex justify-content-around">
-            <li class="mb-3">
-              <a href="/demo-1" target="_blank" class="footer-link"><button type="button" class="btn btn-icon rounded-pill btn-outline-instagram waves-effect">
-                <i class="tf-icons ti ti-brand-instagram"></i>
-              </button></a>
-            </li>
-            <li class="mb-3">
-              <a href="/demo-5" target="_blank" class="footer-link"><button type="button" class="btn btn-icon rounded-pill btn-outline-vimeo waves-effect"><i class="tf-icons ti ti-brand-twitter"></i></button></a>
-            </li>
-            <li class="mb-3">
-              <a href="/demo-2" target="_blank" class="footer-link"><button type="button" class="btn btn-icon rounded-pill btn-outline-vimeo waves-effect"><i class="tf-icons ti ti-brand-telegram"></i></button></a>
-            </li>
-          </ul>
-        </div>
-        {{-- <div class="col-lg-2 col-md-4 col-sm-6">
+                    </p>
+                    {{-- <form class="footer-form">
+                        <label for="footer-email" class="small">Subscribe to newsletter</label>
+                        <div class="d-flex mt-1">
+                            <input type="email" class="form-control rounded-0 rounded-start-bottom rounded-start-top"
+                                id="footer-email" placeholder="Your email" />
+                            <button type="submit"
+                                class="btn btn-primary shadow-none rounded-0 rounded-end-bottom rounded-end-top">
+                                Subscribe
+                            </button>
+                        </div>
+                    </form> --}}
+                </div>
+                <div class="col-lg-5 col-md-12 col-sm-12">
+                    <h6 class="footer-title mb-4">بخش ها</h6>
+                    <ul class="list-unstyled d-flex justify-content-between">
+                        <li class="mb-3">
+                            <a href="{{ url('index') }}#home" target="_blank" class="footer-link">خانه</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="{{ url('index') }}#slider" target="_blank" class="footer-link">اسلایدر</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="{{ url('index') }}#news" target="_blank" class="footer-link">اخبار</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="/demo-2" target="_blank" class="footer-link">آبشده</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="/demo-3" target="_blank" class="footer-link">بنکداری</a>
+                        </li>
+                    </ul>
+                    <h6 class="footer-title mb-4">شبکه های اجتماعی</h6>
+                    <ul class="list-unstyled d-flex justify-content-around">
+                        <li class="mb-3">
+                            <a href="/demo-1" target="_blank" class="footer-link"><button type="button"
+                                    class="btn btn-icon rounded-pill btn-outline-instagram waves-effect btn-lg">
+                                    <i class="tf-icons ti ti-brand-instagram"></i>
+                                </button></a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="/demo-5" target="_blank" class="footer-link"><button type="button"
+                                    class="btn btn-icon rounded-pill btn-outline-vimeo waves-effect btn-lg"><i
+                                        class="tf-icons ti ti-brand-twitter"></i></button></a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="/demo-2" target="_blank" class="footer-link"><button type="button"
+                                    class="btn btn-icon rounded-pill btn-outline-vimeo waves-effect btn-lg"><i
+                                        class="tf-icons ti ti-brand-telegram"></i></button></a>
+                        </li>
+                    </ul>
+                </div>
+                {{-- <div class="col-lg-2 col-md-4 col-sm-6">
           <h6 class="footer-title mb-4">Pages</h6>
           <ul class="list-unstyled">
             <li class="mb-3">
@@ -79,26 +84,26 @@
             </li>
           </ul>
         </div> --}}
-        {{-- <div class="col-lg-3 col-md-4">
+                {{-- <div class="col-lg-3 col-md-4">
           <h6 class="footer-title mb-4">Download our app</h6>
           <a href="javascript:void(0);" class="d-block footer-link mb-3 pb-2"><img src="{{asset('assets/img/front-pages/landing-page/apple-icon.png')}}" alt="apple icon" /></a>
           <a href="javascript:void(0);" class="d-block footer-link"><img src="{{asset('assets/img/front-pages/landing-page/google-play-icon.png')}}" alt="google play icon" /></a>
         </div> --}}
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="footer-bottom py-3">
-    <div class="container d-flex flex-wrap justify-content-between flex-md-row flex-column text-center text-md-start">
-      <div class="mb-2 mb-md-0">
-        <span class="footer-text">©
-          <script>
-          document.write(new Date().getFullYear());
-
-          </script>
-        </span>
-        <span class="footer-text">تمامی حقوق برای طلای قالیچی محفوظ است .</span>
-      </div>
-      {{-- <div>
+    <div class="footer-bottom py-3">
+        <div
+            class="container d-flex flex-wrap justify-content-between flex-md-row flex-column text-center text-md-start">
+            <div class="mb-2 mb-md-0">
+                <span class="footer-text">©
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                </span>
+                <span class="footer-text">تمامی حقوق برای سید قالیچی محفوظ است .</span>
+            </div>
+            {{-- <div>
         <a href="{{config('variables.githubFreeUrl')}}" class="footer-link me-3" target="_blank">
           <img src="{{asset('assets/img/front-pages/icons/github-'.$configData['style'].'.png') }}" alt="github icon" data-app-light-img="front-pages/icons/github-light.png" data-app-dark-img="front-pages/icons/github-dark.png" />
         </a>
@@ -112,7 +117,7 @@
           <img src="{{asset('assets/img/front-pages/icons/instagram-'.$configData['style'].'.png') }}" alt="google icon" data-app-light-img="front-pages/icons/instagram-light.png" data-app-dark-img="front-pages/icons/instagram-dark.png" />
         </a>
       </div> --}}
+        </div>
     </div>
-  </div>
 </footer>
 <!-- Footer: End -->

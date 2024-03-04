@@ -30,107 +30,149 @@
         <section id="hero-animation">
             <div id="home" class="section-py landing-hero position-relative">
                 <div class="container">
-                    <div class="hero-text-box text-center">
-                        <h1 class="text-primary hero-title display-6 fw-bold">لورم ایپسوم متن ساختگی با تولید سادگی
-                        </h1>
-                        <h2 class="hero-sub-title h6 mb-4 pb-1">
-                          نامفهوم از صنعت چاپ و با استفاده<br class="d-none d-lg-block" />
-                          از طراحان گرافیک است
-                        </h2>
-                        <div class="landing-hero-btn d-inline-block position-relative">
-                            <span class="hero-btn-item position-absolute d-none d-md-flex text-heading">انتخاب کنید
-                                <img src="{{ asset('assets/img/front-pages/icons/Join-community-arrow.png') }}"
-                                    alt="Join community arrow" class="scaleX-n1-rtl" /></span>
-                            <a href="#landingPricing" class="btn btn-primary btn-lg">آبشده</a>
-                            <a href="#landingPricing" class="btn btn-primary btn-lg">بنکداری</a>
-                        </div>
-                    </div>
+
                     <div id="heroDashboardAnimation" class="hero-animation-img">
                         <a href="{{ url('/app/ecommerce/dashboard') }}" target="_blank">
                             <div id="heroAnimationImg" class="position-relative hero-dashboard-img">
-                                <img src="{{ asset('assets/img/front-pages/landing-page/home.png') }}"
-                                    alt="hero dashboard" class="animation-img"
-                                    data-app-light-img="front-pages/landing-page/home.png"
+                                <img src="{{ asset('assets/img/front-pages/landing-page/home.png') }}" alt="hero dashboard"
+                                    class="animation-img" data-app-light-img="front-pages/landing-page/home.png"
                                     data-app-dark-img="front-pages/landing-page/home.png" />
                             </div>
                         </a>
                     </div>
+
                 </div>
+
             </div>
+
             <div class="landing-hero-blank"></div>
         </section>
+        <div class="hero-text-box text-center">
+            {{-- <h1 class="text-primary hero-title display-6 fw-bold">لورم ایپسوم متن ساختگی با تولید سادگی
+            </h1>
+            <h2 class="hero-sub-title h6 mb-4 pb-1">
+              نامفهوم از صنعت چاپ و با استفاده<br class="d-none d-lg-block" />
+              از طراحان گرافیک است
+            </h2> --}}
+            <div class="landing-hero-btn d-inline-block position-relative">
+
+                {{-- <a href="#landingPricing" class="btn btn-primary btn-lg">آبشده</a>
+                <a href="#landingPricing" class="btn btn-primary btn-lg">بنکداری</a> --}}
+                <div class="d-flex justify-content-center p-4">
+                    <div class="col-md-12 col-xl-12 m-4">
+                        <a href="">
+                            <div class="card bg-primary text-white mb-3">
+                                <div class="card-header"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-white">آبشده</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-12 col-xl-12 m-4">
+                        <a href="">
+                            <div class="card bg-primary text-white mb-3">
+                                <div class="card-header"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-white">بنکداری</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <span class="hero-btn-item position-absolute d-none d-md-flex text-heading">انتخاب کنید
+                    <img src="{{ asset('assets/img/front-pages/icons/Join-community-arrow.png') }}"
+                        alt="Join community arrow" class="scaleX-n1-rtl" /></span>
+            </div>
+        </div>
         <!-- Hero: End -->
 
         <!-- Useful features: Start -->
-        <section id="landingFeatures" class="section-py landing-features">
+        <section id="news" class="section-py landing-features">
             <div class="container">
-                <div class="text-center mb-3 pb-1">
+                {{-- <div class="text-center mb-3 pb-1">
                     <span class="badge bg-label-primary">ویژگی های مفید</span>
-                </div>
-                <h3 class="text-center mb-1">
+                </div> --}}
+                {{-- <h3 class="text-center mb-1">
                     <span class="section-title">همه چیزهایی که برای شروع</span>پروژه بعدی خود نیاز دارید
+                </h3> --}}
+                <h3 class="text-center mb-3 mb-md-5 p-3 ">
+                    <span class="section-title">اخبار</span>
                 </h3>
-                <p class="text-center mb-3 mb-md-5 p-3">
+                {{-- <p class="text-center mb-3 mb-md-5 p-3">
                     نه تنها مجموعه ای از ابزارها، این بسته شامل برنامه های مفهومی آماده برای استقرار است.
-                </p>
+                </p> --}}
                 <div class="features-icon-wrapper row gx-0 gy-4 g-sm-5">
 
-                    <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-                        <div class="text-center mb-3">
-                            <img src="{{ asset('assets/img/front-pages/icons/rocket.png') }}" alt="transition up" />
-                        </div>
-                        <h5 class="mb-3">به روز رسانی های مداوم</h5>
-                        <p class="features-icon-description">
-                            به روز رسانی رایگان برای 11 ماه آینده، از جمله نسخه های نمایشی و ویژگی های جدید.
-                        </p>
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="">
+                            <div class="card mb-3">
+                                <img class="card-img-top" src="{{ asset('assets/img/front-pages/landing-page/4.jpg') }}"
+                                    alt="Card image cap" />
+                                <div class="card-body">
+                                    <h5 class="card-title">عنوان</h5>
+                                    <p class="card-text">
+                                        این یک کارت عریض‌تر با متن پشتیبانی در زیر به‌عنوان ورودی طبیعی به موارد اضافی است
+                                        محتوا. این محتوا یک است
+                                        کمی طولانی تر
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">آخرین به روز رسانی 3 دقیقه پیش
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-                        <div class="text-center mb-3">
-                            <img src="{{ asset('assets/img/front-pages/icons/paper.png') }}" alt="edit" />
-                        </div>
-                        <h5 class="mb-3">کیت شروع</h5>
-                        <p class="features-icon-description">
-                            پروژه خود را به سرعت بدون نیاز به حذف ویژگی های غیر ضروری شروع کنید.
-                        </p>
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="">
+                            <div class="card mb-3">
+                                <img class="card-img-top" src="{{ asset('assets/img/front-pages/landing-page/4.jpg') }}"
+                                    alt="Card image cap" />
+                                <div class="card-body">
+                                    <h5 class="card-title">عنوان</h5>
+                                    <p class="card-text">
+                                        این یک کارت عریض‌تر با متن پشتیبانی در زیر به‌عنوان ورودی طبیعی به موارد اضافی است
+                                        محتوا. این محتوا یک است
+                                        کمی طولانی تر
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">آخرین به روز رسانی 3 دقیقه پیش
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-                        <div class="text-center mb-3">
-                            <img src="{{ asset('assets/img/front-pages/icons/laptop.png') }}" alt="laptop charging" />
-                        </div>
-                        <h5 class="mb-3">لورم ایپسوم</h5>
-                        <p class="features-icon-description">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                        </p>
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="">
+                            <div class="card mb-3">
+                                <img class="card-img-top" src="{{ asset('assets/img/front-pages/landing-page/4.jpg') }}"
+                                    alt="Card image cap" />
+                                <div class="card-body">
+                                    <h5 class="card-title">عنوان</h5>
+                                    <p class="card-text">
+                                        این یک کارت عریض‌تر با متن پشتیبانی در زیر به‌عنوان ورودی طبیعی به موارد اضافی است
+                                        محتوا. این محتوا یک است
+                                        کمی طولانی تر
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">آخرین به روز رسانی 3 دقیقه پیش
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-                        <div class="text-center mb-3">
-                            <img src="{{ asset('assets/img/front-pages/icons/check.png') }}" alt="3d select solid" />
-                        </div>
-                        <h5 class="mb-3">لورم ایپسوم</h5>
-                        <p class="features-icon-description">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                        </p>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-                        <div class="text-center mb-3">
-                            <img src="{{ asset('assets/img/front-pages/icons/user.png') }}" alt="lifebelt" />
-                        </div>
-                        <h5 class="mb-3">پشتیبانی عالی</h5>
-                        <p class="features-icon-description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-                        <div class="text-center mb-3">
-                            <img src="{{ asset('assets/img/front-pages/icons/keyboard.png') }}" alt="google docs" />
-                        </div>
-                        <h5 class="mb-3">به خوبی مستند شده است</h5>
-                        <p class="features-icon-description">یک سند ساده برای دنبال کردن با تعداد زیادی مرجع و نمونه کد.</p>
-                    </div>
+
                 </div>
-            </div>
+                <div class="text-center mt-5">
+                    <a href="#landingPricing" class="btn btn-outline-primary btn-lg">بیشتر ...</a>
+                </div>
         </section>
         <!-- Useful features: End -->
         <!-- Real customers reviews: Start -->
-        <section id="slider" class="section-py bg-body landing-reviews pb-0">
+        {{-- <section id="slider" class="section-py bg-body landing-reviews pb-0">
             <!-- What people say slider: Start -->
             <div class="container">
                 <div class="d-flex flex-column row align-items-center">
@@ -180,34 +222,15 @@
             </div>
             <!-- What people say slider: End -->
             <hr class="m-0" />
-        </section>
+        </section> --}}
         <!-- Real customers reviews: End -->
         <!-- Real customers reviews: Start -->
-        <section id="favorites" class="section-py bg-body landing-reviews pb-0" style="border-radius: 0px">
+        <section id="slider" class="section-py bg-body landing-reviews pb-0" style="border-radius: 0px">
             <!-- What people say slider: Start -->
             <div class="container">
                 <div class="row align-items-center gx-0 gy-4 g-lg-5">
-                    <div class="col-md-6 col-lg-5 col-xl-3">
-                        <div class="mb-3 pb-1">
-                            <span class="badge bg-label-primary">بهترین ها</span>
-                        </div>
-                        <h3 class="mb-1"><span class="section-title">محصولات برگزیده</span></h3>
-                        <p class="mb-3 mb-md-5">
-                            بهترین محصولات را می توانید<br class="d-none d-xl-block" />
-                            از اینجا انتخاب کنید
-                        </p>
-                        <div class="landing-reviews-btns">
-                            <button id="reviews-previous-btn" class="btn btn-label-primary reviews-btn me-3 scaleX-n1-rtl"
-                                type="button">
-                                <i class="ti ti-chevron-left ti-sm"></i>
-                            </button>
-                            <button id="reviews-next-btn" class="btn btn-label-primary reviews-btn scaleX-n1-rtl"
-                                type="button">
-                                <i class="ti ti-chevron-right ti-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-7 col-xl-9">
+
+                    <div class="col-md-6 col-lg-7 col-xl-12">
                         <div class="swiper-reviews-carousel overflow-hidden mb-5 pb-md-2 pb-md-3">
                             <div class="swiper" id="swiper-reviews">
                                 <div class="swiper-wrapper">
@@ -232,26 +255,38 @@
 
                                     </div>
                                     <div class="swiper-slide">
-                                      <img src="{{ asset('assets/img/front-pages/landing-page/a3.webp') }}"
-                                          alt="contact customer service" class="contact-img w-100 scaleX-n1-rtl" />
+                                        <img src="{{ asset('assets/img/front-pages/landing-page/a3.webp') }}"
+                                            alt="contact customer service" class="contact-img w-100 scaleX-n1-rtl" />
 
-                                  </div>
-                                  <div class="swiper-slide">
-                                    <img src="{{ asset('assets/img/front-pages/landing-page/a4.webp') }}"
-                                        alt="contact customer service" class="contact-img w-100 scaleX-n1-rtl" />
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="{{ asset('assets/img/front-pages/landing-page/a4.webp') }}"
+                                            alt="contact customer service" class="contact-img w-100 scaleX-n1-rtl" />
+
+                                    </div>
 
                                 </div>
-
-                                </div>
-                                <div class="swiper-button-next2"></div>
-                                <div class="swiper-button-prev2"></div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                            <div class="landing-reviews-btns mb-4 text-center">
+                                <button id="reviews-previous-btn"
+                                    class="btn btn-label-primary reviews-btn me-3 scaleX-n1-rtl" type="button">
+                                    <i class="ti ti-chevron-left ti-sm"></i>
+                                </button>
+                                <button id="reviews-next-btn" class="btn btn-label-primary reviews-btn scaleX-n1-rtl"
+                                    type="button">
+                                    <i class="ti ti-chevron-right ti-sm"></i>
+                                </button>
                             </div>
                         </div>
+
                     </div>
+
                 </div>
             </div>
             <!-- What people say slider: End -->
-            <hr class="m-0" />
+            {{-- <hr class="m-0" />
             <!-- Logo slider: Start -->
             <div class="container">
                 <div class="swiper-logo-carousel py-4 my-lg-2">
@@ -291,13 +326,13 @@
                     </div>
                 </div>
             </div>
-            <!-- Logo slider: End -->
+            <!-- Logo slider: End --> --}}
         </section>
         <!-- Real customers reviews: End -->
 
 
 
-        <!-- Our great team: Start -->
+        {{-- <!-- Our great team: Start -->
         <section id="landingTeam" class="section-py landing-team">
             <div class="container">
                 <div class="text-center mb-3 pb-1">
@@ -361,9 +396,9 @@
                 </div>
             </div>
         </section>
-        <!-- Our great team: End -->
+        <!-- Our great team: End --> --}}
 
-        <!-- Fun facts: Start -->
+        {{-- <!-- Fun facts: Start -->
         <section id="landingFunFacts" class="section-py landing-fun-facts">
             <div class="container">
                 <div class="row gy-3">
@@ -472,7 +507,9 @@
                                 <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با
+                                        تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                        صنعت چاپ
                                     </div>
                                 </div>
                             </div>
@@ -487,7 +524,9 @@
                                 <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با
+                                        تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                        صنعت چاپ
                                     </div>
                                 </div>
                             </div>
@@ -502,7 +541,9 @@
                                 <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با
+                                        تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                        صنعت چاپ
                                     </div>
                                 </div>
                             </div>
@@ -517,7 +558,9 @@
                                 <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با
+                                        تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                        صنعت چاپ
                                     </div>
                                 </div>
                             </div>
@@ -526,9 +569,9 @@
                 </div>
             </div>
         </section>
-        <!-- FAQ: End -->
+        <!-- FAQ: End --> --}}
 
-        <!-- CTA: Start -->
+        {{-- <!-- CTA: Start -->
         <section id="landingCTA" class="section-py landing-cta p-lg-0 pb-0">
             <div class="container">
                 <div class="row align-items-center gy-5 gy-lg-0">
@@ -538,15 +581,15 @@
                         <a href="{{ url('/front-pages/payment') }}" class="btn btn-lg btn-primary">شروع کنید</a>
                     </div>
                     <div class="col-lg-6 pt-lg-5 text-center text-lg-end">
-                        <img src="{{ asset('assets/img/front-pages/landing-page/ring.png') }}"
-                            alt="cta dashboard" class="img-fluid" />
+                        <img src="{{ asset('assets/img/front-pages/landing-page/ring.png') }}" alt="cta dashboard"
+                            class="img-fluid" />
                     </div>
                 </div>
             </div>
         </section>
-        <!-- CTA: End -->
+        <!-- CTA: End --> --}}
 
-        <!-- Contact Us: Start -->
+        {{-- <!-- Contact Us: Start -->
         <section id="contact" class="section-py bg-body landing-contact">
             <div class="container">
                 <div class="text-center mb-3 pb-1">
@@ -622,6 +665,6 @@
                 </div>
             </div>
         </section>
-        <!-- Contact Us: End -->
+        <!-- Contact Us: End --> --}}
     </div>
 @endsection
