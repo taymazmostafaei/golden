@@ -34,9 +34,9 @@
                     <div id="heroDashboardAnimation" class="hero-animation-img">
                         <a href="{{ url('/app/ecommerce/dashboard') }}" target="_blank">
                             <div id="heroAnimationImg" class="position-relative hero-dashboard-img">
-                                <img src="{{ asset('assets/img/front-pages/landing-page/home.png') }}" alt="hero dashboard"
-                                    class="animation-img" data-app-light-img="front-pages/landing-page/home.png"
-                                    data-app-dark-img="front-pages/landing-page/home.png" />
+                                <img src="{{ asset('assets/img/front-pages/landing-page/logo.png') }}" alt="hero dashboard"
+                                    class="animation-img" data-app-light-img="front-pages/landing-page/logo.png"
+                                    data-app-dark-img="front-pages/landing-page/logo.png" />
                             </div>
                         </a>
                     </div>

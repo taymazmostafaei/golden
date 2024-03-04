@@ -366,7 +366,9 @@ Route::view('/', 'manager.dashboard')->name('manager-dashboard');
 // Route::get('/laravel/user-management', [UserManagement::class, 'UserManagement'])->name('laravel-example-user-management');
 // Route::resource('/user-list', UserManagement::class);
 
-Route::prefix('/panel/manager')->middleware('auth')->group(function () {
+Route::prefix('/panel/manager')
+  ->middleware('auth')
+  ->group(function () {
     Route::view('/', 'manager.dashboard')->name('manager-dashboard');
     // manager / user
     Route::view('/user/show', 'manager.user.show');
@@ -377,20 +379,24 @@ Route::prefix('/panel/manager')->middleware('auth')->group(function () {
     Route::view('/order/melted', 'manager.order.melted')->name('manager-order-melted');
     Route::view('/order/bonakDary', 'manager.order.bonakDary')->name('manager-order-bonakDary');
     // manager / bonakdaryProduct
-    Route::get('/user/list', [UserController::class,'indexmenu'])->name('user-lis-menu');
-    Route::get('/user/list/json', [UserController::class,'index'])->name('user-list-json');
-
+    Route::get('/user/list', [UserController::class, 'indexmenu'])->name('user-lis-menu');
+    Route::get('/user/list/json', [UserController::class, 'index'])->name('user-list-json');
 
     Route::view('/retail/category', 'manager.retail.category.index')->name('retail.category');
-    Route::get('/retail/category/list', [RetailCategoryController::class , 'index'])->name('retail-category-list');
-    Route::get('/retail/category/list/formated', [RetailCategoryController::class , 'formatedIndex'])->name('retail-category-list-formated');
+    Route::get('/retail/category/list', [RetailCategoryController::class, 'index'])->name('retail-category-list');
+    Route::get('/retail/category/list/formated', [RetailCategoryController::class, 'formatedIndex'])->name(
+      'retail-category-list-formated'
+    );
     Route::get('/retail/list', [RetailController::class, 'list'])->name('retail-list');
     Route::post('/retailmedia', [RetailMediaController::class, 'store'])->name('retail-media-upload');
-    Route::get('/retailmedia/delete/{retailMedia}', [RetailMediaController::class, 'destroy'])->name('retail-media-destroy');
+    Route::get('/retailmedia/delete/{retailMedia}', [RetailMediaController::class, 'destroy'])->name(
+      'retail-media-destroy'
+    );
     Route::resource('/retail', RetailController::class);
 
-
-    Route::view('/bonakdary_product/create_pro', 'manager.bonakdary_product.create_pro')->name('manager-bonak-pro-create');
+    Route::view('/bonakdary_product/create_pro', 'manager.bonakdary_product.create_pro')->name(
+      'manager-bonak-pro-create'
+    );
     Route::view('/bonakdary_product/list', 'manager.bonakdary_product.list')->name('manager-bonak-list');
     // manager / blog
     Route::view('/blog/list', 'manager.blog.list')->name('manager-order-list');
@@ -406,9 +412,10 @@ Route::prefix('/panel/manager')->middleware('auth')->group(function () {
     Route::view('/user/myProfile', 'user.myProfile')->name('user-myProfile');
 
     // landing page
-});
+  });
 // Manager Part
 // manager / dashboard
 Auth::routes();
 
 Route::view('/index', 'index', ['pageConfigs' => ['myLayout' => 'front']])->name('index');
+Route::view('/blog', 'blog', ['pageConfigs' => ['myLayout' => 'front']])->name('blog');
