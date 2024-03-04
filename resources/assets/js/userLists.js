@@ -40,7 +40,7 @@ $(function () {
   // Users datatable
   if (dt_user_table.length) {
     var dt_user = dt_user_table.DataTable({
-      ajax: assetsPath + '/api/manager/user/list', // JSON file to add data
+      ajax: apiUserList, // JSON file to add data
       columns: [
         // columns according to JSON
         { data: '' },
@@ -68,7 +68,7 @@ $(function () {
           targets: 1,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
-            var $name = full['full_name'],
+            var $name = full['firstname'] + full['lastname'],
               $date_register = full['date_register'],
               $image = full['avatar'];
             if ($image) {

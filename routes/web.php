@@ -159,6 +159,7 @@ use App\Http\Controllers\tables\DatatableAdvanced;
 use App\Http\Controllers\tables\DatatableExtensions;
 use App\Http\Controllers\charts\ApexCharts;
 use App\Http\Controllers\charts\ChartJs;
+use App\Http\Controllers\Manager\UserController;
 use App\Http\Controllers\maps\Leaflet;
 use App\Http\Controllers\RetailCategoryController;
 use App\Http\Controllers\RetailController;
@@ -367,7 +368,6 @@ Route::view('/', 'manager.dashboard')->name('manager-dashboard');
 Route::prefix('/panel/manager')->middleware('auth')->group(function () {
     Route::view('/', 'manager.dashboard')->name('manager-dashboard');
     // manager / user
-    Route::view('/user/list', 'manager.user.list')->name('manager-user-list');
     Route::view('/user/show', 'manager.user.show');
     // manager / setting
     Route::view('/setting/possibilities', 'manager.setting.possibilities');
@@ -376,6 +376,9 @@ Route::prefix('/panel/manager')->middleware('auth')->group(function () {
     Route::view('/order/melted', 'manager.order.melted')->name('manager-order-melted');
     Route::view('/order/bonakDary', 'manager.order.bonakDary')->name('manager-order-bonakDary');
     // manager / bonakdaryProduct
+    Route::get('/user/list', [UserController::class,'indexmenu'])->name('user-lis-menu');
+    Route::get('/user/list/json', [UserController::class,'index'])->name('user-list-json');
+
 
     Route::view('/retail/category', 'manager.retail.category.index')->name('retail.category');
     Route::get('/retail/category/list', [RetailCategoryController::class , 'index'])->name('retail-category-list');

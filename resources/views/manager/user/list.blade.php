@@ -23,6 +23,9 @@
 @endsection
 
 @section('page-script')
+<script>
+  var apiUserList = "{{route('user-list-json')}}";
+</script>
 <script src="{{asset('assets/js/userLists.js')}}"></script>
 @endsection
 
@@ -36,7 +39,7 @@
           <div class="content-left">
             <span>مجموع کاربران</span>
             <div class="d-flex align-items-center my-2">
-              <h3 class="mb-0 me-2">21,459</h3>
+              <h3 class="mb-0 me-2">{{$userCount}}</h3>
             </div>
           </div>
           <div class="avatar">

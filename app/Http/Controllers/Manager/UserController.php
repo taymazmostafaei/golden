@@ -13,10 +13,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return response()->json($users);
+      $users = User::all();
+      return response()->json(
+          [
+              "data" => $users
+          ]
+      );
     }
-
+    public function indexmenu ()
+    {
+      $userCount = User::count();
+      return view('manager.user.list', ['userCount' => $userCount]);
+    }
     /**
      * Show the form for creating a new resource.
      */
