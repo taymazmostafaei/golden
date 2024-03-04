@@ -79,7 +79,7 @@ class RegisterController extends Controller
         if ($data['cert']->isValid()) {
             $picture = $data['cert'];
     
-            $path = $picture->store('certs');
+            $path = $picture->store('public/certs');
         }else {
             return false;
         }
@@ -93,7 +93,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'status' => 'wait',
             'role' => 'user',
-            'cert' => $path
+            'cert' => basename($path)
         ]);
 
         return $user;

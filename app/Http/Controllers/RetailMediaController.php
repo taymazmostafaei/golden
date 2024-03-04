@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Retail;
 use App\Models\RetailMedia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RetailMediaController extends Controller
 {
@@ -28,7 +30,27 @@ class RetailMediaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validate = Validator::make($request->all(), [
+            "file" => 'required|image|mimes:jpeg,jpg|max:1000',
+        ]);
+
+        if ($validate->fails() and !$request['file']->isValid()) {
+
+            return response()->json(["errore" => $validate->errors()], 301);
+        }
+
+        $picture = $request['file'];
+
+        $path = $picture->store('public/retail-media');
+
+        $media = new RetailMedia([
+            'retail_id' => $request->retail_id,
+            'path' => basename($path)
+        ]);
+
+        $media->save();
+        return response()->json(['success' => 'success']);
     }
 
     /**
@@ -60,6 +82,7 @@ class RetailMediaController extends Controller
      */
     public function destroy(RetailMedia $retailMedia)
     {
-        //
+        $retailMedia->delete();
+        return redirect()->back()->with('success', 'تصویر با موفقیت حذف شد.');
     }
 }

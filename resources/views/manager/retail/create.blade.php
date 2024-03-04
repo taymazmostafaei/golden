@@ -89,35 +89,6 @@
                         </div>
                         <!-- /Product Information -->
                         <!-- Media -->
-
-                        <div class="col-12">
-                            <div class="card mb-4">
-                                <h5 class="card-header">عکس محصول</h5>
-                                <div class="card-body col-lg-12 d-flex flex-wrap justify-content-center">
-                                    <div class="dz-preview dz-processing dz-image-preview dz-success dz-complete col-lg-6">
-                                        <div class="dz-details">
-                                            <div class="dz-thumbnail">
-                                                <img class="img-fluid mx-auto rounded"
-                                                    src="//localhost:3000/assets/img/elements/4.jpg" alt="Card image cap">
-                                                <span class="dz-nopreview">No
-                                                    preview</span>
-                                                <div class="dz-error-message"><span data-dz-errormessage=""></span></div>
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-primary" role="progressbar"
-                                                        aria-valuemin="0" aria-valuemax="100" data-dz-uploadprogress=""
-                                                        style="width: 100%;"></div>
-                                                </div>
-                                            </div>
-                                            <div class="dz-filename" data-dz-name="">leg.png</div>
-                                            <div class="dz-size" data-dz-size=""><strong>0.2</strong> MB</div>
-                                        </div><a class="dz-remove text-danger" href="javascript:undefined;"
-                                            data-dz-remove=""><i class="ti ti-trash"></i></a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- /Media -->
                     </div>
                     <!-- /Second column -->
 
@@ -155,19 +126,6 @@
                         </div>
                         <!-- /امکانات Card -->
                     </form>
-                        <div class="card">
-                            <h5 class="card-header">آپلود عکس محصول</h5>
-                            <div class="card-body">
-                                <form action="/upload" class="dropzone needsclick" id="dropzone-multi">
-                                    <div class="dz-message needsclick">
-                                        عکس ها را اینجا رها کنید یا برای آپلود کلیک کنید
-                                    </div>
-                                    <div class="fallback">
-                                        <input name="file" type="file" />
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
 
                     </div>
                     <!-- /Second column -->

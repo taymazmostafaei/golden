@@ -15,10 +15,7 @@ return new class extends Migration
         Schema::create('retail_media', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Retail::class);
-            $table->string('title');
-            $table->string('file_path');
-            $table->string('file_size');
-            $table->string('file_type');
+            $table->string('path');
             $table->timestamps();
         });
     }
