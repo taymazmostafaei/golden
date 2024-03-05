@@ -71,7 +71,6 @@ class RetailController extends Controller
      */
     public function show(Retail $retail)
     {
-        dd('show');
     }
 
     /**

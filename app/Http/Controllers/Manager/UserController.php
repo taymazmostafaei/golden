@@ -5,25 +5,33 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function indexJson()
+    {
+        $users = User::all();
+        return response()->json(
+            [
+                "data" => $users
+            ]
+        );
+    }
     public function index()
     {
-      $users = User::all();
-      return response()->json(
-          [
-              "data" => $users
-          ]
-      );
-    }
-    public function indexmenu ()
-    {
-      $userCount = User::count();
-      return view('manager.user.list', ['userCount' => $userCount]);
+        $counts = [
+            "user" => User::count(),
+            "verify" => User::where('status', 'verify')->count(),
+            "wait" => User::where('status', 'wait')->count(),
+            "reject" => User::where('status', 'reject')->count()
+        ];
+
+        return view('manager.user.list', ['counts' => (object) $counts]);
     }
     /**
      * Show the form for creating a new resource.
@@ -52,24 +60,87 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('manager.user.edit', ['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'firstname' => ['required', 'persian_alpha', 'string', 'max:23'],
+            'lastname' => ['required', 'persian_alpha', 'string', 'max:23'],
+            'national_id' => ['required', 'ir_national_code'],
+            'status' => ['required', 'string', 'in:verify,wait,reject'],
+            'phone' => ['required', 'ir_mobile:zero'],
+            'telphone' => ['required', 'ir_phone_with_code'],
+            'address' => ['required', 'persian_alpha_eng_num', 'string', 'max:64'],
+            // You might want to add validation rules for other fields if they are updated too
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Update the user with validated data
+        $user->firstname = $data['firstname'];
+        $user->lastname = $data['lastname'];
+        $user->national_id = $data['national_id'];
+        $user->status = $data['status'];
+        $user->phone = $data['phone'];
+        $user->telphone = $data['telphone'];
+        $user->address = $data['address'];
+        $user->save();
+
+        // Redirect to a route or return a response
+        return redirect()->back()->with('success', 'کاربر با موفقیت بروز رسانی شد.');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function changeStatus(User $user, string $status)
+    {
+        $user->status = $status;
+        $user->save();
+        return redirect()->back()->with('success', 'کاربر با موفقیت تغییر یافت.');
+    }
+
+    /**
+     * Cert Image Update.
+     */
+    public function certUpdate(Request $request, User $user)
+    {
+        $validate = Validator::make($request->all(), [
+            "file" => 'required|image|mimes:jpeg,jpg|max:1000',
+        ]);
+
+        if ($validate->fails() and !$request['file']->isValid()) {
+
+            return response()->json(["errore" => $validate->errors()], 301);
+        }
+
+        $picture = $request['file'];
+
+        $path = $picture->store('public/certs');
+
+        $user->cert = basename($path);
+        $user->save();
+
+        return response()->json(['success' => 'success']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->back()->with('success', 'کاربر با موفقیت حذف شد.');
     }
 }

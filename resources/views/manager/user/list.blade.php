@@ -25,6 +25,8 @@
 @section('page-script')
 <script>
   var apiUserList = "{{route('user-list-json')}}";
+  var usersUrl = "{{route('users.index')}}";
+  var csrf = '@csrf';
 </script>
 <script src="{{asset('assets/js/userLists.js')}}"></script>
 @endsection
@@ -39,7 +41,7 @@
           <div class="content-left">
             <span>مجموع کاربران</span>
             <div class="d-flex align-items-center my-2">
-              <h3 class="mb-0 me-2">{{$userCount}}</h3>
+              <h3 class="mb-0 me-2">{{$counts->user}}</h3>
             </div>
           </div>
           <div class="avatar">
@@ -58,7 +60,7 @@
           <div class="content-left">
             <span>کاربران رد شده</span>
             <div class="d-flex align-items-center my-2">
-              <h3 class="mb-0 me-2">4,567</h3>
+              <h3 class="mb-0 me-2">{{$counts->reject}}</h3>
             </div>
           </div>
           <div class="avatar">
@@ -77,7 +79,7 @@
           <div class="content-left">
             <span>کاربران تائید شده</span>
             <div class="d-flex align-items-center my-2">
-              <h3 class="mb-0 me-2">19,860</h3>
+              <h3 class="mb-0 me-2">{{$counts->verify}}</h3>
             </div>
           </div>
           <div class="avatar">
@@ -96,7 +98,7 @@
           <div class="content-left">
             <span>کاربران در انتظار</span>
             <div class="d-flex align-items-center my-2">
-              <h3 class="mb-0 me-2">237</h3>
+              <h3 class="mb-0 me-2">{{$counts->wait}}</h3>
             </div>
           </div>
           <div class="avatar">
@@ -110,6 +112,7 @@
   </div>
 </div>
 <!-- Users List Table -->
+@include('components.alert')
 <div class="card">
   <div class="card-header border-bottom">
     <h5 class="card-title mb-3">جست و جوی فیلتر</h5>

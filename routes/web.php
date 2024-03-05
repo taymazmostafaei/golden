@@ -379,8 +379,11 @@ Route::prefix('/panel/manager')
     Route::view('/order/melted', 'manager.order.melted')->name('manager-order-melted');
     Route::view('/order/bonakDary', 'manager.order.bonakDary')->name('manager-order-bonakDary');
     // manager / bonakdaryProduct
-    Route::get('/user/list', [UserController::class, 'indexmenu'])->name('user-lis-menu');
-    Route::get('/user/list/json', [UserController::class, 'index'])->name('user-list-json');
+
+    Route::get('/users/list/json', [UserController::class, 'indexJson'])->name('user-list-json');
+    Route::get('/users/change/{user}/status/{status}', [UserController::class, 'changeStatus'])->name('user-change-status');
+    Route::post('/usercert/{user}', [UserController::class, 'certUpdate'])->name('user-cert-upload');
+    Route::resource('/users', UserController::class);
 
     Route::view('/retail/category', 'manager.retail.category.index')->name('retail.category');
     Route::get('/retail/category/list', [RetailCategoryController::class, 'index'])->name('retail-category-list');

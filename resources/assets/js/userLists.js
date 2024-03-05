@@ -68,8 +68,8 @@ $(function () {
           targets: 1,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
-            var $name = full['firstname'] + full['lastname'],
-              $date_register = full['date_register'],
+            var $name = full['firstname'] + ' ' + full['lastname'],
+              $date_register = full['created_at'],
               $image = full['avatar'];
             if ($image) {
               // For Avatar image
@@ -80,7 +80,7 @@ $(function () {
               var stateNum = Math.floor(Math.random() * 6);
               var states = ['success', 'danger', 'warning', 'info', 'primary', 'secondary'];
               var $state = states[stateNum],
-                $name = full['full_name'],
+                $name = full['firstname'],
                 $initials = $name.match(/\b\w/g) || [];
               $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
               $output = '<span class="avatar-initial rounded-circle bg-label-' + $state + '">' + $initials + '</span>';
@@ -95,7 +95,7 @@ $(function () {
               '</div>' +
               '<div class="d-flex flex-column">' +
               '<a href="' +
-              userView +
+              '#' +
               '" class="text-body text-truncate"><span class="fw-medium">' +
               $name +
               '</span></a>' +
@@ -140,7 +140,7 @@ $(function () {
           // User Status
           targets: 5,
           render: function (data, type, full, meta) {
-            var $status = full['status'];
+            var $status = full['status'] == 'verify' ? 1 : (full['status'] == 'wait' ? 2 : 3 ) ;
 
             return (
               '<span class="badge ' +
@@ -160,14 +160,14 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-flex align-items-center">' +
-              '<a href="javascript:;" class="text-body"><i class="ti ti-edit ti-sm me-2"></i></a>' +
-              '<a href="javascript:;" class="text-body delete-record"><i class="ti ti-trash ti-sm mx-2"></i></a>' +
+              `<a href="${usersUrl}/${full['id']}/edit" class="text-body"><i class="ti ti-edit ti-sm me-2"></i></a>` +
+              `<form onsubmit="return confirm('کاربر حذف شود ؟')" action="${usersUrl + '/' + full['id']}" method="post">${csrf}<input type="hidden" name="_method" value="delete"><button class="btn btn-sm btn-icon"><i class="ti ti-trash"></i></button></form>` +
               '<a href="javascript:;" class="text-body dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical ti-sm mx-1"></i></a>' +
               '<div class="dropdown-menu dropdown-menu-end m-0">' +
-              '<span class="p-3">تغییر وضعیت</span>'+
-              '<a href="javascript:;" class="dropdown-item bg-label-success">در انتظار</a>' +
-              '<a href="javascript:;" class="dropdown-item bg-label-warning">تایید شده</a>' +
-              '<a href="javascript:;" class="dropdown-item bg-label-danger">رد شده</a>' +
+              '<span class="p-3">تغییر وضیعت به</span>'+
+              `<a href="${usersUrl}/change/${full['id']}/status/wait" class="dropdown-item bg-label-warning">در انتظار</a>` +
+              `<a href="${usersUrl}/change/${full['id']}/status/verify" class="dropdown-item bg-label-success">تایید شده</a>` +
+              `<a href="${usersUrl}/change/${full['id']}/status/reject" class="dropdown-item bg-label-danger">رد شده</a>` +
               '</div>' +
               '</div>'
             );
@@ -331,14 +331,14 @@ $(function () {
             }
           ]
         },
-        {
-          text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">افزودن کاربر جدید</span>',
-          className: 'add-new btn btn-primary waves-effect waves-light',
-          attr: {
-            'data-bs-toggle': 'offcanvas',
-            'data-bs-target': '#offcanvasAddUser'
-          }
-        }
+        // {
+        //   text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">افزودن کاربر جدید</span>',
+        //   className: 'add-new btn btn-primary waves-effect waves-light',
+        //   attr: {
+        //     'data-bs-toggle': 'offcanvas',
+        //     'data-bs-target': '#offcanvasAddUser'
+        //   }
+        // }
       ],
       // For responsive popup
       responsive: {
@@ -437,6 +437,7 @@ $(function () {
               .unique()
               .sort()
               .each(function (d, j) {
+                d = d == 'verify' ? 1 : (d == 'wait' ? 2 : 3 );
                 select.append(
                   '<option value="' +
                     statusObj[d].title +
