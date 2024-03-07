@@ -7,10 +7,20 @@ use Illuminate\Http\Request;
 
 class RetailCategoryController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
+    {
+        $categories = RetailCategory::all();
+        return view('user.retails.category', ['categories' => $categories]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function indexJson()
     {
         $categories = RetailCategory::all();
         return response()->json(
@@ -55,7 +65,7 @@ class RetailCategoryController extends Controller
      */
     public function show(RetailCategory $retailCategory)
     {
-        //
+        return view('user.retails.list', ['category' => $retailCategory]);
     }
 
     /**

@@ -1,9 +1,6 @@
 @extends('layouts/layoutMaster')
-@php
-    $configData = Helper::appClasses();
-@endphp
 
-@section('title', 'Academy Course - Apps')
+@section('title', 'بنک داری دسته بندی ' . $category->name)
 
 @section('vendor-style')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
@@ -68,8 +65,8 @@
         <div class="card mb-4">
             <div class="card-header d-flex flex-wrap justify-content-between gap-3">
                 <div class="card-title mb-0 me-1">
-                    <h5 class="mb-1">انگشتر</h5>
-                    <p class="text-muted mb-0">Total 6 course you have purchased</p>
+                    <h5 class="mb-1">{{ $category->name }}</h5>
+                    <p class="text-muted mb-0">{{ $category->desc }}</p>
                 </div>
                 <div class="d-flex justify-content-md-end align-items-center gap-4 flex-wrap">
                     {{-- <select id="select2_course_select" class="select2 form-select" data-placeholder="All Courses">
@@ -124,15 +121,18 @@
                                                         alt="tutor image 1" />
                                                 </div>
                                                 <div class="col-9">
-                                                    <div class="position-absolute float-left" style="left: 20px; cursor: pointer;" title="حذف">
-                                                        <button class="btn waves-effect" style="padding: 5px"><i class="ti ti-trash text-danger" style="font-size:25px;"></i></button>
-                                                        
+                                                    <div class="position-absolute float-left"
+                                                        style="left: 20px; cursor: pointer;" title="حذف">
+                                                        <button class="btn waves-effect" style="padding: 5px"><i
+                                                                class="ti ti-trash text-danger"
+                                                                style="font-size:25px;"></i></button>
+
                                                     </div>
-                                                    
+
                                                     <h5 class="card-title ms-3">حلقه الماس</h5>
                                                     <p class="d-block text-muted mb-0 ms-3" style="font-size:15px;">
                                                         86,500,00000000 ریال</p>
-                                                        
+
 
                                                     <div class="input-number d-flex gap-2 text-nowrap ms-3 mt-2">
                                                         <button class="btn btn-primary btn-icon input-number__plus"
@@ -168,14 +168,15 @@
             </div>
             <div class="card-body">
                 <div class="row gy-4 mb-4">
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="card p-2 h-100 shadow-none border">
-                            <div class="rounded-2 text-center mb-3">
-                                <a href="{{ url('app/academy/course-details') }}"><img class="img-fluid"
-                                        src="{{ asset('assets/img/pages/ring.jpg') }}" alt="tutor image 1" /></a>
-                            </div>
-                            <div class="card-body p-3 pt-2">
-                                {{-- <div class="d-flex justify-content-between align-items-center mb-3">
+                    @foreach ($category->retails as $retial)
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="card p-2 h-100 shadow-none border">
+                                <div class="rounded-2 text-center mb-3">
+                                    <a href="{{ url('app/academy/course-details') }}"><img class="img-fluid"
+                                            src="{{ asset('assets/img/pages/ring.jpg') }}" alt="tutor image 1" /></a>
+                                </div>
+                                <div class="card-body p-3 pt-2">
+                                    {{-- <div class="d-flex justify-content-between align-items-center mb-3">
                                     <span class="badge bg-label-primary">Web</span>
                                     <h6 class="d-flex align-items-center justify-content-center gap-1 mb-0">
                                         4.4 <span class="text-warning"><i
@@ -183,41 +184,40 @@
                                             class="text-muted">(1.23k)</span>
                                     </h6>
                                 </div> --}}
-                                <a href="{{ url('app/academy/course-details') }}" class="h5">حلقه الماس</a>
-                                <p class="mt-2">نام این محصول زیبا به معنای آب آبی رنگ و شفاف و نیلی میباشد. انگشتر طلا
-                                    نیلسو از محصولات جدید پرسته است که با طراحی زیبا، استایل شما را خاص و جذاب می‌کند.
-                                    همچنین این انگشتر می‌تواند هدیه‌ای جذاب برای عزیزانتان باشد.
-                                </p>
-                                <p class="d-flex align-items-center justify-content-end text-success">86,500,000 ریال</p>
-                                <div class="d-flex flex-column flex-md-row gap-2 text-nowrap">
-                                    <div class="d-grid gap-2 col-12 mx-auto">
-                                        <button class="btn btn-primary" id="addToCart" type="button">افزودن به سبد
-                                            خرید</button>
-                                    </div>
-
-                                </div>
-                                <div class="input-number d-none flex-column flex-md-row gap-2 text-nowrap">
-                                    <div class="d-grid gap-2 col-lg-3 mx-auto">
-                                        <button class="btn btn-primary input-number__plus" type="button"><i
-                                                class="ti ti-plus"></i></button>
-                                    </div>
-                                    <div class="d-grid gap-2 col-lg-4 mx-auto">
-                                        <input class="form-control text-center form__input input-number__input"
-                                            min="0" max="1000000" type="number" id="html5-number-input" />
+                                    <a href="{{ url('app/academy/course-details') }}" class="h5">{{$retial->name}}</a>
+                                    <p class="mt-2">{{$retial->desc}}</p>
+                                    <p class="d-flex align-items-center justify-content-end text-success">{{$retial->priceFormated()}} ریال
+                                    </p>
+                                    <div class="d-flex flex-column flex-md-row gap-2 text-nowrap">
+                                        <div class="d-grid gap-2 col-12 mx-auto">
+                                            <button class="btn btn-primary" id="addToCart" type="button">افزودن به سبد
+                                                خرید</button>
+                                        </div>
 
                                     </div>
+                                    <div class="input-number d-none flex-column flex-md-row gap-2 text-nowrap">
+                                        <div class="d-grid gap-2 col-lg-3 mx-auto">
+                                            <button class="btn btn-primary input-number__plus" type="button"><i
+                                                    class="ti ti-plus"></i></button>
+                                        </div>
+                                        <div class="d-grid gap-2 col-lg-4 mx-auto">
+                                            <input class="form-control text-center form__input input-number__input"
+                                                min="0" max="1000000" type="number" id="html5-number-input" />
 
-                                    <div class="d-grid gap-2 col-lg-3 mx-auto">
-                                        <button class="btn btn-primary input-number__minus" type="button"><i
-                                                class="ti ti-minus"></i></button>
+                                        </div>
+
+                                        <div class="d-grid gap-2 col-lg-3 mx-auto">
+                                            <button class="btn btn-primary input-number__minus" type="button"><i
+                                                    class="ti ti-minus"></i></button>
+                                        </div>
+
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-                <nav aria-label="Page navigation" class="d-flex align-items-center justify-content-center">
+                {{-- <nav aria-label="Page navigation" class="d-flex align-items-center justify-content-center">
                     <ul class="pagination">
                         <li class="page-item prev">
                             <a class="page-link" href="javascript:void(0);"><i
@@ -243,7 +243,7 @@
                                     class="ti ti-chevron-right ti-xs scaleX-n1-rtl"></i></a>
                         </li>
                     </ul>
-                </nav>
+                </nav> --}}
             </div>
         </div>
 

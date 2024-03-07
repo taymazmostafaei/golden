@@ -19,6 +19,10 @@ class Retail extends Model
         return $this->hasOne(RetailCategory::class);
     }
 
+    public function priceFormated(){
+        return number_format($this->price);
+    }
+
     protected $casts = [
         'moreoptions' => 'json',
         'hide' => 'boolean',

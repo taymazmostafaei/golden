@@ -9,6 +9,11 @@ class RetailCategory extends Model
 {
     use HasFactory;
 
+    public function retails()
+    {
+        return $this->hasMany(Retail::class);
+    }
+
     protected $fillable = [
         'name',
         'desc'
