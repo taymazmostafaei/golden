@@ -4,6 +4,52 @@
 
 'use strict';
 
+Livewire.on('AlertUser', function (data) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+  Toast.fire({
+    icon: data.type,
+    title: data.title
+  });
+});
+
+Livewire.on('UpdateCartCounter', function (data) {
+  $("#cartcounter").html(data.quantity);
+});
+
+Livewire.on('SaveCartSwal', function (data) {
+  Swal.fire({
+    text: "سفارش شما در سامانه ثبت خواهد شد!",
+    icon: "warning",
+    showCancelButton: false,
+    showDenyButton: false,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "لغو",
+    DenyButtonText: 'خیر',
+    confirmButtonText: "بله ثبت شود!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Livewire.dispatch('saveCart');
+    }
+  });
+});
+
+
+$(".add-to-cart").on("click", function () {
+  let clickedID = $(this).data('id');
+  Livewire.dispatch('addToCart', { retail: clickedID });
+});
+
 // Datatable (jquery)
 
 $(function () {

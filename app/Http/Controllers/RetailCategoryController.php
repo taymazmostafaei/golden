@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\RetailCategory;
+use Darryldecode\Cart\Facades\CartFacade;
 use Illuminate\Http\Request;
 
 class RetailCategoryController extends Controller
@@ -65,7 +66,8 @@ class RetailCategoryController extends Controller
      */
     public function show(RetailCategory $retailCategory)
     {
-        return view('user.retails.list', ['category' => $retailCategory]);
+        $cartcount = CartFacade::session(auth()->user()->id)->getTotalQuantity();
+        return view('user.retails.list', ['category' => $retailCategory, 'cartcount' => $cartcount]);
     }
 
     /**
