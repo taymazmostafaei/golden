@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use App\Models\Retail;
+use App\Models\RetailOrder;
+use App\Models\RetailOrderDetail;
 use Darryldecode\Cart\Facades\CartFacade;
 use Livewire\Component;
 
@@ -15,6 +17,7 @@ class Cart extends Component
 
     public $cart;
     public $cartTotal;
+    public $quantity;
 
     public function add(Retail $retail)
     {
@@ -49,7 +52,25 @@ class Cart extends Component
 
     public function save()
     {
-        dd('lets save');
+
+        $retailOrder = RetailOrder::create([
+            'user_id' => auth()->user()->id,
+            'items_count' => $this->quantity,
+            'full_price' => $this->cartTotal
+        ]);
+
+        foreach ($this->cart as $item) {
+
+            $retailOrderDetail = RetailOrderDetail::create([
+                'retail_order_id' => $retailOrder->id ,
+                'retail_id' => $item->id ,
+                'price' => $item->price ,
+                'quantity' => $item->quantity
+            ]);
+        }
+
+        CartFacade::session(auth()->user()->id)->clear();
+        $this->dispatch('AlertUser', type: 'success', title: 'سفارش شما با موفقیت ثبت شد.');
     }
 
     public function cartSubmit(){
@@ -61,8 +82,8 @@ class Cart extends Component
         $userId = auth()->user()->id;
         $this->cart = CartFacade::session($userId)->getContent();
         $this->cartTotal = CartFacade::session($userId)->getTotal();
-        $quantity = CartFacade::session(auth()->user()->id)->getTotalQuantity();
-        $this->dispatch('UpdateCartCounter', quantity: $quantity);
+        $this->quantity = CartFacade::session(auth()->user()->id)->getTotalQuantity();
+        $this->dispatch('UpdateCartCounter', quantity: $this->quantity);
         return view('livewire.cart');
     }
 }

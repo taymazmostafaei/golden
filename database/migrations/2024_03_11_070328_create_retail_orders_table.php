@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('retail_orders', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->boolean('completed');
+            $table->boolean('completed')->default(false);
             $table->integer('items_count');
             $table->double('full_price');
             $table->softDeletes();
