@@ -7,6 +7,7 @@
         <div class="col-md-12 col-xl-12">
             @if (!count($cart))
                 سبد خرید شما خالی هست.
+                <a href="{{route('orders.index')}}">مشاهده سفارشات</a>
             @endif
 
             @foreach ($cart as $item)

@@ -15,4 +15,14 @@ class RetailOrderDetail extends Model
         'price',
         'quantity'
     ];
+
+    public function retail()
+    {
+        return $this->belongsTo(Retail::class);
+    }
+
+    public function priceFormated(){
+        return number_format($this->price);
+    }
+
 }

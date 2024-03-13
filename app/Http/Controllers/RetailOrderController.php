@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RetailOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RetailOrderController extends Controller
 {
@@ -12,7 +13,12 @@ class RetailOrderController extends Controller
      */
     public function index()
     {
-        //
+        $userId = Auth::id(); // Get the authenticated user's ID
+
+        // Query posts for the authenticated user
+        $orders = RetailOrder::where('user_id', $userId)->latest()->paginate(10);
+    
+        return view('user.retails.orders', ['orders' => $orders]);
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Http\Controllers\Manager\UserController;
 use App\Http\Controllers\RetailCategoryController;
 use App\Http\Controllers\RetailController;
 use App\Http\Controllers\RetailMediaController;
+use App\Http\Controllers\RetailOrderController;
 
 Route::view('/', 'manager.dashboard')->name('manager-dashboard');
 
@@ -14,6 +15,7 @@ Route::prefix('/panel/user')->middleware('auth')->group(function () {
 
   Route::get('/retails/categories', [RetailCategoryController::class, 'index'])->name('panel.user.retails.categories');
   Route::get('/retails/category/{retailCategory}', [RetailCategoryController::class, 'show'])->name('panel.user.retails.category');
+  Route::resource('/retails/orders', RetailOrderController::class);
 });
 
 Route::prefix('/panel/manager')
