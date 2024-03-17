@@ -27,6 +27,11 @@ class RetailOrder extends Model
         return $this->hasMany(RetailOrderDetail::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function fullPriceFormated(){
         return number_format($this->full_price);
     }

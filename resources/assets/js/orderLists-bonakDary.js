@@ -39,15 +39,15 @@ $(function () {
   // Users datatable
   if (dt_user_table.length) {
     var dt_user = dt_user_table.DataTable({
-      ajax: assetsPath + 'json/orderLists-bonakDary.json', // JSON file to add data
+      ajax: OrdersRetailJsonPath ,
       columns: [
         // columns according to JSON
         { data: '' },
         { data: 'full_name' },
         // { data: 'status' },
         { data: 'date' },
-        { data: 'product_name' },
-        { data: 'product_categury' },
+        { data: 'id' },
+        { data: 'detail' },
         { data: 'price' },
         { data: 'action' }
       ],
@@ -158,13 +158,20 @@ $(function () {
           searchable: false,
           orderable: false,
           render: function (data, type, full, meta) {
-            return (
-              '<div class="d-flex align-items-center">' +
-              '<a href="javascript:;" class="text-body"><i class="ti ti-check ti-sm me-2"></i></a>' +
+            if (full['completed']) {
+              return (
+                '<div class="d-flex align-items-center text-success">' +
+                `تکمیل شده` +
+                '</div>'
+              );
+            }
 
-              '<a href="javascript:;" class="text-body"><i class="ti ti-trash text-danger ti-sm me-2"></i></a>' +
+            return (
+              '<div class="d-flex align-items-center text-warning">' +
+              `در انتظار` +
               '</div>'
             );
+
           }
         }
       ],

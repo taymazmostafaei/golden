@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Manager\RetailOrderController as ManagerRetailOrderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -66,7 +67,11 @@ Route::prefix('/panel/manager')
     // user / my profile
     Route::view('/user/myProfile', 'user.myProfile')->name('user-myProfile');
 
-    // landing page
+    Route::get('/orders/retail/json', [ManagerRetailOrderController::class, 'indexJson'])->name('orders.retail.json');
+    Route::resource('/orders/retail', ManagerRetailOrderController::class);
+    
+
+
   });
 // Manager Part
 // manager / dashboard

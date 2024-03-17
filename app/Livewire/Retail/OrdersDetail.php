@@ -9,6 +9,7 @@ class OrdersDetail extends Component
 {
 
     public $order;
+    public $is_admin = false;
 
     protected $listeners = ['UpdateOrderDetailModal' => 'setOrder'];
 
@@ -21,7 +22,13 @@ class OrdersDetail extends Component
     public function deleteOrder(RetailOrder $RetailOrder)
     {
         $RetailOrder->delete();
-        redirect()->route('orders.index')->with('success', 'سفارش مورد نظر با موفقیت لغو شد.');
+        redirect(request()->header('Referer'))->with('success', 'سفارش مورد نظر با موفقیت لغو شد.');
+    }
+
+    public function completedOrder(RetailOrder $RetailOrder) {
+        $RetailOrder->completed = true;
+        $RetailOrder->save();
+        redirect(request()->header('Referer'))->with('success', 'سفارش مورد نظر با موفقیت تکمیل شد.');
     }
 
     public function render()
