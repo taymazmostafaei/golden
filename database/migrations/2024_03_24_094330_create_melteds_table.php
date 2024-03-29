@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->enum('type', ['buy', 'sell']);
             $table->double('amount');
+            $table->double('price');
             $table->float('grams');
             $table->boolean('completed')->default(false);
             $table->timestamps();

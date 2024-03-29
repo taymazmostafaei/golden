@@ -19,7 +19,8 @@ Route::prefix('/panel/user')->middleware('auth')->group(function () {
   Route::get('/retails/category/{retailCategory}', [RetailCategoryController::class, 'show'])->name('panel.user.retails.category');
   Route::resource('/retails/orders', RetailOrderController::class);
 
-  Route::resource('/melted', MeltedController::class);
+  Route::get('/melted/json', [MeltedController::class, 'indexJson'])->name('panel.user.melted.json');
+  Route::resource('/melted', MeltedController::class);  
 });
 
 Route::prefix('/panel/manager')

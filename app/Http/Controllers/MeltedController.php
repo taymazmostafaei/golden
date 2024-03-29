@@ -16,6 +16,19 @@ class MeltedController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function indexJson()
+    {
+        $melteds = Melted::where('user_id', auth()->user()->id)->get();
+        return response()->json(
+            [
+                "data" => $melteds
+            ]
+        );
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

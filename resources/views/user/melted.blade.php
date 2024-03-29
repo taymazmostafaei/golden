@@ -19,6 +19,9 @@
 @endsection
 
 @section('page-script')
+    <script>
+        var meltedJsonUrl = "{{route('panel.user.melted.json')}}";
+    </script>
     <script src="{{ asset('assets/js/melted-order-list.js') }}"></script>
     <script src="{{ asset('assets/js/user/melted-sweetalert2.js') }}"></script>
 
@@ -78,13 +81,13 @@
                     <tr>
                         <th></th>
                         <th></th>
+                        <th>شناسه سفارش</th>
                         <th>نوع سفارش</th>
-                        <th>تاریخ</th>
-                        <th>قیمت فروش</th>
-                        <th>قیمت خرید</th>
+                        <th>قیمت هر گرم</th>
+                        <th>مقدار گرم</th>
+                        <th>قیمت</th>
                         <th>وضعیت</th>
-                        <th>مقدار طلا</th>
-                        <th>actions</th>
+                        <th>تاریخ</th>
                     </tr>
                 </thead>
             </table>

@@ -24,8 +24,7 @@ $(function () {
   var dt_order_table = $('.datatables-order'),
     statusObj = {
       1: { title: 'در انتظار', class: 'bg-label-warning' },
-      2: { title: 'تایید شده', class: 'bg-label-success' },
-      3: { title: 'رد شده', class: 'bg-label-danger' }
+      2: { title: 'تکمیل شده', class: 'bg-label-success' },
     },
     orderObj = {
       1: { title: 'خرید', class: 'bg-label-success' },
@@ -42,18 +41,18 @@ $(function () {
 
   if (dt_order_table.length) {
     var dt_products = dt_order_table.DataTable({
-      ajax: assetsPath + 'json/melted-order-list.json', // JSON file to add data
+      ajax: meltedJsonUrl,
       columns: [
         // columns according to JSON
         { data: 'id' },
         { data: 'id' },
-        { data: 'order' },
-        { data: 'date' },
-        { data: 'price_sale' },
-        { data: 'price_buy' },
-        { data: 'status' },
-        { data: 'value' }, 
-        { data: '' }
+        { data: 'id' },
+        { data: 'type' },
+        { data: 'price' },
+        { data: 'grams' },
+        { data: 'amount' },
+        { data: 'completed' },
+        { data: 'created_at' }, 
       ],
       columnDefs: [
         {
@@ -81,17 +80,19 @@ $(function () {
         },
         {
           // // Order ID
-          targets: 2,
+          targets: 3,
           render: function (data, type, full, meta) {
-            var $order = full['order'];
+            var type = full['type'];
 
+            if (type == 'buy') {
+              return (
+                `<span class="badge px-2 bg-label-success" text-capitalized="">خرید</span>`
+              );
+            }
             return (
-              '<span class="badge px-2 ' +
-              orderObj[$order].class +
-              '" text-capitalized>' +
-              orderObj[$order].title +
-              '</span>'
+              `<span class="badge px-2 bg-label-danger" text-capitalized="">فروش</span>`
             );
+
           }
           
         },
@@ -174,23 +175,28 @@ $(function () {
         // },
         {
           // Status
-          targets: -3,
+          targets: 7,
           render: function (data, type, full, meta) {
-            var $status = full['status'];
+            var completed = full['completed'];
+
+            if (completed) {
+              return (
+                `<span class="badge px-2 bg-label-secondary" text-capitalized="">تکمیل شده</span>`
+              );
+            }
 
             return (
-              '<span class="badge px-2 ' +
-              statusObj[$status].class +
-              '" text-capitalized>' +
-              statusObj[$status].title +
-              '</span>'
+              `<span class="badge px-2 bg-label-warning" text-capitalized="">در انتظار</span>`
             );
           }
         },
         {
-           targets: -2
+          targets: [4,6], // Target the second column (index starts from 0)
+          render: function(data, type, full, meta) {
+              // Convert the price to Iranian Rial format
+              return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ریال';
+          }
         },
-       
         // {
         //   // Payment Method
         //   targets: -2,
@@ -217,30 +223,9 @@ $(function () {
         //     );
         //   }
         // },
-        {
-          // Actions
-          targets: -1,
-          title: 'Actions',
-          searchable: false,
-          orderable: false,
-          render: function (data, type, full, meta) {
-            return (
-              '<div class="d-flex justify-content-sm-center align-items-sm-center">' +
-              '<button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>' +
-              '<div class="dropdown-menu dropdown-menu-end m-0">' +
-              '<a href=" ' +
-              baseUrl +
-              'app/ecommerce/order/details" class="dropdown-item">View</a>' +
-              '<a href="javascript:0;" class="dropdown-item delete-record">' +
-              'Delete' +
-              '</a>' +
-              '</div>' +
-              '</div>'
-            );
-          }
-        }
+      
       ],
-      order: [3, 'asc'], //set any columns order asc/desc
+      order: [2, 'desc'], //set any columns order asc/desc
       dom:
         '<"card-header pb-md-2 d-flex flex-column flex-md-row align-items-start align-items-md-center"<f><"d-flex align-items-md-center justify-content-md-end mt-2 mt-md-0 gap-2"l<"dt-action-buttons"B>>' +
         '>t' +
@@ -436,7 +421,13 @@ $(function () {
     $('.dataTables_length').addClass('mt-0 mt-md-3 ms-n2');
     $('.dt-action-buttons').addClass('pt-0');
     $('.dataTables_filter').addClass('ms-n3');
+
+    Livewire.on('ReloadDataTable', function () {
+      dt_products.ajax.reload();
+    });
+
   }
+
 
   // Delete Record
   $('.datatables-order tbody').on('click', '.delete-record', function () {
