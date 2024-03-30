@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Manager\MeltedController as ManagerMeltedController;
 use App\Http\Controllers\Manager\RetailOrderController as ManagerRetailOrderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -71,9 +72,13 @@ Route::prefix('/panel/manager')
     // user / my profile
     Route::view('/user/myProfile', 'user.myProfile')->name('user-myProfile');
 
+    Route::get('/orders/melted/json', [ManagerMeltedController::class, 'indexJson'])->name('orders.melted.json');
+    Route::get('/orders/melted/ignore/{melted}', [ManagerMeltedController::class, 'ignore'])->name('orders.melted.ignore');
+    Route::get('/orders/melted/accept/{melted}', [ManagerMeltedController::class, 'accept'])->name('orders.melted.accept');
+    Route::resource('/orders/melted', ManagerMeltedController::class);
+
     Route::get('/orders/retail/json', [ManagerRetailOrderController::class, 'indexJson'])->name('orders.retail.json');
     Route::resource('/orders/retail', ManagerRetailOrderController::class);
-    
 
 
   });

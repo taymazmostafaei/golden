@@ -24,8 +24,8 @@ $(function () {
     userView = baseUrl + 'manager/user/show',
     statusObj = {
       
-      1: { title: 'خرید', class: 'bg-label-success' },
-      2: { title: 'فروش', class: 'bg-label-danger' }
+      buy: { title: 'خرید', class: 'bg-label-success' },
+      sell: { title: 'فروش', class: 'bg-label-danger' }
     };
 
   if (select2.length) {
@@ -39,15 +39,17 @@ $(function () {
   // Users datatable
   if (dt_user_table.length) {
     var dt_user = dt_user_table.DataTable({
-      ajax: assetsPath + 'json/orderLists-melted.json', // JSON file to add data
+      ajax: MeltedJsonUrl,
       columns: [
         // columns according to JSON
         { data: '' },
+        { data: 'id' },
+        { data: 'type' },
         { data: 'full_name' },
-        { data: 'status' },
-        { data: 'date' },
-        { data: 'value_grams' },
         { data: 'price' },
+        { data: 'grams' },
+        { data: 'amount' },
+        { data: 'date' },
         { data: 'action' }
       ],
       columnDefs: [
@@ -63,12 +65,19 @@ $(function () {
           }
         },
         {
+         targets: [4,6], // Target the second column (index starts from 0)
+         render: function(data, type, full, meta) {
+             // Convert the price to Iranian Rial format
+             return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ریال';
+         }
+       },
+        {
           // User full name and phoneNum
-          targets: 2,
+          targets: 3,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
             var $name = full['full_name'],
-              $phoneNum = full['phoneNum'],
+              $phoneNum = full['phone'],
               $image = full['avatar'];
             if ($image) {
               // For Avatar image
@@ -137,10 +146,10 @@ $(function () {
         // },
         {
           // User status
-          targets: 1,
+          targets: 2,
           render: function (data, type, full, meta) {
-            var $status = full['status'];
-
+            var $status = full['type'];
+            
             return (
               '<span class="badge ' +
               statusObj[$status].class +
@@ -153,14 +162,19 @@ $(function () {
         {
           // Actions
           targets: -1,
-          title: 'تایید یا رد',
+          title: 'تکمیل یا رد',
           searchable: false,
           orderable: false,
           render: function (data, type, full, meta) {
+            if (full['completed']) {
+              return (
+                `<span class="badge px-2 bg-label-secondary" text-capitalized="">تکمیل شده</span>`
+                );
+            }
             return (
               '<div class="d-flex align-items-center">' +
-              '<a href="javascript:;" class="text-body"><i class="ti ti-check ti-sm me-2"></i></a>' +
-              '<a href="javascript:;" class="text-body"><i class="ti ti-x ti-sm mx-2"></i></a>' +
+              `<a href="melted/accept/${full['id']}" onclick="return confirm('آیا از تکمیل سفارش اطمینان دارید؟')" class="text-body"><i class="ti ti-check ti-sm me-2"></i></a>` +
+              `<a href="melted/ignore/${full['id']}" onclick="return confirm('آیا از رد سفارش اطمینان دارید؟')" class="text-body"><i class="ti ti-x ti-sm mx-2"></i></a>` +
               '</div>'
             );
           }
@@ -322,14 +336,6 @@ $(function () {
               }
             }
           ]
-        },
-        {
-          text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">افزودن سفارش جدید</span>',
-          className: 'add-new btn btn-primary waves-effect waves-light',
-          attr: {
-            'data-bs-toggle': 'offcanvas',
-            'data-bs-target': '#offcanvasAddUser'
-          }
         }
       ],
       // For responsive popup

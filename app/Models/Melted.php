@@ -23,4 +23,9 @@ class Melted extends Model
         'updated_at' => JalaliDate::class.':Y/m/d',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
