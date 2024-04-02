@@ -41,7 +41,7 @@ class Buy extends Component
     {
         if ($this->pay != '') {
 
-            $this->obtain = $this->pay / $this->price;
+            $this->obtain = ($this->pay / 750 * 705 * 4.6082 / 170000);
         }
     }
 
@@ -49,13 +49,13 @@ class Buy extends Component
     {
         if ($this->obtain != '') {
 
-            $this->pay = $this->obtain * $this->price;
+            $this->pay = ($this->obtain * 750 / 705 / 4.6082 * $this->price);
         }
     }
 
     public function mount()
     {
-        $this->price = 9;
+        $this->price = 121500000;
     }
 
     public function render()
