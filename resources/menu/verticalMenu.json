@@ -1,16 +1,16 @@
 {
   "menu": [
     {
-      "url": "panel",
+      "route": "manager.dashboard",
       "name": "داشبورد",
       "icon": "menu-icon tf-icons ti ti-dashboard",
-      "slug": "manager-dashboard"
+      "slug": "manager.dashboard"
     },
     {
-      "url": "panel/manager/user/list",
+      "route": "users.index",
       "name": "لیست کاربران",
       "icon": "menu-icon tf-icons ti ti-users",
-      "slug": "manager-user-list"
+      "slug": "users.index"
     },
     {
       "name": "لیست سفارش",
@@ -19,14 +19,14 @@
       "badge": ["primary", "2"],
       "submenu": [
         {
-          "url": "panel/manager/order/bonakDary",
+          "route":"orders.retail.index",
           "name": "بنکداری",
-          "slug": "manager-order-bonakDary"
+          "slug": "orders.retail.index"
         },
         {
-          "url": "panel/manager/order/melted",
+          "route":"orders.melted.index",
           "name": "آبشده",
-          "slug": "manager-order-melted"
+          "slug": "orders.melted.index"
         }
       ]
     },
@@ -37,53 +37,50 @@
       "badge": ["primary", "3"],
       "submenu": [
         {
-          "url": "panel/manager/bonakdary_product/list",
+          "route":"retail.index",
           "name": "لیست محصولات",
-          "slug": "manager-bonak-list"
+          "slug": "retail.index"
         },
         {
-          "url": "panel/manager/bonakdary_product/create_cat",
+          "route":"retail.category",
           "name": "دسته بندی",
-          "slug": "manager-bonak-cat-create"
+          "slug": "retail.category"
         },
         {
-          "url": "panel/manager/bonakdary_product/create_pro",
+          "route":"retail.create",
           "name": "تعریف محصول",
-          "slug": "manager-bonak-pro-create"
+          "slug": "retail.create"
         }
       ]
     },
     {
-      "url": "app/email",
       "name": "اخبار(وبلاگ)",
       "icon": "menu-icon tf-icons ti ti-map",
       "slug": "app-email",
       "badge": ["primary", "2"],
       "submenu": [
         {
-          "url": "panel/manager/blog/list",
           "name": "لیست",
           "slug": "manager-order-list"
         },
         {
-          "url": "panel/manager/blog/create",
           "name": "وبلاگ جدید",
           "slug": "manager-order-create"
         }
       ]
     },
     {
-      "url": "panel/manager/setting/setFy",
+      "route":"setting",
       "name": "تنظیمات",
       "icon": "menu-icon tf-icons ti ti-settings",
-      "slug": "manager-setting"
+      "slug": "setting"
     },
     
     {
-      "url": "panel/user/melted",
+      "route":"melted.index",
       "name": "آبشده",
       "icon": "menu-icon tf-icons fa-solid fa-icicles",
-      "slug": "user-melted"
+      "slug": "melted.index"
     },
     {
       "name": "بنکداری",
@@ -92,22 +89,17 @@
       "badge": ["primary", "2"],
       "submenu": [
         {
-          "url": "panel/user/bonakDary/category",
+          "route":"panel.user.retails.categories",
           "name": "دسته بندی",
-          "slug": "user-bonakDary-category"
-        },
-        {
-          "url": "panel/user/bonakDary/products_list",
-          "name": "لیست محصولات",
-          "slug": "user-bonakDary-products_list"
+          "slug": "panel.user.retails.categories"
         }
       ]
     },
     {
-      "url": "panel/user/myProfile",
+      "route":"user.profile",
       "name": "پروفایل من",
       "icon": "menu-icon tf-icons ti ti-user",
-      "slug": "user-myProfile"
+      "slug": "user.profile"
     }
   ]
 }

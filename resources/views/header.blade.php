@@ -27,19 +27,19 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
         </button>
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link fw-medium" aria-current="page" href="{{url('index')}}#home">خانه</a>
+            <a class="nav-link fw-medium" aria-current="page" href="#home">خانه</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" href="{{url('index')}}#slider">اسلایدر</a>
+            <a class="nav-link fw-medium" href="#slider">اسلایدر</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" href="{{url('index')}}#news">اخبار</a>
+            <a class="nav-link fw-medium" href="#news">اخبار</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingTeam">آبشده</a>
+            <a class="nav-link fw-medium" href="{{route('melted.index')}}">آبشده</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" href="{{url('front-pages/landing')}}#landingFAQ">بنکداری</a>
+            <a class="nav-link fw-medium" href="{{route('retail.index')}}">بنکداری</a>
           </li>
         </ul>
       </div>
@@ -75,7 +75,7 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
         @endif
         <!-- navbar button: Start -->
         <li>
-          <a href="{{url('/auth/login-cover')}}" class="btn btn-primary" target="_blank"><span class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span class="d-none d-md-block">ورود / ثبت نام</span></a>
+          <a href="{{route('login')}}" class="btn btn-primary" target="_blank"><span class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span class="d-none d-md-block">ورود / ثبت نام</span></a>
         </li>
         <!-- navbar button: End -->
       </ul>

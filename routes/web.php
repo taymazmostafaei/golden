@@ -12,37 +12,37 @@ use App\Http\Controllers\RetailController;
 use App\Http\Controllers\RetailMediaController;
 use App\Http\Controllers\RetailOrderController;
 
-Route::view('/', 'manager.dashboard')->name('manager-dashboard');
-
 Route::prefix('/panel/user')->middleware('auth')->group(function () {
 
+  # retails
   Route::get('/retails/categories', [RetailCategoryController::class, 'index'])->name('panel.user.retails.categories');
   Route::get('/retails/category/{retailCategory}', [RetailCategoryController::class, 'show'])->name('panel.user.retails.category');
   Route::resource('/retails/orders', RetailOrderController::class);
 
+  # melted
   Route::get('/melted/json', [MeltedController::class, 'indexJson'])->name('panel.user.melted.json');
-  Route::resource('/melted', MeltedController::class);  
+  Route::resource('/melted', MeltedController::class);
+
+  Route::view('/myProfile', 'user.myProfile')->name('user.profile');
 });
 
 Route::prefix('/panel/manager')
   ->middleware('auth')
   ->group(function () {
-    Route::view('/', 'manager.dashboard')->name('manager-dashboard');
-    // manager / user
-    Route::view('/user/show', 'manager.user.show');
-    // manager / setting
-    Route::view('/setting/possibilities', 'manager.setting.possibilities');
-    Route::view('/setting/setFy', 'manager.setting.setFy')->name('manager-setting');
-    // manager / order
-    Route::view('/order/melted', 'manager.order.melted')->name('manager-order-melted');
-    Route::view('/order/bonakDary', 'manager.order.bonakDary')->name('manager-order-bonakDary');
-    // manager / bonakdaryProduct
 
+    # dashboard
+    Route::view('/', 'manager.dashboard')->name('manager.dashboard');
+
+    # setting
+    Route::view('/setting/possibilities', 'manager.setting.possibilities')->name('setting');
+
+    # users
     Route::get('/users/list/json', [UserController::class, 'indexJson'])->name('user-list-json');
     Route::get('/users/change/{user}/status/{status}', [UserController::class, 'changeStatus'])->name('user-change-status');
     Route::post('/usercert/{user}', [UserController::class, 'certUpdate'])->name('user-cert-upload');
     Route::resource('/users', UserController::class);
 
+    # retails
     Route::view('/retail/category', 'manager.retail.category.index')->name('retail.category');
     Route::get('/retail/category/list', [RetailCategoryController::class, 'indexJson'])->name('retail-category-list');
     Route::get('/retail/category/list/formated', [RetailCategoryController::class, 'formatedIndex'])->name(
@@ -55,36 +55,20 @@ Route::prefix('/panel/manager')
     );
     Route::resource('/retail', RetailController::class);
 
-    Route::view('/bonakdary_product/create_pro', 'manager.bonakdary_product.create_pro')->name(
-      'manager-bonak-pro-create'
-    );
-    Route::view('/bonakdary_product/list', 'manager.bonakdary_product.list')->name('manager-bonak-list');
-    // manager / blog
+    # blog
     Route::view('/blog/list', 'manager.blog.list')->name('manager-order-list');
     Route::view('/blog/create', 'manager.blog.create')->name('manager-order-create');
 
-    // User Part
-    // user / melted
-    Route::view('/user/melted', 'user.melted')->name('user-melted');
-    // user / bonakDary
-    Route::view('/user/bonakDary/category', 'user.bonakDary.category')->name('user-bonakDary-category');
-    Route::view('/user/bonakDary/products_list', 'user.bonakDary.products_list')->name('user-bonakDary-products_list');
-    // user / my profile
-    Route::view('/user/myProfile', 'user.myProfile')->name('user-myProfile');
-
+    # orders
     Route::get('/orders/melted/json', [ManagerMeltedController::class, 'indexJson'])->name('orders.melted.json');
     Route::get('/orders/melted/ignore/{melted}', [ManagerMeltedController::class, 'ignore'])->name('orders.melted.ignore');
     Route::get('/orders/melted/accept/{melted}', [ManagerMeltedController::class, 'accept'])->name('orders.melted.accept');
-    Route::resource('/orders/melted', ManagerMeltedController::class);
-
+    Route::resource('/orders/melted', ManagerMeltedController::class, ['as' => 'orders']);
     Route::get('/orders/retail/json', [ManagerRetailOrderController::class, 'indexJson'])->name('orders.retail.json');
-    Route::resource('/orders/retail', ManagerRetailOrderController::class);
-
-
+    Route::resource('/orders/retail', ManagerRetailOrderController::class, ['as' => 'orders']);
   });
-// Manager Part
-// manager / dashboard
+
 Auth::routes();
 
-Route::view('/index', 'index', ['pageConfigs' => ['myLayout' => 'front']])->name('index');
+Route::view('/', 'index', ['pageConfigs' => ['myLayout' => 'front']])->name('index');
 Route::view('/blog', 'blog', ['pageConfigs' => ['myLayout' => 'front']])->name('blog');
