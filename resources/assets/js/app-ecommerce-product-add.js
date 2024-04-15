@@ -11,15 +11,24 @@
   const commentEditor = document.querySelector('.comment-editor');
 
   if (commentEditor) {
-    new Quill(commentEditor, {
-      modules: {
-        toolbar: '.comment-toolbar'
-      },
-      placeholder: 'Product Description',
-      theme: 'snow'
+    const quill = new Quill(commentEditor, {
+        modules: {
+            toolbar: '.comment-toolbar'
+        },
+        placeholder: 'Product Description',
+        theme: 'snow'
     });
-  }
 
+    // Update hidden input with editor content
+    const editorContentInput = document.createElement('input');
+    editorContentInput.type = 'hidden';
+    editorContentInput.name = 'text'; // Name should match the name used in your controller
+    commentEditor.parentNode.appendChild(editorContentInput); // Append the hidden input next to the editor
+
+    quill.on('text-change', function() {
+        editorContentInput.value = quill.root.innerHTML;
+    });
+}
   // previewTemplate: Updated Dropzone default previewTemplate
 
   // ! Don't change it unless you really know what you are doing

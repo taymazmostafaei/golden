@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Manager\MeltedController as ManagerMeltedController;
 use App\Http\Controllers\Manager\RetailOrderController as ManagerRetailOrderController;
 use Illuminate\Support\Facades\Route;
@@ -56,8 +57,8 @@ Route::prefix('/panel/manager')
     Route::resource('/retail', RetailController::class);
 
     # blog
-    Route::view('/blog/list', 'manager.blog.list')->name('manager-order-list');
-    Route::view('/blog/create', 'manager.blog.create')->name('manager-order-create');
+    Route::post('/blog/media/upload/{blog}', [BlogController::class, 'mediaUpload'])->name('blog-media-upload');
+    Route::resource('/blog', BlogController::class);
 
     # orders
     Route::get('/orders/melted/json', [ManagerMeltedController::class, 'indexJson'])->name('orders.melted.json');
