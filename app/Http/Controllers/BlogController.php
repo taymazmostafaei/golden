@@ -11,9 +11,13 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $blogs = Blog::latest()->paginate(30);
+
+        if ($search = $request->input('search')) {
+            $blogs = Blog::where('title', 'like', "%$search%")->latest()->paginate(30);
+        }
 
         return view('manager.blog.index', ['blogs' => $blogs]);
     }
@@ -97,7 +101,6 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        dd($request->all());
         // Validate incoming request
         $request->validate([
             'title' => 'required|string',
@@ -116,7 +119,7 @@ class BlogController extends Controller
         $blog->save();
 
         // Optionally, you can return a response indicating success
-        return redirect()->route('blog.index')->with('success', 'با موفقیت بروز رسانی شد.');
+        return redirect()->back()->with('success', 'با موفقیت بروز رسانی شد.');
     }
 
     /**

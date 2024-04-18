@@ -60,12 +60,14 @@
       "badge": ["primary", "2"],
       "submenu": [
         {
+          "route":"blog.index",
           "name": "لیست",
-          "slug": "manager-order-list"
+          "slug": "blog.index"
         },
         {
+          "route":"blog.create",
           "name": "وبلاگ جدید",
-          "slug": "manager-order-create"
+          "slug": "blog.create"
         }
       ]
     },
