@@ -29,19 +29,19 @@
                     <h6 class="footer-title mb-4">بخش ها</h6>
                     <ul class="list-unstyled d-flex justify-content-between">
                         <li class="mb-3">
-                            <a href="{{ url('index') }}#home" target="_blank" class="footer-link">خانه</a>
+                            <a href="{{ route('index') }}#home" target="_blank" class="footer-link">خانه</a>
                         </li>
                         <li class="mb-3">
-                            <a href="{{ url('index') }}#slider" target="_blank" class="footer-link">اسلایدر</a>
+                            <a href="{{ url('/') }}#slider" target="_blank" class="footer-link">اسلایدر</a>
                         </li>
                         <li class="mb-3">
-                            <a href="{{ url('index') }}#news" target="_blank" class="footer-link">اخبار</a>
+                            <a href="{{ route('news') }}" target="_blank" class="footer-link">اخبار</a>
                         </li>
                         <li class="mb-3">
-                            <a href="/demo-2" target="_blank" class="footer-link">آبشده</a>
+                            <a href="{{ route('melted.index') }}" target="_blank" class="footer-link">آبشده</a>
                         </li>
                         <li class="mb-3">
-                            <a href="/demo-3" target="_blank" class="footer-link">بنکداری</a>
+                            <a href="{{ route('panel.user.retails.categories') }}" target="_blank" class="footer-link">بنکداری</a>
                         </li>
                     </ul>
                     <h6 class="footer-title mb-4">شبکه های اجتماعی</h6>
