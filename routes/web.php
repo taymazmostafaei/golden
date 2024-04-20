@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BlogClientController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Manager\MeltedController as ManagerMeltedController;
 use App\Http\Controllers\Manager\RetailOrderController as ManagerRetailOrderController;
 use Illuminate\Support\Facades\Route;
@@ -71,5 +73,7 @@ Route::prefix('/panel/manager')
 
 Auth::routes();
 
-Route::view('/', 'index', ['pageConfigs' => ['myLayout' => 'front']])->name('index');
-Route::view('/blog', 'blog', ['pageConfigs' => ['myLayout' => 'front']])->name('blog');
+# client
+Route::get('/news', [BlogClientController::class, 'index'])->name('news');
+Route::get('/news/{blog}', [BlogClientController::class, 'show'])->name('news.show');
+Route::get('/', [LandingController::class , 'index'])->name('index');

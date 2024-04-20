@@ -19,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/panel/manager';
 
-    public const PANEL = '/panel';
+    public const PANEL = '/panel/manager';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

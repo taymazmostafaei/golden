@@ -60,7 +60,7 @@
                 <a href="#landingPricing" class="btn btn-primary btn-lg">بنکداری</a> --}}
                 <div class="d-flex justify-content-center p-4">
                     <div class="col-md-12 col-xl-12 m-4">
-                        <a href="{{route('melted.index')}}">
+                        <a href="{{ route('melted.index') }}">
                             <div class="card bg-primary text-white mb-3">
                                 <div class="card-header"></div>
                                 <div class="card-body">
@@ -70,7 +70,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 col-xl-12 m-4">
-                        <a href="{{route('retail.index')}}">
+                        <a href="{{ route('retail.index') }}">
                             <div class="card bg-primary text-white mb-3">
                                 <div class="card-header"></div>
                                 <div class="card-body">
@@ -104,70 +104,31 @@
                 </p> --}}
                 <div class="features-icon-wrapper row gx-0 gy-4 g-sm-5">
 
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="">
-                            <div class="card mb-3">
-                                <img class="card-img-top" src="{{ asset('assets/img/front-pages/landing-page/4.jpg') }}"
-                                    alt="Card image cap" />
-                                <div class="card-body">
-                                    <h5 class="card-title">عنوان</h5>
-                                    <p class="card-text">
-                                        این یک کارت عریض‌تر با متن پشتیبانی در زیر به‌عنوان ورودی طبیعی به موارد اضافی است
-                                        محتوا. این محتوا یک است
-                                        کمی طولانی تر
-                                    </p>
-                                    <p class="card-text">
-                                        <small class="text-muted">آخرین به روز رسانی 3 دقیقه پیش
-                                        </small>
-                                    </p>
+                    @foreach ($blogs as $blog)
+                        <div class="col-lg-4 col-sm-6">
+                            <a href="">
+                                <div class="card mb-3">
+                                    <img class="card-img-top"
+                                    src="{{ asset('storage/blog/' . $blog->media_path) }}"
+                                        alt="Card image cap" />
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{$blog->title}}</h5>
+                                        <p class="card-text">
+                                            {{$blog->desc}}
+                                        </p>
+                                        <p class="card-text">
+                                            <small class="text-muted">{{$blog->updated_at}}
+                                            </small>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="">
-                            <div class="card mb-3">
-                                <img class="card-img-top" src="{{ asset('assets/img/front-pages/landing-page/4.jpg') }}"
-                                    alt="Card image cap" />
-                                <div class="card-body">
-                                    <h5 class="card-title">عنوان</h5>
-                                    <p class="card-text">
-                                        این یک کارت عریض‌تر با متن پشتیبانی در زیر به‌عنوان ورودی طبیعی به موارد اضافی است
-                                        محتوا. این محتوا یک است
-                                        کمی طولانی تر
-                                    </p>
-                                    <p class="card-text">
-                                        <small class="text-muted">آخرین به روز رسانی 3 دقیقه پیش
-                                        </small>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="">
-                            <div class="card mb-3">
-                                <img class="card-img-top" src="{{ asset('assets/img/front-pages/landing-page/4.jpg') }}"
-                                    alt="Card image cap" />
-                                <div class="card-body">
-                                    <h5 class="card-title">عنوان</h5>
-                                    <p class="card-text">
-                                        این یک کارت عریض‌تر با متن پشتیبانی در زیر به‌عنوان ورودی طبیعی به موارد اضافی است
-                                        محتوا. این محتوا یک است
-                                        کمی طولانی تر
-                                    </p>
-                                    <p class="card-text">
-                                        <small class="text-muted">آخرین به روز رسانی 3 دقیقه پیش
-                                        </small>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    @endforeach
 
                 </div>
                 <div class="text-center mt-5">
-                    <a href="#landingPricing" class="btn btn-outline-primary btn-lg">بیشتر ...</a>
+                    <a href="{{route('news')}}" class="btn btn-outline-primary btn-lg">بیشتر ...</a>
                 </div>
         </section>
         <!-- Useful features: End -->
@@ -234,36 +195,13 @@
                         <div class="swiper-reviews-carousel overflow-hidden mb-5 pb-md-2 pb-md-3">
                             <div class="swiper" id="swiper-reviews">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('assets/img/front-pages/landing-page/r3.webp') }}"
-                                            alt="contact customer service" class="contact-img w-100 scaleX-n1-rtl" />
 
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('assets/img/front-pages/landing-page/a1.webp') }}"
-                                            alt="contact customer service" class="contact-img w-100 scaleX-n1-rtl" />
-
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('assets/img/front-pages/landing-page/r1.webp') }}"
-                                            alt="contact customer service" class="contact-img w-100 scaleX-n1-rtl" />
-
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('assets/img/front-pages/landing-page/r2.webp') }}"
-                                            alt="contact customer service" class="contact-img w-100 scaleX-n1-rtl" />
-
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('assets/img/front-pages/landing-page/a3.webp') }}"
-                                            alt="contact customer service" class="contact-img w-100 scaleX-n1-rtl" />
-
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('assets/img/front-pages/landing-page/a4.webp') }}"
-                                            alt="contact customer service" class="contact-img w-100 scaleX-n1-rtl" />
-
-                                    </div>
+                                    @foreach ($slides as $slide)
+                                        <div class="swiper-slide">
+                                            <img src="{{ asset('storage/retail-media/' . $slide->path) }}"
+                                                alt="contact customer service" class="contact-img w-100 scaleX-n1-rtl" />
+                                        </div>
+                                    @endforeach
 
                                 </div>
                                 <div class="swiper-button-next"></div>

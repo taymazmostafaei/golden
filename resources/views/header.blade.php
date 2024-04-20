@@ -27,7 +27,7 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
         </button>
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link fw-medium" aria-current="page" href="#home">خانه</a>
+            <a class="nav-link fw-medium" aria-current="page" href="{{route('index')}}">خانه</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fw-medium" href="#slider">اسلایدر</a>
