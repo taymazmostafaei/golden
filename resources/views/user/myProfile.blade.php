@@ -54,7 +54,7 @@
                             <img class="img-fluid rounded mb-3 pt-1 mt-4" src="{{ asset('assets/img/avatars/15.png') }}"
                                 height="100" width="100" alt="User avatar" />
                             <div class="user-info text-center">
-                                <h4 class="mb-2">حسین غفوری</h4>
+                                <h4 class="mb-2">{{$user->firstname}} {{$user->lastname}}</h4>
                                 <span class="badge bg-label-success" text-capitalized="">تایید شده</span>
                             </div>
                         </div>
@@ -64,28 +64,28 @@
                             <span class="badge bg-label-primary p-2 rounded"><i class='ti ti-user-code'></i></span>
                             <div>
                                 <p class="mb-0 fw-medium">کدملی</p>
-                                <small>1366987745</small>
+                                <small>{{$user->national_id}}</small>
                             </div>
                         </div>
                         <div class="d-flex align-items-start me-4 mt-3 gap-2">
                             <span class="badge bg-label-primary p-2 rounded"><i class='ti ti-phone'></i></span>
                             <div>
                                 <p class="mb-0 fw-medium">شماره ثابت</p>
-                                <small>1366987745</small>
+                                <small>{{$user->phone}}</small>
                             </div>
                         </div>
                         <div class="d-flex align-items-start me-4 mt-3 gap-2">
                             <span class="badge bg-label-primary p-2 rounded"><i class='ti ti-device-mobile'></i></span>
                             <div>
                                 <p class="mb-0 fw-medium">شماره موبایل</p>
-                                <small>1366987745</small>
+                                <small>{{$user->telphone}}</small>
                             </div>
                         </div>
                         <div class="d-flex align-items-start me-4 mt-3 gap-2">
                             <span class="badge bg-label-primary p-2 rounded"><i class="ti ti-calendar"></i></span>
                             <div>
                                 <p class="mb-0 fw-medium">تاریخ ثبت نام</p>
-                                <small>1383/6/23</small>
+                                <small>{{$user->birt}}</small>
                             </div>
                         </div>
                     </div>

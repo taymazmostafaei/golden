@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Manager\UserController;
 use App\Http\Controllers\MeltedController;
+use App\Http\Controllers\Myprofile;
 use App\Http\Controllers\RetailCategoryController;
 use App\Http\Controllers\RetailController;
 use App\Http\Controllers\RetailMediaController;
@@ -26,7 +27,7 @@ Route::prefix('/panel/user')->middleware('auth')->group(function () {
   Route::get('/melted/json', [MeltedController::class, 'indexJson'])->name('panel.user.melted.json');
   Route::resource('/melted', MeltedController::class);
 
-  Route::view('/myProfile', 'user.myProfile')->name('user.profile');
+  Route::get('/myProfile', [Myprofile::class, 'index'])->name('user.profile');
 });
 
 Route::prefix('/panel/manager')
