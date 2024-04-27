@@ -85,7 +85,7 @@
                             <span class="badge bg-label-primary p-2 rounded"><i class="ti ti-calendar"></i></span>
                             <div>
                                 <p class="mb-0 fw-medium">تاریخ ثبت نام</p>
-                                <small>{{$user->birt}}</small>
+                                <small>{{$user->created_at}}</small>
                             </div>
                         </div>
                     </div>
@@ -114,41 +114,7 @@
                             class="ti ti-user-check ti-xs me-1"></i>حساب کاربری</a></li>
             </ul>
             <!--/ User Pills -->
-            <!-- Change Password -->
-            <div class="card mb-4">
-                <h5 class="card-header">تغییر رمز عبور</h5>
-                <div class="card-body">
-                    <form id="formChangePassword" method="POST" onsubmit="return false">
-                        <div class="alert alert-warning" role="alert">
-                            <h5 class="alert-heading mb-2">اطمینان حاصل کنید که این الزامات برآورده شده است</h5>
-                            <span>حداقل 8 کاراکتر طول، بزرگ و نماد</span>
-                        </div>
-                        <div class="row">
-                            <div class="mb-3 col-12 col-sm-6 form-password-toggle">
-                                <label class="form-label" for="newPassword">پسورد جدید</label>
-                                <div class="input-group input-group-merge">
-                                    <input class="form-control" type="password" id="newPassword" name="newPassword"
-                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
-                                    <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
-                                </div>
-                            </div>
 
-                            <div class="mb-3 col-12 col-sm-6 form-password-toggle">
-                                <label class="form-label" for="confirmPassword">تکرار پسورد جدید</label>
-                                <div class="input-group input-group-merge">
-                                    <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
-                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
-                                    <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
-                                </div>
-                            </div>
-                            <div>
-                                <button type="submit" class="btn btn-primary me-2">تغییر رمز عبور</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!--/ Change Password -->
             <!-- Basic  -->
             <div class="col-12">
                 <div class="card mb-4">
