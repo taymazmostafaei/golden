@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('telphone');
             $table->string('national_id')->unique();
             $table->string('cert');
-            $table->enum('role',['user','admin','global'])->default('user');
+            $table->json('access');
             $table->enum('status', ['verify','wait','reject']);
             $table->string('password')->nullable();
             $table->rememberToken();

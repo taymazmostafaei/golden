@@ -92,7 +92,14 @@ class RegisterController extends Controller
             'telphone' => $data['telphone'],
             'address' => $data['address'],
             'status' => 'wait',
-            'role' => 'user',
+            'access' => json_encode([
+                'users' => 1,
+                'orders' => 1,
+                'retails' => 1,
+                'news' => 1,
+                'setting' => 1,
+                'admin_dashboard' => 1,
+            ]),
             'cert' => basename($path)
         ]);
 
