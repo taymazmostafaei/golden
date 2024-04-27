@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 
 class Myprofile extends Controller
 {
@@ -12,8 +15,35 @@ class Myprofile extends Controller
      */
     public function index()
     {
-      $user = Auth::user();
-        return view('user.myProfile',['user'=> $user]);
+        $user = Auth::user();
+        return view('user.myProfile', ['user' => $user]);
+    }
+
+    /**
+     * Cert Image Update.
+     */
+    public function certUpdate(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+
+        $validate = Validator::make($request->all(), [
+            "file" => 'required|image|mimes:jpeg,jpg|max:1000',
+        ]);
+
+        if ($validate->fails() and !$request['file']->isValid()) {
+
+            return response()->json(["errore" => $validate->errors()], 301);
+        }
+
+        $picture = $request['file'];
+
+        $path = $picture->store('public/certs');
+
+        $user->status = 'wait';
+        $user->cert = basename($path);
+        $user->save();
+
+        return response()->json(['success' => 'success']);
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('layouts/layoutMaster')
 
-@section('title', 'User View - Pages')
+@section('title', 'کاربران')
 
 @section('vendor-style')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}">
@@ -152,40 +152,80 @@
             <div class="card mb-4">
                 <h5 class="card-header">دسترسی کاربری</h5>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="{{route('users.access.update', $user->id)}}" method="post">
+                        @method('PUT')
+                        @csrf
                         <div class="d-flex flex-column">
-                            <label class="switch switch-square">
-                                <input type="checkbox" class="switch-input">
-                                <span class="switch-toggle-slider">
-                                    <span class="switch-on"><i class="ti ti-check"></i></span>
-                                    <span class="switch-off"><i class="ti ti-x"></i></span>
-                                </span>
-                                <h5 class="switch-label">تنظیمات و کاربران</h5>
-                            </label>
-                            <label class="switch switch-square">
-                                <input type="checkbox" class="switch-input">
-                                <span class="switch-toggle-slider">
-                                    <span class="switch-on"><i class="ti ti-check"></i></span>
-                                    <span class="switch-off"><i class="ti ti-x"></i></span>
-                                </span>
-                                <h5 class="switch-label">اخبار یا وبلاگ</h5>
-                            </label>
-                            <label class="switch switch-square">
-                                <input type="checkbox" class="switch-input">
-                                <span class="switch-toggle-slider">
-                                    <span class="switch-on"><i class="ti ti-check"></i></span>
-                                    <span class="switch-off"><i class="ti ti-x"></i></span>
-                                </span>
-                                <h5 class="switch-label">سفارشات و محصولات بنک داری</h5>
-                            </label>
-                            <label class="switch switch-square">
-                                <input type="checkbox" class="switch-input">
-                                <span class="switch-toggle-slider">
-                                    <span class="switch-on"><i class="ti ti-check"></i></span>
-                                    <span class="switch-off"><i class="ti ti-x"></i></span>
-                                </span>
-                                <h5 class="switch-label">سفارشات آبشده</h5>
-                            </label>
+                            @foreach ($user->access as $index => $acc)
+                                @switch($index)
+                                    @case('users')
+                                        <label class="switch switch-square">
+                                            <input type="checkbox" class="switch-input" name="{{$index}}" @checked($acc)>
+                                            <span class="switch-toggle-slider">
+                                                <span class="switch-on"><i class="ti ti-check"></i></span>
+                                                <span class="switch-off"><i class="ti ti-x"></i></span>
+                                            </span>
+                                            <h5 class="switch-label">کاربران</h5>
+                                        </label>
+                                    @break
+
+                                    @case('orders')
+                                        <label class="switch switch-square">
+                                            <input type="checkbox" class="switch-input" name="{{$index}}" @checked($acc)>
+                                            <span class="switch-toggle-slider">
+                                                <span class="switch-on"><i class="ti ti-check"></i></span>
+                                                <span class="switch-off"><i class="ti ti-x"></i></span>
+                                            </span>
+                                            <h5 class="switch-label">سفارشات</h5>
+                                        </label>
+                                    @break
+
+                                    @case('retails')
+                                        <label class="switch switch-square">
+                                            <input type="checkbox" class="switch-input" name="{{$index}}" @checked($acc)>
+                                            <span class="switch-toggle-slider">
+                                                <span class="switch-on"><i class="ti ti-check"></i></span>
+                                                <span class="switch-off"><i class="ti ti-x"></i></span>
+                                            </span>
+                                            <h5 class="switch-label">محصولات بنک داری</h5>
+                                        </label>
+                                    @break
+
+                                    @case('news')
+                                        <label class="switch switch-square">
+                                            <input type="checkbox" class="switch-input" name="{{$index}}" @checked($acc)>
+                                            <span class="switch-toggle-slider">
+                                                <span class="switch-on"><i class="ti ti-check"></i></span>
+                                                <span class="switch-off"><i class="ti ti-x"></i></span>
+                                            </span>
+                                            <h5 class="switch-label">اخبار یا وبلاگ</h5>
+                                        </label>
+                                    @break
+
+                                    @case('setting')
+                                        <label class="switch switch-square">
+                                            <input type="checkbox" class="switch-input" name="{{$index}}" @checked($acc)>
+                                            <span class="switch-toggle-slider">
+                                                <span class="switch-on"><i class="ti ti-check"></i></span>
+                                                <span class="switch-off"><i class="ti ti-x"></i></span>
+                                            </span>
+                                            <h5 class="switch-label">تنظیمات</h5>
+                                        </label>
+                                    @break
+
+                                    @case('admin_dashboard')
+                                        <label class="switch switch-square">
+                                            <input type="checkbox" class="switch-input" name="{{$index}}" @checked($acc)>
+                                            <span class="switch-toggle-slider">
+                                                <span class="switch-on"><i class="ti ti-check"></i></span>
+                                                <span class="switch-off"><i class="ti ti-x"></i></span>
+                                            </span>
+                                            <h5 class="switch-label">داشبورد</h5>
+                                        </label>
+                                    @break
+                                @endswitch
+                            @endforeach
+
                         </div>
                         <div class="d-flex justify-content-start mt-4 gap-3">
                             <button class="btn btn-primary" type="submit">ذخیره</button>

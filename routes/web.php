@@ -27,6 +27,7 @@ Route::prefix('/panel/user')->middleware('auth')->group(function () {
   Route::get('/melted/json', [MeltedController::class, 'indexJson'])->name('panel.user.melted.json');
   Route::resource('/melted', MeltedController::class);
 
+  Route::post('/myProfile/usercert/', [Myprofile::class, 'certUpdate'])->name('profile-cert-upload');
   Route::get('/myProfile', [Myprofile::class, 'index'])->name('user.profile');
 });
 
@@ -44,6 +45,7 @@ Route::prefix('/panel/manager')
     Route::get('/users/list/json', [UserController::class, 'indexJson'])->name('user-list-json');
     Route::get('/users/change/{user}/status/{status}', [UserController::class, 'changeStatus'])->name('user-change-status');
     Route::post('/usercert/{user}', [UserController::class, 'certUpdate'])->name('user-cert-upload');
+    Route::put('/users/access/{user}', [UserController::class, 'accessUpdate'])->name('users.access.update');
     Route::resource('/users', UserController::class);
 
     # retails

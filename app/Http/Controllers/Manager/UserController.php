@@ -22,6 +22,42 @@ class UserController extends Controller
             ]
         );
     }
+
+    public function accessUpdate(Request $request, User $user)
+    {
+        $rules = [
+            'users' => ['sometimes'],
+            'orders' => ['sometimes'],
+            'retails' => ['sometimes'],
+            'news' => ['sometimes'],
+            'setting' => ['sometimes'],
+            'admin_dashboard' => ['sometimes'],
+        ];
+
+        // Validate the incoming request
+        $validatedData = $request->validate($rules);
+
+        // Convert "on" strings to boolean true
+        foreach ($validatedData as $key => $value) {
+            $validatedData[$key] = $value === 'on' ? 1 : $value;
+        }
+
+        // If any checkbox is not present in the request, consider it as false
+        foreach (array_keys($rules) as $key) {
+            if (!array_key_exists($key, $validatedData)) {
+                $validatedData[$key] = 0;
+            }
+        }
+
+        // Update the user's access permissions
+        $user->update([
+            'access' => $validatedData,
+        ]);
+
+        // Redirect to a route or return a response
+        return redirect()->back()->with('success', 'کاربر با موفقیت بروز رسانی شد.');
+    }
+
     public function index()
     {
         $counts = [
