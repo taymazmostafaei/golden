@@ -43,7 +43,8 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function showRegistrationForm(){
+    public function showRegistrationForm()
+    {
         $pageConfigs = ['myLayout' => 'blank'];
         return view('auth.register', ['pageConfigs' => $pageConfigs]);
     }
@@ -78,9 +79,9 @@ class RegisterController extends Controller
     {
         if ($data['cert']->isValid()) {
             $picture = $data['cert'];
-    
+
             $path = $picture->store('public/certs');
-        }else {
+        } else {
             return false;
         }
 
@@ -91,15 +92,15 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'telphone' => $data['telphone'],
             'address' => $data['address'],
-            'status' => 'wait',
-            'access' => json_encode([
+            'access' => [
                 'users' => 1,
                 'orders' => 1,
                 'retails' => 1,
                 'news' => 1,
                 'setting' => 1,
-                'admin_dashboard' => 1,
-            ]),
+                'admin_dashboard' => 1
+            ],
+            'status' => 'wait',
             'cert' => basename($path)
         ]);
 

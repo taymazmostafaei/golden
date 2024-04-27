@@ -27,6 +27,7 @@ class User extends Authenticatable
         'telphone',
         'national_id',
         'cert',
+        'access'
     ];
 
     /**
@@ -49,5 +50,6 @@ class User extends Authenticatable
         'created_at' => JalaliDate::class.':Y/m/d', 
         'updated_at' => JalaliDate::class.':Y/m/d',
         'password' => 'hashed',
+        'access' => 'json'
     ];
 }
