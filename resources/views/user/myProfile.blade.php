@@ -191,7 +191,7 @@
                         <h3 class="mb-2">ویرایش اطلاعات کاربری</h3>
                         {{-- <p class="text-muted">Updating user details will receive a privacy audit.</p> --}}
                     </div>
-                    <form class="row g-3" method="POST" action="{{ route('users.update', $user) }}">
+                    <form class="row g-3" method="POST" action="{{ route('myprofile.update') }}">
                         @csrf
                         @method('put')
                         <div class="col-12 col-md-6">
@@ -222,15 +222,7 @@
                                 <option @selected($user->status == 'reject') value="reject">رد شده</option>
                             </select>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <label class="form-label" for="phone">شماره موبایل</label>
-                            <div class="input-group">
-                                <span class="input-group-text">IR (09)</span>
-                                <input style="direction: ltr" type="text" name="phone"
-                                    class="form-control phone-number-mask" value="{{ $user->phone }}" />
 
-                            </div>
-                        </div>
                         <div class="col-12 col-md-6">
                             <label class="form-label" for="telphone">شماره ثابت</label>
                             <div class="input-group">

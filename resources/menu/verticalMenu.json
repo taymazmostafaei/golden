@@ -4,19 +4,22 @@
       "route": "manager.dashboard",
       "name": "داشبورد",
       "icon": "menu-icon tf-icons ti ti-dashboard",
-      "slug": "manager.dashboard"
+      "slug": "manager.dashboard",
+      "access": "admin_dashboard"
     },
     {
       "route": "users.index",
       "name": "لیست کاربران",
       "icon": "menu-icon tf-icons ti ti-users",
-      "slug": "users.index"
+      "slug": "users.index",
+      "access": "users"
     },
     {
       "name": "لیست سفارش",
       "icon": "menu-icon tf-icons ti ti-layout-grid",
       "slug": "dashboard",
       "badge": ["primary", "2"],
+      "access": "orders",
       "submenu": [
         {
           "route":"orders.retail.index",
@@ -34,6 +37,7 @@
       "name": "محصولات بنکداری",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "dashboard",
+      "access": "retails",
       "badge": ["primary", "3"],
       "submenu": [
         {
@@ -58,6 +62,7 @@
       "icon": "menu-icon tf-icons ti ti-map",
       "slug": "app-email",
       "badge": ["primary", "2"],
+      "access": "news",
       "submenu": [
         {
           "route":"blog.index",
@@ -75,7 +80,8 @@
       "route":"setting",
       "name": "تنظیمات",
       "icon": "menu-icon tf-icons ti ti-settings",
-      "slug": "setting"
+      "slug": "setting",
+      "access": "setting"
     },
     
     {

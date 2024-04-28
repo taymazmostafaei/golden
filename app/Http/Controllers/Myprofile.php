@@ -81,9 +81,37 @@ class Myprofile extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $user = User::find(Auth::user()->id);
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'firstname' => ['required', 'persian_alpha', 'string', 'max:23'],
+            'lastname' => ['required', 'persian_alpha', 'string', 'max:23'],
+            'national_id' => ['required', 'ir_national_code'],
+            'status' => ['required', 'string', 'in:verify,wait,reject'],
+            'telphone' => ['required', 'ir_phone_with_code'],
+            'address' => ['required', 'persian_alpha_eng_num', 'string', 'max:64'],
+            // You might want to add validation rules for other fields if they are updated too
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Update the user with validated data
+        $user->firstname = $data['firstname'];
+        $user->lastname = $data['lastname'];
+        $user->national_id = $data['national_id'];
+        $user->status = $data['status'];
+        $user->telphone = $data['telphone'];
+        $user->address = $data['address'];
+        $user->status = 'wait';
+        $user->save();
+
+        // Redirect to a route or return a response
+        return redirect()->back()->with('success', 'کاربر با موفقیت بروز رسانی شد.');
     }
 
     /**
