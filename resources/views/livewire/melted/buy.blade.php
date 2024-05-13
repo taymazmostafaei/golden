@@ -1,35 +1,62 @@
 <div>
     @include('components.alert')
-    <h1 class="form-label mb-3">پرداخت میکنم</h1>
-    <div class="input-group mb-3">
-        {{-- <span class="input-group-text"><i class="ti ti-currency-iranian-rial"></i></span> --}}
-        <input type="number" class="form-control" wire:model.live="pay">
-        <span class="input-group-text"><i class="ti ti-currency-iranian-rial"></i></span>
+    <div class="d-flex justify-content-around">
+        <h4>14.<span style="font-size: 30px">960</span><span style="font-size: 12px">000</span></h4>
+        <h4>14.<span style="font-size: 30px">960</span><span style="font-size: 12px">000</span></h4>
 
     </div>
-    <span class="badge mb-3 d-flex justify-content-between align-items-center text-muted">
-        <span>ریال</span>
-        <span id="buy_pay">{{ number_format($pay == '' ? 0 : $pay) }}</span>
-    </span>
+    <div class="d-flex gap-2 col-lg-12 mx-auto justify-content-around mb-4">
 
-    <h1 class="form-label mb-3">دریافت میکنم</h1>
-    <div class="input-group mb-3">
-        {{-- <span class="input-group-text"><i class="ti ti-currency-iranian-rial"></i></span> --}}
-        <input type="number" class="form-control" wire:model.live="obtain" aria-label="Amount (to the nearest dollar)">
-        <span class="input-group-text"><i class="ti ti-droplet"></i></span>
+        <button type="button" class="btn btn-success col-lg-3 col-5" id="confirm-sale">
+            خرید
+            <br><br>
+            29.03
+            <br><br>
+            گرم
+        </button>
+        <button type="button" class="btn btn-danger col-lg-3 col-5" id="confirm-buy">
+            فروش
+            <br><br>
+            29.03
+            <br><br>
+            گرم
+        </button>
     </div>
-    <span class="badge mb-3 d-flex justify-content-between align-items-center text-muted">
-        <span>گرم</span>
-        <span id="buy_obtain">{{ number_format($obtain == '' ? 0 : $obtain) }}</span>
-    </span>
+    <div class="d-flex">
+        <div class="col-lg-3 col-3 col-md-3">
+            <span>وزن:</span>
+        </div>
+        <div class="input-group mb-4 col-5 col-lg-5 col-md-5">
+            <button class="btn btn-outline-primary" type="button">50+</button>
+            <div class="col-3 col-lg-4">
+                <input type="text" class="form-control text-center" placeholder=""
+                    aria-label="Example text with two button addons">
+            </div>
+            <button class="btn btn-outline-primary" type="button">50-</button>
+        </div>
+    </div>
+    <div class="d-flex">
+        <div class="col-lg-3 col-3 col-md-3">
+            <span>مبلغ:</span>
+        </div>
+        <div class="input-group mb-4 col-5 col-lg-5 col-md-5">
+            <button class="btn btn-outline-primary" type="button">50+</button>
+            <div class="col-3  col-lg-4">
+                <input type="text" class="form-control text-center" placeholder=""
+                    aria-label="Example text with two button addons">
+            </div>
+            <button class="btn btn-outline-primary" type="button">50-</button>
+        </div>
+    </div>
     <span class="alert alert-secondary mb-4 d-flex justify-content-between align-items-center">
-        <span><i class="ti ti-live-photo"></i>قیمت هر یک گرم</span>
+        <span><i class="ti ti-live-photo"></i>معادل با</span>
         <span>{{ number_format($price) }} ریال</span>
     </span>
-    <div class="d-grid gap-2 col-lg-12 mx-auto">
+
+    {{-- <div class="d-flex gap-2 col-lg-6 mx-auto">
         <button type="button" class="btn btn-success" id="confirm-sale">
             خرید
         </button>
-    </div>
+    </div> --}}
 
 </div>
