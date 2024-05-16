@@ -15,16 +15,7 @@
       let obtain = $('#sell_obtain').html();
       Swal.fire({
         title: '<p style="font-size:15px;">آیا از فروش خود با توجه به اطلاعات زیر مطمئن هستید؟</p>',
-        html: `
-        <span class="badge mb-3 d-flex justify-content-around align-items-center text-muted">
-        <span>می فروشم:</span>
-        <span>${pay}</span>
-    </span>
-    <span class="badge mb-3 d-flex justify-content-around align-items-center text-muted">
-    <span>دریافت میکنم:</span>
-    <span>${obtain}</span>
-</span>
-        `,
+        html: ``,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'بله',
@@ -47,16 +38,7 @@
       let obtain = $('#buy_obtain').html();
       Swal.fire({
         title: '<p style="font-size:15px;">آیا از خرید خود با توجه به اطلاعات زیر مطمئن هستید؟</p>',
-        html: `
-          <span class="badge mb-3 d-flex justify-content-around align-items-center text-muted">
-          <span>پرداخت میکنم:</span>
-          <span>${pay}</span>
-      </span>
-      <span class="badge mb-3 d-flex justify-content-around align-items-center text-muted">
-      <span>دریافت میکنم:</span>
-      <span>${obtain}</span>
-  </span>
-          `,
+        html: ``,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'بله',

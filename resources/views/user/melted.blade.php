@@ -80,7 +80,7 @@
         <div class="row gy-3">
           <div class="col-md-3 col-6">
             <div class="d-flex align-items-center">
-              <div class="badge rounded-pill bg-label-primary me-3 p-2"><i class="ti ti-chart-pie-2 ti-sm"></i></div>
+              <div class="badge rounded-pill bg-label-warning me-3 p-2"><i class="ti ti-coins ti-sm"></i></div>
               <div class="card-info">
                 <h5 class="mb-0">مانده آبشده</h5>
                 <small>صفر گرم</small>
@@ -89,7 +89,7 @@
           </div>
           <div class="col-md-3 col-6">
             <div class="d-flex align-items-center">
-              <div class="badge rounded-pill bg-label-info me-3 p-2"><i class="ti ti-users ti-sm"></i></div>
+              <div class="badge rounded-pill bg-label-success me-3 p-2"><i class="ti ti-coins ti-sm"></i></div>
               <div class="card-info">
                 <h5 class="mb-0">مانده پولی</h5>
                 <small>صفر تومان</small>
@@ -98,7 +98,7 @@
           </div>
           <div class="col-md-3 col-6">
             <div class="d-flex align-items-center">
-              <div class="badge rounded-pill bg-label-danger me-3 p-2"><i class="ti ti-shopping-cart ti-sm"></i></div>
+              <div class="badge rounded-pill bg-label-success me-3 p-2"><i class="ti ti-shopping-cart ti-sm"></i></div>
               <div class="card-info">
                 <h5 class="mb-0">حداکثر خرید</h5>
 
@@ -109,7 +109,7 @@
           </div>
           <div class="col-md-3 col-6">
             <div class="d-flex align-items-center">
-              <div class="badge rounded-pill bg-label-success me-3 p-2"><i class="ti ti-currency-dollar ti-sm"></i></div>
+              <div class="badge rounded-pill bg-label-danger me-3 p-2"><i class="ti ti-shopping-cart ti-sm"></i></div>
               <div class="card-info">
                 <h5 class="mb-0">حداکثر فروش</h5>
 
@@ -145,7 +145,7 @@
 
 
                         <div class="tab-pane fade show active" id="navs-pills-justified-buy" role="tabpanel">
-                          <livewire:melted.buy />
+                          <livewire:melted.melted />
                         </div>
                         {{-- <div class="tab-pane fade" id="navs-pills-justified-sale" role="tabpanel">
                           <livewire:melted.sell />
