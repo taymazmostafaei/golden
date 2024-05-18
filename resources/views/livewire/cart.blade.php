@@ -15,7 +15,9 @@
                     <div class="p-2 d-flex">
                         <div class="text-center col-3 d-flex">
                             <img class="card-img card-img-left rounded" style="margin-bottom: 0"
-                                src="{{ asset('storage/retail-media/' . $item->associatedModel->media[0]->path) }}"
+                                @isset($item->associatedModel->media[0])
+                                    src="{{ asset('storage/retail-media/' . $item->associatedModel->media[0]->path) }}"
+                                @endisset
                                 alt="tutor image 1" />
                         </div>
                         <div class="col-9">

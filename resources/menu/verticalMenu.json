@@ -77,10 +77,10 @@
       ]
     },
     {
-      "route":"setting",
+      "route":"setting.index",
       "name": "تنظیمات",
       "icon": "menu-icon tf-icons ti ti-settings",
-      "slug": "setting",
+      "slug": "setting.index",
       "access": "setting"
     },
     

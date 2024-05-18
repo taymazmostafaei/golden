@@ -15,6 +15,7 @@ use App\Http\Controllers\RetailCategoryController;
 use App\Http\Controllers\RetailController;
 use App\Http\Controllers\RetailMediaController;
 use App\Http\Controllers\RetailOrderController;
+use App\Http\Controllers\SettingController;
 
 Route::prefix('/panel/user')->middleware('auth')->group(function () {
 
@@ -40,7 +41,10 @@ Route::prefix('/panel/manager')
     Route::view('/', 'manager.dashboard')->name('manager.dashboard')->middleware('check.access:admin_dashboard');
 
     # setting
-    Route::view('/setting/possibilities', 'manager.setting.possibilities')->name('setting')->middleware('check.access:setting');
+    Route::middleware('check.access:setting')->group(function () {
+      # users
+      Route::resource('/setting', SettingController::class);
+    });
 
     Route::middleware('check.access:users')->group(function () {
       # users

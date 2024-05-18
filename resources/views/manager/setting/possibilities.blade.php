@@ -1,6 +1,6 @@
 @extends('layouts/layoutMaster')
 
-@section('title', 'eCommerce Settings Checkout - Apps')
+@section('title', 'تنظیمات کلی سایت')
 
 @section('page-script')
     <script src="{{ asset('assets/js/app-ecommerce-settings.js') }}"></script>
@@ -46,41 +46,31 @@
                                 <p class="text-muted mb-0">در این بخش می توانید امکانات زیر را فعال یا غیر فعال کنید</p>
                             </div>
                         </div>
+                        <form action="{{route('setting.store')}}" method="post">
+                            @csrf
+                            
 
-                        <div class="card-body">
-                            <div class="d-flex flex-column">
-                            <label class="switch switch-square">
-                                <input type="checkbox" class="switch-input">
-                                <span class="switch-toggle-slider">
-                                    <span class="switch-on"><i class="ti ti-check"></i></span>
-                                    <span class="switch-off"><i class="ti ti-x"></i></span>
-                                </span>
-                                <h5 class="switch-label">امکان ثبت نام</h5>
-                            </label>
-                            <label class="switch switch-square">
-                                <input type="checkbox" class="switch-input">
-                                <span class="switch-toggle-slider">
-                                    <span class="switch-on"><i class="ti ti-check"></i></span>
-                                    <span class="switch-off"><i class="ti ti-x"></i></span>
-                                </span>
-                                <h5 class="switch-label">امکان ثبت سفارش آبشده</h5>
-                            </label>
-                            <label class="switch switch-square">
-                                <input type="checkbox" class="switch-input">
-                                <span class="switch-toggle-slider">
-                                    <span class="switch-on"><i class="ti ti-check"></i></span>
-                                    <span class="switch-off"><i class="ti ti-x"></i></span>
-                                </span>
-                                <h5 class="switch-label">امکان ثبت سفارش بنکداری</h5>
-                            </label>
-                        </div>
-                            <div class="d-flex justify-content-start mt-4 gap-3">
-                                <a class="btn btn-primary"
-                                    href="{{ url('/app/ecommerce/settings/notifications') }}">ذخیره</a>
+                            <div class="card-body">
+                                <div class="d-flex flex-column">
+                                    @foreach ($settings as $setting)
+                                        <label class="switch switch-square">
+                                            <input type="checkbox" class="switch-input" name="{{ $setting->key }}"
+                                                @checked($setting->value)>
+                                            <span class="switch-toggle-slider">
+                                                <span class="switch-on"><i class="ti ti-check"></i></span>
+                                                <span class="switch-off"><i class="ti ti-x"></i></span>
+                                            </span>
+                                            <h5 class="switch-label">{{ $setting->translate }}</h5>
+                                        </label>
+                                    @endforeach
+                                </div>
+                                <div class="d-flex justify-content-start mt-4 gap-3">
+                                    <button class="btn btn-primary" type="submit">ذخیره</button>
+
+                                </div>
 
                             </div>
-
-                    </div>
+                        </form>
                     </div>
 
 
