@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Retail;
 use App\Models\RetailOrder;
 use App\Models\RetailOrderDetail;
+use App\Models\Setting;
 use Darryldecode\Cart\Facades\CartFacade;
 use Livewire\Component;
 
@@ -52,6 +53,10 @@ class Cart extends Component
 
     public function save()
     {
+        if (!(Setting::where('key', 'retail')->first())->value) {
+            abort(403 , 'امکان ثبت سفارش فعلا وجود ندارد');
+            // return redirect()->back()->withErrors('fail', '');
+        }
 
         $retailOrder = RetailOrder::create([
             'user_id' => auth()->user()->id,

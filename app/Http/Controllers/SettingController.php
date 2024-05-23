@@ -12,7 +12,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $setting = Setting::all();
+        $setting = Setting::where('type', 'setting')->get();
         return view('manager.setting.possibilities', ['settings' => $setting]);
     }
 
@@ -30,7 +30,7 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         // Retrieve all settings from the database
-        $allSettings = Setting::all();
+        $allSettings = Setting::where('type', 'setting')->get();
 
         // Retrieve all the settings from the request except the CSRF token
         $input = $request->except('_token');
@@ -47,7 +47,6 @@ class SettingController extends Controller
             $setting->save();
         }
         return redirect()->back()->with('success', 'با موفقیت بروز رسانی شد.');
-
     }
 
     /**
@@ -80,5 +79,28 @@ class SettingController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    public function storeSetup(Request $request)
+    {
+
+        // Retrieve all the settings from the request except the CSRF token
+        $inputs = $request->except('_token');
+        foreach ($inputs as $key => $value) {
+            
+            Setting::where('type', 'setup')
+                ->where('key', $key)
+                ->update(['value' => $value]);
+        }
+
+        return redirect()->back()->with('success', 'با موفقیت بروز رسانی شد.');
+    }
+
+    public function setup()
+    {
+        $setups = Setting::where('type', 'setup')->get();
+
+        return view('manager.setting.setup', ['setups' => $setups]);
     }
 }

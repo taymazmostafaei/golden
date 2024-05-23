@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -58,6 +59,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        if (!(Setting::where('key', 'register')->first())->value) {
+            abort(403 , 'امکان ثبت نام فعلا وجود ندارد');
+            // return redirect()->back()->withErrors('fail', '');
+        }
+
         return Validator::make($data, [
             'firstname' => ['required', 'persian_alpha', 'string', 'max:23'],
             'lastname' => ['required', 'persian_alpha', 'string', 'max:23'],

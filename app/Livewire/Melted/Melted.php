@@ -5,6 +5,7 @@ namespace App\Livewire\Melted;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use App\Models\Melted as MeltedModel;
+use App\Models\Setting;
 
 class Melted extends Component
 {
@@ -29,6 +30,11 @@ class Melted extends Component
 
     public function buy()
     {
+        if (!(Setting::where('key', 'melted')->first())->value) {
+            abort(403 , 'امکان ثبت سفارش فعلا وجود ندارد');
+            // return redirect()->back()->withErrors('fail', '');
+        }
+
         $validated = $this->validate();
 
         if ($this->grams == 0) {
@@ -66,6 +72,10 @@ class Melted extends Component
 
     public function sell()
     {
+        if (!(Setting::where('key', 'melted')->first())->value) {
+            abort(403 , 'امکان ثبت سفارش فعلا وجود ندارد');
+            // return redirect()->back()->withErrors('fail', '');
+        }
         $validated = $this->validate();
 
         if ($this->grams == 0) {
@@ -156,8 +166,8 @@ class Melted extends Component
 
     public function mount()
     {
-        $this->bprice = 14960000;
-        $this->sprice = 14920000;
+        $this->bprice = (Setting::where('key', 'buy_price')->first())->value;
+        $this->sprice = (Setting::where('key', 'sell_price')->first())->value;
     }
 
     public function render()

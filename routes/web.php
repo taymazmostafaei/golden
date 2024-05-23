@@ -42,8 +42,12 @@ Route::prefix('/panel/manager')
 
     # setting
     Route::middleware('check.access:setting')->group(function () {
+      
       # users
+      Route::get('/setting/setup', [SettingController::class, 'setup'])->name('setting.setup');
+      Route::post('/setting/setup/save', [SettingController::class, 'storeSetup'])->name('setting.setup.save');
       Route::resource('/setting', SettingController::class);
+      
     });
 
     Route::middleware('check.access:users')->group(function () {

@@ -13,30 +13,11 @@
 
     <div class="row g-4">
 
-        <!-- Navigation -->
-        <div class="col-12 col-lg-4">
-            <div class="d-flex justify-content-between flex-column mb-3 mb-md-0">
-                <ul class="nav nav-align-left nav-pills flex-column">
-                    <li class="nav-item mb-1">
-                        <a class="nav-link py-2" href="{{ url('/manager/setting/setFy') }}">
-                            <i class="ti ti-table-options me-2"></i>
-                            <span class="align-middle">تنظیم فی</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a class="nav-link py-2 active" href="{{ url('/manager/setting/possibilities') }}">
-                            <i class="ti ti-adjustments-horizontal me-2"></i>
-                            <span class="align-middle">امکانات</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /Navigation -->
-
+        @include('components.setting-navigation')
+        
         <!-- Options -->
         <div class="col-12 col-lg-8 pt-4 pt-lg-0">
-            <div class="tab-content p-0">
+            <div class="tab-content p-0">@include('components.alert')
                 <!-- Checkout Tab -->
                 <div class="tab-pane fade show active" id="checkout" role="tabpanel">
                     <div class="card mb-4">

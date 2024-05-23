@@ -18,12 +18,12 @@
             خرید
             @if ($grams != 0)
                 <br><br>
-                {{$buyPrice}}
+                {{number_format($buyPrice)}}
                 <br><br>
                 تومان
             @else
                 <br><br>
-                {{$buyGrams}}
+                {{number_format($buyGrams)}}
                 <br><br>
                 گرم
             @endif
@@ -32,12 +32,12 @@
             فروش
             @if ($grams != 0)
                 <br><br>
-                {{$sellPrice}}
+                {{number_format($sellPrice)}}
                 <br><br>
                 تومان
             @else
                 <br><br>
-                {{$sellGrams}}
+                {{number_format($sellGrams)}}
                 <br><br>
                 گرم
             @endif

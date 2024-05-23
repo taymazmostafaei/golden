@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('key')->unique();
             $table->text('value')->nullable();
             $table->string('translate')->nullable();
+            $table->enum('type', ['setting', 'setup']);
             $table->timestamps();
         });
     }
