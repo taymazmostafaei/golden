@@ -47,15 +47,7 @@
                         {{-- <h4 class="mb-1 pt-2">Adventure starts here 🚀</h4> --}}
                         {{-- <p class="mb-4">Make your app management easy and fun!</p> --}}
 
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                        @include('components.alert')
 
                         <form id="formAuthentication" class="mb-3" enctype="multipart/form-data"
                             action="{{ route('register') }}" method="POST">

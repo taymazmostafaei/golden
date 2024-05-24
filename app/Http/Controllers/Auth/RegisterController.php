@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
@@ -60,7 +63,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         if (!(Setting::where('key', 'register')->first())->value) {
-            abort(403 , 'امکان ثبت نام فعلا وجود ندارد');
+            abort(403, 'امکان ثبت نام فعلا وجود ندارد');
             // return redirect()->back()->withErrors('fail', '');
         }
 
@@ -109,6 +112,8 @@ class RegisterController extends Controller
             'status' => 'wait',
             'cert' => basename($path)
         ]);
+
+        Redirect::to('/login?s=1')->send();
 
         return $user;
     }
