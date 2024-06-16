@@ -14,22 +14,31 @@ class RetailCategoryController extends Controller
      */
     public function index()
     {
-        $categories = RetailCategory::all();
+        $categories = RetailCategory::isRoot()->get();
         return view('user.retails.category', ['categories' => $categories]);
     }
 
     /**
      * Display a listing of the resource.
      */
-    public function indexJson()
+    public function indexManager()
     {
-        $categories = RetailCategory::all();
-        return response()->json(
-            [
-                "data" => $categories
-            ]
-        );
+        $categories = RetailCategory::isRoot()->get();
+        return view('manager.retail.category.index', ['categories' => $categories, 'parent' => null]);
     }
+
+    /**
+     * Display a listing of the resource.
+     */
+    // public function indexJson()
+    // {
+    //     $categories = RetailCategory::all();
+    //     return response()->json(
+    //         [
+    //             "data" => $categories
+    //         ]
+    //     );
+    // }
 
     public function formatedIndex()
     {
@@ -70,6 +79,14 @@ class RetailCategoryController extends Controller
         return view('user.retails.list', ['category' => $retailCategory, 'cartcount' => $cartcount]);
     }
 
+        /**
+     * Display the specified resource.
+     */
+    public function showManager(RetailCategory $retailCategory)
+    {
+        return view('manager.retail.category.index', ['categories' => $retailCategory->children, 'parent' => $retailCategory->id]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -91,6 +108,7 @@ class RetailCategoryController extends Controller
      */
     public function destroy(RetailCategory $retailCategory)
     {
-        //
+        $retailCategory->delete();
+        return redirect()->back()->with('success', 'دسته بندی با موفقیت حذف شد.');
     }
 }

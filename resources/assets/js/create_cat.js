@@ -37,6 +37,11 @@ $('#edit_cat').on('show.bs.modal', function (e) {
   Livewire.dispatch('UpdateCatEditModal', { id: clickedID});
 })
 
+$('#create_cat').on('show.bs.modal', function (e) {
+
+  let clickedID = $(e.relatedTarget).attr('data-id') * 1;
+  Livewire.dispatch('UpdateCatEditModal', { id: clickedID});
+})
 
 
 // Datatable (jquery)

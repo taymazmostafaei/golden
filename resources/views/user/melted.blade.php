@@ -69,57 +69,23 @@
 
   <!-- Statistics -->
   <div class="col-xl-12 mb-4 col-lg-12 col-12">
-    <div class="card h-100">
       {{-- <div class="card-header">
         <div class="d-flex justify-content-between mb-3">
           <h5 class="card-title mb-0">Statistics</h5>
           <small class="text-muted">Updated 1 month ago</small>
         </div>
       </div> --}}
-      <div class="card-body">
-        <div class="row gy-3">
-          <div class="col-md-3 col-6">
-            <div class="d-flex align-items-center">
-              <div class="badge rounded-pill bg-label-warning me-3 p-2"><i class="ti ti-coins ti-sm"></i></div>
-              <div class="card-info">
-                <h5 class="mb-0">مانده آبشده</h5>
-                <small>صفر گرم</small>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="d-flex align-items-center">
-              <div class="badge rounded-pill bg-label-success me-3 p-2"><i class="ti ti-coins ti-sm"></i></div>
-              <div class="card-info">
-                <h5 class="mb-0">مانده پولی</h5>
-                <small>صفر تومان</small>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="d-flex align-items-center">
-              <div class="badge rounded-pill bg-label-success me-3 p-2"><i class="ti ti-shopping-cart ti-sm"></i></div>
-              <div class="card-info">
-                <h5 class="mb-0">حداکثر خرید</h5>
-
-                <small>2,000 گرم</small>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="d-flex align-items-center">
-              <div class="badge rounded-pill bg-label-danger me-3 p-2"><i class="ti ti-shopping-cart ti-sm"></i></div>
-              <div class="card-info">
-                <h5 class="mb-0">حداکثر فروش</h5>
-
-                <small>2,000 گرم</small>
-              </div>
-            </div>
-          </div>
+      <div class="alert alert-secondary alert-dismissible d-flex align-items-baseline" role="alert">
+        <span class="alert-icon alert-icon-lg text-secondary me-2">
+          <i class="ti ti-exchange ti-sm"></i>
+        </span>
+        <div class="d-flex flex-column ps-1">
+          <h5 class="alert-heading mb-2">حداکثر معامله</h5>
+          <p class="mb-0">2,000 گرم</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          </button>
         </div>
       </div>
-    </div>
   </div>
   <!--/ Statistics -->
     <div class="row">
@@ -164,19 +130,18 @@
     <div class="card">
         <div class="card-datatable table-responsive">
             <div class="card-header">
-                <h5 class="card-title mb-0">سفارشات اخیر</h5>
+                <h5 class="card-title mb-0">آخرین معاملات</h5>
             </div>
             <table class="datatables-order table border-top">
-
                 <thead>
                     <tr>
                         <th></th>
                         <th></th>
                         <th>شناسه سفارش</th>
-                        <th>نوع سفارش</th>
-                        <th>قیمت هر گرم</th>
-                        <th>مقدار گرم</th>
-                        <th>قیمت</th>
+                        <th>نوع معامله</th>
+                        <th>فی معامله (مثقال)</th>
+                        <th>وزن (گرم)</th>
+                        <th>مبلغ کل</th>
                         <th>وضعیت</th>
                         <th>تاریخ</th>
                     </tr>

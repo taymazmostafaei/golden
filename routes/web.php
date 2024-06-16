@@ -61,7 +61,9 @@ Route::prefix('/panel/manager')
 
     Route::middleware('check.access:retails')->group(function () {
       # retails
-      Route::view('/retail/category', 'manager.retail.category.index')->name('retail.category');
+      Route::get('/retail/category', [RetailCategoryController::class, 'indexManager'])->name('retail.category');
+      Route::get('/retail/category/{retailCategory}', [RetailCategoryController::class, 'showManager'])->name('retail.category.show');
+      Route::delete('/retail/category/destroy/{retailCategory}', [RetailCategoryController::class, 'destroy'])->name('retail.category.destroy');
       Route::get('/retail/category/list', [RetailCategoryController::class, 'indexJson'])->name('retail-category-list');
       Route::get('/retail/category/list/formated', [RetailCategoryController::class, 'formatedIndex'])->name(
         'retail-category-list-formated'

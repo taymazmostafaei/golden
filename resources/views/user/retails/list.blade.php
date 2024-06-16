@@ -40,7 +40,8 @@
     <h4 class="py-3 mb-4"><span class="text-muted fw-light">بنکداری /</span> لیست محصولات</h4>
 
     <div class="app-academy">
-        <div class="card p-0 mb-4">
+
+        {{-- <div class="card p-0 mb-4">
             <div class="card-body d-flex flex-column flex-md-row justify-content-between p-0 pt-4">
                 <div class="app-academy-md-25 card-body py-0">
                     <img src="{{ asset('assets/img/illustrations/page-pricing-enterprise.png') }}"
@@ -52,9 +53,7 @@
                     <h3 class="card-title mb-4 lh-sm px-md-5 lh-lg">
                         جست و جوی محصول
                     </h3>
-                    {{-- <p class="mb-3">
-                    بین مطلب های که نوشتید جست و جو کنید
-                </p> --}}
+
                     <div class="d-flex align-items-center justify-content-between app-academy-md-80">
                         <button type="submit" class="btn btn-primary btn-icon me-2"><i class="ti ti-search"></i></button>
                         <input type="search" placeholder="جست و جوی محصول" class="form-control" />
@@ -65,6 +64,28 @@
                         class="scaleX-n1-rtl" />
                 </div>
             </div>
+        </div> --}}
+
+        <div class="row mb-5">
+            @foreach ($category->children as $categorych)
+            <div class="col-md-3 col-sm-4">
+                <a href="{{route('panel.user.retails.category', $categorych->id)}}">
+                    <div class="card mb-3" style="border-left: 5px solid var(--bs-primary)">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4 col-4">
+                                <img class="card-img card-img-left rounded" src="{{ asset('assets/img/elements/14.jpg') }}"
+                                    alt="Card image" />
+                            </div>
+                            <div class="col-md-8 col-8">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{$categorych->name}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        @endforeach
         </div>
 
         <div class="card mb-4">
@@ -115,7 +136,8 @@
             </div>
             <div class="card-body">
                 <div class="row gy-4 mb-4">
-                    @foreach ($category->retails as $retial)
+
+                    @forelse ($category->retails as $retial)
                         <div class="col-sm-6 col-lg-4">
                             <div class="card p-2 h-100 shadow-none border">
                                 <div class="rounded-2 text-center mb-3">
@@ -149,8 +171,9 @@
                                     </p>
                                     <div class="d-flex flex-column flex-md-row gap-2 text-nowrap">
                                         <div class="d-grid gap-2 col-12 mx-auto">
-                                            <button class="btn btn-primary add-to-cart" data-id="{{$retial->id}}" type="button">افزودن به سبد
-                                                خرید</button>
+                                            <button class="btn btn-primary add-to-cart" data-id="{{$retial->id}}" type="button">
+                                                سفارش محصول
+                                            </button>
                                         </div>
 
                                     </div>
@@ -174,7 +197,10 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        محصولی در این دسته بندی یافت نشد.
+                    @endforelse
+                        
                 </div>
                 {{-- <nav aria-label="Page navigation" class="d-flex align-items-center justify-content-center">
                     <ul class="pagination">

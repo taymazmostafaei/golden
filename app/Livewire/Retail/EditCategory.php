@@ -8,6 +8,7 @@ use Livewire\Component;
 class EditCategory extends Component
 {
 
+    public $type;
     public $id;
     public $name;
     public $desc;
@@ -28,7 +29,7 @@ class EditCategory extends Component
             'desc' => $this->desc,
         ]);
 
-        $this->dispatch('ReloadDataTable');
+
         $this->dispatch('CloseEditCatModel');
 
         session()->flash('success', 'با موفقیت بروزرسانی شد.');
@@ -38,8 +39,26 @@ class EditCategory extends Component
     {
         $rt = RetailCategory::find($id);
         $this->id = $rt->id;
-        $this->name = $rt->name;
-        $this->desc = $rt->desc;
+        if ($this->type == 'edit') {
+            $this->name = $rt->name;
+            $this->desc = $rt->desc;
+        }
+
+    }
+
+    public function create(RetailCategory $rt)
+    {
+        $this->validate();
+
+        $rt->create([
+            'parent_id' => $rt->id,
+            'name' => $this->name,
+            'desc' => $this->desc,
+        ]);
+
+        $this->dispatch('CloseEditCatModel');
+
+        session()->flash('success', 'با موفقیت ساخته شد.');
     }
 
     public function render()

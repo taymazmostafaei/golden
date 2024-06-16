@@ -50,7 +50,7 @@
         <div class="input-group mb-4 col-5 col-lg-5 col-md-5">
             <button class="btn btn-outline-primary" wire:click="increaseGrams" type="button">50+</button>
             <div class="col-3 col-lg-4">
-                <input type="number" class="form-control text-center" wire:model.live="grams" placeholder=""
+                <input type="number" class="form-control text-center" wire:model.live.debounce.1200ms="grams" placeholder=""
                     aria-label="Example text with two button addons">
             </div>
             <button class="btn btn-outline-primary" wire:click="decreaseGrams" type="button">50-</button>
@@ -63,7 +63,7 @@
         <div class="input-group mb-4 col-5 col-lg-5 col-md-5">
             <button class="btn btn-outline-primary" wire:click="increaseAmount" type="button">100+</button>
             <div class="col-3  col-lg-4">
-                <input type="number" class="form-control text-center" wire:model.live="amount" placeholder=""
+                <input type="number" class="form-control text-center" wire:model.live.debounce.1200ms="amount" placeholder=""
                     aria-label="Example text with two button addons">
             </div>
             <button class="btn btn-outline-primary" wire:click="decreaseAmount" type="button">100-</button>
