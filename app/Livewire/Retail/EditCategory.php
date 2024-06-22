@@ -37,6 +37,10 @@ class EditCategory extends Component
 
     public function UpdateCatEditModal($id)
     {
+        if (!$id) {
+            return;
+        }
+        
         $rt = RetailCategory::find($id);
         $this->id = $rt->id;
         if ($this->type == 'edit') {

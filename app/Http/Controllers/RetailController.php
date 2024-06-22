@@ -44,7 +44,7 @@ class RetailController extends Controller
         $request->validate([
             'retail_category_id' => 'required|exists:retail_categories,id',
             'name' => 'required|string',
-            'price' => 'required|numeric',
+            //'price' => 'required|numeric',
             'desc' => 'required|string',
             'hide' => 'sometimes',
         ]);
@@ -55,7 +55,7 @@ class RetailController extends Controller
         // Fill the Retail instance with data from the request
         $retail->retail_category_id = $request->input('retail_category_id');
         $retail->name = $request->input('name');
-        $retail->price = $request->input('price');
+        $retail->price = 1;
         $retail->desc = $request->input('desc');
         $retail->hide = $request->has('hide');
 
@@ -91,7 +91,7 @@ class RetailController extends Controller
         $request->validate([
             'retail_category_id' => 'required|exists:retail_categories,id',
             'name' => 'required|string',
-            'price' => 'required|numeric',
+            //'price' => 'required|numeric',
             'desc' => 'required|string',
             'hide' => 'sometimes',
         ]);
@@ -99,7 +99,7 @@ class RetailController extends Controller
         // Update the attributes with data from the request
         $retail->retail_category_id = $request->input('retail_category_id');
         $retail->name = $request->input('name');
-        $retail->price = $request->input('price');
+        $retail->price = 1;
         $retail->desc = $request->input('desc');
         $retail->hide = $request->has('hide');
 

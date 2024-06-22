@@ -22,16 +22,16 @@
                 <h6 class="m-0">{{ $item->retail->name }}</h6>
                 <span class="text-muted">x</span><span class="text-muted">{{ $item->quantity }}</span>
             </div>
-            <h6 class="m-0 d-none d-sm-block">{{ $item->priceFormated() }} ریال</h6>
+            <h6 class="m-0 d-none d-sm-block">تعداد : {{ $item->quantity }}</h6>
         </div>
     @endforeach
 
-    <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+    {{-- <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
         <div class="d-flex gap-2 align-items-center">
             <h6 class="m-0">قیمت کل</h6>
         </div>
         <h6 class="m-0 d-none d-sm-block">{{ $order->fullPriceFormated() }} ریال</h6>
-    </div>
+    </div> --}}
 
     @if ($is_admin and !$order->completed)
         <button wire:click="completedOrder({{ $order->id }})" type="button"

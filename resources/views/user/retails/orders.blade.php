@@ -47,7 +47,7 @@
                                 <th>شناسه</th>
                                 <th>تاریخ</th>
                                 <th>وضیعت</th>
-                                <th>قیمت کل</th>
+                                <th> - </th>
                                 <th>مشاهده جزئیات</th>
                             </tr>
                         </thead>
@@ -81,7 +81,7 @@
 
                                     </td>
                                     <td>
-                                        <p class="mb-0 fw-medium">{{ $order->fullPriceFormated() }} ریال</p>
+                                        <p class="mb-0 fw-medium"> - </p>
                                     </td>
                                     <td>
                                         <div class="col-3 text-end">

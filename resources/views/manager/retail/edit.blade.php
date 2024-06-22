@@ -96,12 +96,12 @@
                                     placeholder="توضیح کوتاه اختیاری است" value="{{ $retail->desc }}" name="desc"
                                     aria-label="Product title">
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label class="form-label" for="ecommerce-product-name">قیمت (ریال)</label>
                                 <input type="number" class="form-control" id="ecommerce-product-name"
                                     placeholder="به ریال وارد کنید" value="{{ $retail->price }}" name="price"
                                     aria-label="Product title">
-                            </div>
+                            </div> --}}
                             <div class="mb-3">
                                 <label class="form-label" for="multicol-country">انتخاب دسته بتدی</label>
                                 <select id="multicol-country" name="retail_category_id" class="select2 form-select"

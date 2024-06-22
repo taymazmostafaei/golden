@@ -166,9 +166,9 @@
                                     <a href="#"
                                         class="h5">{{ $retial->name }}</a>
                                     <p class="mt-2">{{ $retial->desc }}</p>
-                                    <p class="d-flex align-items-center justify-content-end text-success">
+                                    {{-- <p class="d-flex align-items-center justify-content-end text-success">
                                         {{ $retial->priceFormated() }} ریال
-                                    </p>
+                                    </p> --}}
                                     <div class="d-flex flex-column flex-md-row gap-2 text-nowrap">
                                         <div class="d-grid gap-2 col-12 mx-auto">
                                             <button class="btn btn-primary add-to-cart" data-id="{{$retial->id}}" type="button">

@@ -29,8 +29,8 @@
                             </div>
 
                             <h5 class="card-title ms-3">{{ $item->name }}</h5>
-                            <p class="d-block text-muted mb-0 ms-3" style="font-size:15px;">
-                                {{ $item->associatedModel->priceFormated() }} ریال</p>
+                            {{-- <p class="d-block text-muted mb-0 ms-3" style="font-size:15px;">
+                                {{ $item->associatedModel->priceFormated() }} ریال</p> --}}
 
 
                             <div class="input-number d-flex gap-2 text-nowrap ms-3 mt-2">
@@ -54,9 +54,9 @@
     @if (count($cart))
         <div class="offcanas-footer border-top p-3">
             <div class="col-12 d-flex justify-content-between">
-                <span class="">مبلغ سبد خرید:</span><span
+                {{-- <span class="">مبلغ سبد خرید:</span><span
                     class="text-primary fw-bold">{{ number_format($cartTotal) }}
-                    ریال</span>
+                    ریال</span> --}}
             </div>
             <div class="d-grid gap-2 col-12 mx-auto mt-4">
                 <button wire:click="cartSubmit" class="savecart btn btn-primary waves-effect waves-light" type="button">
