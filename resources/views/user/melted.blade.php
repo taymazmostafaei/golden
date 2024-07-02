@@ -80,8 +80,8 @@
           <i class="ti ti-exchange ti-sm"></i>
         </span>
         <div class="d-flex flex-column ps-1">
-          <h5 class="alert-heading mb-2">حداکثر معامله</h5>
-          <p class="mb-0">2,000 گرم</p>
+          <h5 class="alert-heading mb-2">حداکثر هر معامله</h5>
+          <p class="mb-0">{{auth()->user()->trade_limit}} گرم</p>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
           </button>
         </div>

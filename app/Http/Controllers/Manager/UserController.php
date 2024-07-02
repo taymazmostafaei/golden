@@ -116,6 +116,7 @@ class UserController extends Controller
             'phone' => ['required', 'ir_mobile:zero'],
             'telphone' => ['required', 'ir_phone_with_code'],
             'address' => ['required', 'persian_alpha_eng_num', 'string', 'max:64'],
+            'trade_limit' => ['required', 'integer'],
             // You might want to add validation rules for other fields if they are updated too
         ]);
 
@@ -131,6 +132,7 @@ class UserController extends Controller
         $user->phone = $data['phone'];
         $user->telphone = $data['telphone'];
         $user->address = $data['address'];
+        $user->trade_limit = $data['trade_limit'];
         $user->save();
 
         // Redirect to a route or return a response

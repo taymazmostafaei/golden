@@ -307,6 +307,11 @@
                             </select>
                         </div>
                         <div class="col-12 col-md-6">
+                            <label class="form-label" for="trade_limit">محدودیت معامله (گرم)</label>
+                            <input type="number" name="trade_limit" class="form-control"
+                                value="{{ $user->trade_limit }}" />
+                        </div>
+                        <div class="col-12 col-md-6">
                             <label class="form-label" for="phone">شماره موبایل</label>
                             <div class="input-group">
                                 <span class="input-group-text">IR (09)</span>

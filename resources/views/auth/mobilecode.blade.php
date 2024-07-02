@@ -80,7 +80,7 @@ $customizerHidden = 'customizer-hide';
         <h4 class="mb-1 pt-2">تایید دو مرحله ای 💬</h4>
         <p class="text-start mb-4">
           ما یک کد تأیید به تلفن همراه شما ارسال کردیم. کد تأیید را در فیلد زیر وارد کنید.
-          <span class="fw-medium d-block mt-2">******1234</span><span>{{$code}}</span>
+           <span class="fw-medium d-block mt-2">******1234</span>{{-- <span>{{$code}}</span> --}}
         </p>
         <p class="mb-0 fw-medium">کد امنیتی 6 رقمی را تایپ کنید</p>
         @if ( isset($wrongcode) )

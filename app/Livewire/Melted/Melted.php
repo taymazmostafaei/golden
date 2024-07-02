@@ -23,6 +23,8 @@ class Melted extends Component
     public $bprice;
     public $sprice;
 
+    public $trade_limit;
+
     protected $listeners = [
         'saveBuy' => 'buy',
         'saveSell' => 'sell',
@@ -36,6 +38,12 @@ class Melted extends Component
         }
 
         $validated = $this->validate();
+
+        
+        if ($this->grams > $this->trade_limit or $this->buyGrams > $this->trade_limit ) {
+            abort(403 , 'امکان سفارش بیشتر از گرم مجاز وجود ندارد.');
+            // return redirect()->back()->withErrors('fail', '');
+        }
 
         if ($this->grams == 0) {
 
@@ -77,6 +85,11 @@ class Melted extends Component
             // return redirect()->back()->withErrors('fail', '');
         }
         $validated = $this->validate();
+
+        if ($this->grams > $this->trade_limit or $this->buyGrams > $this->trade_limit ) {
+            abort(403 , 'امکان سفارش بیشتر از گرم مجاز وجود ندارد.');
+            // return redirect()->back()->withErrors('fail', '');
+        }
 
         if ($this->grams == 0) {
 
@@ -168,6 +181,7 @@ class Melted extends Component
     {
         $this->bprice = (Setting::where('key', 'buy_price')->first())->value;
         $this->sprice = (Setting::where('key', 'sell_price')->first())->value;
+        $this->trade_limit = auth()->user()->trade_limit;
     }
 
     public function render()

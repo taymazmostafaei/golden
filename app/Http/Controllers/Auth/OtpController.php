@@ -24,7 +24,7 @@ class OtpController extends Controller
         #new code
         $code = rand(100000, 999999);
         Cache::put($this->phone, $code, 120);
-        $this->RequestSMS($this->phone, [$code]);
+        $this->RequestSMS($this->phone, [(string)$code]);
         return $code;
     }
 
@@ -39,8 +39,9 @@ class OtpController extends Controller
     }
 
     public function RequestSMS($phone, $inputs = []){
-        $url = 'https://console.melipayamak.com/api/send/shared/74c54650334b44cf96ed8ee8c1246e4a';
-        $data = array('bodyId' => 143123, 'to' => $phone, 'args' => $inputs);
+
+        $url = 'https://console.melipayamak.com/api/send/shared/298d241d6a4546fa84d1ac29eed12bb9';
+        $data = array('bodyId' => 221023, 'to' => (string)$phone, 'args' => $inputs);
         $data_string = json_encode($data);
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
