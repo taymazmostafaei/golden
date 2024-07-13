@@ -20,7 +20,7 @@
 
 @section('page-script')
     <script>
-        var meltedJsonUrl = "{{route('panel.user.melted.json')}}";
+        var meltedJsonUrl = "{{ route('panel.user.melted.json') }}";
     </script>
     <script src="{{ asset('assets/js/melted-order-list.js') }}"></script>
     <script src="{{ asset('assets/js/user/melted-sweetalert2.js') }}"></script>
@@ -67,27 +67,27 @@
 
     </div> --}}
 
-  <!-- Statistics -->
-  <div class="col-xl-12 mb-4 col-lg-12 col-12">
-      {{-- <div class="card-header">
+    <!-- Statistics -->
+    <div class="col-xl-12 mb-4 col-lg-12 col-12">
+        {{-- <div class="card-header">
         <div class="d-flex justify-content-between mb-3">
           <h5 class="card-title mb-0">Statistics</h5>
           <small class="text-muted">Updated 1 month ago</small>
         </div>
       </div> --}}
-      <div class="alert alert-secondary alert-dismissible d-flex align-items-baseline" role="alert">
-        <span class="alert-icon alert-icon-lg text-secondary me-2">
-          <i class="ti ti-exchange ti-sm"></i>
-        </span>
-        <div class="d-flex flex-column ps-1">
-          <h5 class="alert-heading mb-2">حداکثر هر معامله</h5>
-          <p class="mb-0">{{auth()->user()->trade_limit}} گرم</p>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          </button>
+        <div class="alert alert-secondary alert-dismissible d-flex align-items-baseline" role="alert">
+            <span class="alert-icon alert-icon-lg text-secondary me-2">
+                <i class="ti ti-exchange ti-sm"></i>
+            </span>
+            <div class="d-flex flex-column ps-1">
+                <h5 class="alert-heading mb-2">حداکثر هر معامله</h5>
+                <p class="mb-0">{{ auth()->user()->trade_limit }} گرم</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
         </div>
-      </div>
-  </div>
-  <!--/ Statistics -->
+    </div>
+    <!--/ Statistics -->
     <div class="row">
         <div class="d-flex justify-content-center">
             <div class="col-xl-8 col-12">
@@ -107,17 +107,17 @@
                     </ul> --}}
 
                     <div class="tab-content">
-                <h5 class="card-title mb-4">خرید / فروش</h5>
+                        <h5 class="card-title mb-4">خرید / فروش</h5>
 
 
                         <div class="tab-pane fade show active" id="navs-pills-justified-buy" role="tabpanel">
-                          <livewire:melted.melted />
+                            <livewire:melted.melted />
                         </div>
                         {{-- <div class="tab-pane fade" id="navs-pills-justified-sale" role="tabpanel">
                           <livewire:melted.sell />
                         </div> --}}
 
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,6 +132,7 @@
             <div class="card-header">
                 <h5 class="card-title mb-0">آخرین معاملات</h5>
             </div>
+
             <table class="datatables-order table border-top">
                 <thead>
                     <tr>
@@ -147,6 +148,38 @@
                     </tr>
                 </thead>
             </table>
+            {{-- <div class="date-filter container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <label for="fromDate" class="m-2">از تاریخ: </label>
+                        <input type="text" class="form-control" id="fromDate" name="fromDate">
+                        <label for="toDate" class="m-2">به تاریخ: </label>
+                        <input type="text" class="form-control" id="toDate" name="toDate">
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
+
+    <!-- persian-date -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-date/dist/persian-date.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <!-- persian-datepicker -->
+    <script src="https://cdn.jsdelivr.net/npm/persian-datepicker/dist/js/persian-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/persian-datepicker/dist/css/persian-datepicker.min.css">
+
+    <script>
+        $("#fromDate").persianDatepicker({
+            format: 'YYYY/MM/DD',
+            autoClose: true,
+            calendarType: 'persian',
+        });
+        $("#toDate").persianDatepicker({
+            format: 'YYYY/MM/DD',
+            autoClose: true,
+            calendarType: 'persian',
+        });
+    </script> --}}
 @endsection

@@ -5,6 +5,28 @@
 'use strict';
 
 // Datatable (jquery)
+  // Custom filtering function which will search data in the date column
+  // $.fn.dataTable.ext.search.push(
+  //   function(settings, data, dataIndex) {
+  //     var min = $('#fromDate').val();
+  //     var max = $('#toDate').val();
+  //     var date = data[8]; // Assuming the date column is the 9th column (index 8)
+
+  //     if (min == "" && max == "") {
+  //       return true;
+  //     }
+
+  //     min = min.replace(/\//g, '-');
+  //     max = max.replace(/\//g, '-');
+  //     date = date.replace(/\//g, '-');
+
+  //     if ((min == "" || moment(date).isSameOrAfter(moment(min, 'YYYY-MM-DD'))) &&
+  //         (max == "" || moment(date).isSameOrBefore(moment(max, 'YYYY-MM-DD')))) {
+  //       return true;
+  //     }
+  //     return false;
+  //   }
+  // );
 
 $(function () {
   let borderColor, bodyBg, headingColor;
@@ -418,6 +440,7 @@ $(function () {
         }
       }
     });
+
     $('.dataTables_length').addClass('mt-0 mt-md-3 ms-n2');
     $('.dt-action-buttons').addClass('pt-0');
     $('.dataTables_filter').addClass('ms-n3');
@@ -425,6 +448,10 @@ $(function () {
     Livewire.on('ReloadDataTable', function () {
       dt_products.ajax.reload();
     });
+    // $('#fromDate, #toDate').on('change', function() {
+    //   console.log('ef');
+    //   dt_products.draw();
+    // });
 
   }
 
