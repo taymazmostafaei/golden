@@ -84,6 +84,11 @@ class LoginController extends Controller
                 'phone' => ['required', 'ir_mobile:zero', 'exists:users']
             ]);
 
+            if ((User::where('phone', $request->phone)->first())->status != 'verify') {
+
+                return redirect(route('login', ['s' => 1]));
+            }
+
             $otp = new OtpController($request->phone);
             $code = $otp->Send();
 
@@ -108,7 +113,7 @@ class LoginController extends Controller
 
                 $user = User::where('phone', $request->codecheck)->first();
                 Auth::loginUsingId($user->id, remember:true);
-                return redirect(RouteServiceProvider::PANEL);
+                return redirect(RouteServiceProvider::MELTED);
             }
             
             $code = 111111;

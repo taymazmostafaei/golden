@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\SmsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -146,6 +147,9 @@ class UserController extends Controller
     {
         $user->status = $status;
         $user->save();
+        if ($status == 'verify') {
+            (new SmsService())->RequestSMS(232753, $user->phone, [ $user->firstname . $user->lastname]);
+        }
         return redirect()->back()->with('success', 'کاربر با موفقیت تغییر یافت.');
     }
 

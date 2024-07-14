@@ -6,6 +6,7 @@ use App\Models\Retail;
 use App\Models\RetailOrder;
 use App\Models\RetailOrderDetail;
 use App\Models\Setting;
+use App\Services\TelegramService;
 use Darryldecode\Cart\Facades\CartFacade;
 use Livewire\Component;
 
@@ -75,6 +76,7 @@ class Cart extends Component
         }
 
         CartFacade::session(auth()->user()->id)->clear();
+        (new TelegramService())->sendMessage("سفارش جدید در بنک داری ثبت شد.");
         $this->dispatch('AlertUser', type: 'success', title: 'سفارش شما با موفقیت ثبت شد.');
     }
 

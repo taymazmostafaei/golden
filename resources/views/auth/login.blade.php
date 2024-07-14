@@ -52,8 +52,9 @@
                         @include('components.alert')
                         @isset($_GET['s'])
                             <div class="col-sm-12">
-                                <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                                    ثبت نام شما با موفقیت انجام شد ، وارد شوید.
+                                <div class="alert  alert-warning alert-dismissible fade show" role="alert">
+                                    ثبت نام شما با موفقیت انجام شده ،
+                                    لطفا برای ورود منتظر پیامک تایید حساب کاربری تان شوید .
                                 </div>
                             </div>
                         @endisset

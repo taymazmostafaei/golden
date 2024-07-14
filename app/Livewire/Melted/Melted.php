@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\Attributes\Validate;
 use App\Models\Melted as MeltedModel;
 use App\Models\Setting;
+use App\Services\TelegramService;
 
 class Melted extends Component
 {
@@ -57,6 +58,9 @@ class Melted extends Component
                 'grams' => $this->buyGrams,
                 'price' => $this->bprice,
             ]);
+
+            (new TelegramService())->sendMessage("سفارش جدید در آبشده ثبت شد.");
+
         } else {
 
             if ($this->grams == 0) {
@@ -70,6 +74,10 @@ class Melted extends Component
                 'grams' => $this->grams,
                 'price' => $this->bprice,
             ]);
+
+            (new TelegramService())->sendMessage("سفارش جدید در آبشده ثبت شد.");
+
+
         }
 
 
@@ -103,6 +111,8 @@ class Melted extends Component
                 'grams' => $this->sellGrams,
                 'price' => $this->sprice,
             ]);
+
+            (new TelegramService())->sendMessage("سفارش جدید در آبشده ثبت شد.");
         } else {
             
             if ($this->grams == 0) {
@@ -116,6 +126,8 @@ class Melted extends Component
                 'grams' => $this->grams,
                 'price' => $this->sprice,
             ]);
+
+            (new TelegramService())->sendMessage("سفارش جدید در آبشده ثبت شد.");
         }
 
         $this->dispatch('ReloadDataTable');

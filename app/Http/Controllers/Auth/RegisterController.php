@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Services\TelegramService;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
@@ -102,16 +103,18 @@ class RegisterController extends Controller
             'telphone' => $data['telphone'],
             'address' => $data['address'],
             'access' => [
-                'users' => 1,
-                'orders' => 1,
-                'retails' => 1,
-                'news' => 1,
-                'setting' => 1,
-                'admin_dashboard' => 1
+                'users' => 0,
+                'orders' => 0,
+                'retails' => 0,
+                'news' => 0,
+                'setting' => 0,
+                'admin_dashboard' => 0
             ],
             'status' => 'wait',
             'cert' => basename($path)
         ]);
+
+        (new TelegramService())->sendMessage("کاربر $user->firstname $user->lastname ثبت نام کرد.");
 
         Redirect::to('/login?s=1')->send();
 

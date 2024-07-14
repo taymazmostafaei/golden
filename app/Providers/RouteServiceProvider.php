@@ -21,6 +21,9 @@ class RouteServiceProvider extends ServiceProvider
 
     public const PANEL = '/panel/manager';
 
+    public const MELTED = '/panel/user/melted';
+
+
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
