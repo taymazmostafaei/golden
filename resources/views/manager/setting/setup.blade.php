@@ -14,6 +14,33 @@
 
 @section('page-script')
     <script src="{{ asset('assets/js/app-ecommerce-settings.js') }}"></script>
+    <script>
+        // Function to format number as string with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Function to unformat number by removing commas
+        function unformatNumber(numStr) {
+            return numStr.replace(/,/g, '');
+        }
+
+        // Event listener to handle input formatting
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('.number-input').forEach(input => {
+                input.addEventListener('input', (e) => {
+                    const rawValue = unformatNumber(e.target.value);
+                    const formattedValue = formatNumber(rawValue);
+                    e.target.value = formattedValue;
+
+                    const hiddenInput = document.getElementById(e.target.dataset.hiddenInputId);
+                    if (hiddenInput) {
+                        hiddenInput.value = rawValue;
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
 
 @section('content')
@@ -36,13 +63,17 @@
                             <h5 class="card-title m-0">تنظیم فی</h5>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('setting.setup.save')}}" method="post">
-                              @csrf
+                            <form action="{{ route('setting.setup.save') }}" method="post">
+                                @csrf
 
                                 @foreach ($setups as $setup)
                                     <div class="col-12 mb-3">
-                                        <label class="m-2" for="fee">{{$setup->translate}}</label>
-                                        <input class="form-control" type="number" name="{{$setup->key}}" value="{{$setup->value}}">
+                                        <label class="m-2" for="fee">{{ $setup->translate }}</label>
+                                        <input dir="ltr" class="form-control number-input" type="text"
+                                            data-hidden-input-id="{{ $setup->key }}_hidden"
+                                            value="{{ number_format($setup->value, 0, '', ',') }}">
+                                        <input type="hidden" name="{{ $setup->key }}" value="{{ $setup->value }}"
+                                            id="{{ $setup->key }}_hidden">
                                     </div>
                                 @endforeach
 

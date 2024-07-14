@@ -9,7 +9,6 @@ use App\Models\Setting;
 
 class Melted extends Component
 {
-    #[Validate('integer')] 
     public int $grams = 0;
 
     #[Validate('integer')] 
@@ -100,7 +99,7 @@ class Melted extends Component
 
                 'user_id' => auth()->user()->id,
                 'type' => 'sell',
-                'amount' => $this->amount * 1000000,
+                'amount' => $this->amount * 10000000,
                 'grams' => $this->sellGrams,
                 'price' => $this->sprice,
             ]);
@@ -131,8 +130,8 @@ class Melted extends Component
         $this->amount = 0;
 
         # formul here
-        $this->buyPrice = ($this->bprice / 10) * $this->grams;
-        $this->sellPrice = ($this->sprice / 10) * $this->grams;
+        $this->buyPrice = $this->grams * 750 / 705 / 4.6082 * $this->bprice;
+        $this->sellPrice = $this->grams * 750 / 705 / 4.6082 * $this->sprice;
     }
 
     public function updatedAmount()
@@ -143,8 +142,8 @@ class Melted extends Component
         $this->grams = 0;
 
         # formul here
-        $this->buyGrams = $this->amount * 1000000 / ($this->bprice / 10);
-        $this->sellGrams = $this->amount * 1000000 / ($this->sprice / 10);
+        $this->buyGrams = round((($this->amount * 10000000) / 750 * 705 * 4.6082 / $this->bprice), 2);
+        $this->sellGrams = round((($this->amount * 10000000) / 750 * 705 * 4.6082 / $this->sprice), 2);
     }
 
     public function increaseAmount()
@@ -179,8 +178,8 @@ class Melted extends Component
 
     public function mount()
     {
-        $this->bprice = (Setting::where('key', 'buy_price')->first())->value;
-        $this->sprice = (Setting::where('key', 'sell_price')->first())->value;
+        $this->bprice = (Setting::where('key', 'fee_buy')->first())->value;
+        $this->sprice = (Setting::where('key', 'fee_sell')->first())->value;
         $this->trade_limit = auth()->user()->trade_limit;
     }
 

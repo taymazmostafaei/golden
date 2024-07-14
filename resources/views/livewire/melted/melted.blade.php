@@ -20,10 +20,10 @@
                 <br><br>
                 {{number_format($buyPrice)}}
                 <br><br>
-                تومان
+                ریال
             @else
                 <br><br>
-                {{number_format($buyGrams)}}
+                {{$buyGrams}}
                 <br><br>
                 گرم
             @endif
@@ -34,10 +34,10 @@
                 <br><br>
                 {{number_format($sellPrice)}}
                 <br><br>
-                تومان
+                ریال
             @else
                 <br><br>
-                {{number_format($sellGrams)}}
+                {{$sellGrams}}
                 <br><br>
                 گرم
             @endif
