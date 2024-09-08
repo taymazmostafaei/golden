@@ -155,13 +155,13 @@
                 <div class="card mb-4">
                     <h5 class="card-header">بارگذاری عکس کارت زرگری یا پروانه کسب</h5>
                     <div class="card-body">
-                        <form action="{{ route('profile-cert-upload') }}" method="post"
+                        {{-- <form action="{{ route('profile-cert-upload') }}" method="post"
                             enctype="multipart/form-data" class="dropzone" id="image-upload">
                             @csrf
                             <div class="dz-message needsclick" data-dz-message>
                                 عکس ها را اینجا رها کنید یا برای آپلود کلیک کنید
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
                 <div class="col-12">

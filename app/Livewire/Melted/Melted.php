@@ -33,7 +33,7 @@ class Melted extends Component
     public function buy()
     {
         if (!(Setting::where('key', 'melted')->first())->value) {
-            abort(403 , 'امکان ثبت سفارش فعلا وجود ندارد');
+            abort(403 , 'به علت نوسانات معاملات فقط از طریق تلفن و حضوری انجام میشود.');
             // return redirect()->back()->withErrors('fail', '');
         }
 
@@ -88,7 +88,7 @@ class Melted extends Component
     public function sell()
     {
         if (!(Setting::where('key', 'melted')->first())->value) {
-            abort(403 , 'امکان ثبت سفارش فعلا وجود ندارد');
+            abort(403 , 'به علت نوسانات معاملات فقط از طریق تلفن و حضوری انجام میشود.');
             // return redirect()->back()->withErrors('fail', '');
         }
         $validated = $this->validate();
