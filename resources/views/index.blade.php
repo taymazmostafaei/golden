@@ -64,7 +64,11 @@
                             <div class="card bg-primary text-white mb-3">
                                 <div class="card-header"></div>
                                 <div class="card-body">
-                                    <h5 class="card-title text-white">آبشده</h5>
+                                    <h5 class="card-title text-white">&nbsp;
+
+                                        آبشده
+                                        &nbsp; 
+                                    </h5>
                                 </div>
                             </div>
                         </a>
