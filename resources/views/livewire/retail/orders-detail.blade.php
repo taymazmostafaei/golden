@@ -10,7 +10,7 @@
         </div>
 
         @foreach ($order->details as $item)
-            <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+            <div class="d-flex justify-content-between align-items-center pb-3 mb-3">
                 <div class="d-flex gap-2 align-items-center">
 
                     @foreach ($item->retail->media as $media)
@@ -23,7 +23,9 @@
                 <span class="text-muted">x</span><span class="text-muted">{{ $item->quantity }}</span>
             </div>
             <h6 class="m-0 d-none d-sm-block">تعداد : {{ $item->quantity }}</h6>
+            
         </div>
+        <p class="mb-3 pb-1 border-bottom ">{{ $item->description }}</p>
     @endforeach
 
     {{-- <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">

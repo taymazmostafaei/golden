@@ -13,7 +13,8 @@ class RetailOrderDetail extends Model
         'retail_order_id',
         'retail_id',
         'price',
-        'quantity'
+        'quantity',
+        'description'
     ];
 
     public function retail()

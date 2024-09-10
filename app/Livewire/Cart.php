@@ -20,6 +20,7 @@ class Cart extends Component
     public $cart;
     public $cartTotal;
     public $quantity;
+    public $descriptions = [];
 
     public function add(Retail $retail)
     {
@@ -71,7 +72,8 @@ class Cart extends Component
                 'retail_order_id' => $retailOrder->id ,
                 'retail_id' => $item->id ,
                 'price' => $item->price ,
-                'quantity' => $item->quantity
+                'quantity' => $item->quantity ,
+                'description' => $this->descriptions[$item->id]
             ]);
         }
 

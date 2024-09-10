@@ -12,9 +12,9 @@
 
             @foreach ($cart as $item)
                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
-                    <div class="p-2 d-flex">
-                        <div class="text-center col-3 d-flex">
-                            <img class="card-img card-img-left rounded" style="margin-bottom: 0"
+                    <div class="p-2 d-flex align-items-start">
+                        <div class="text-center col-3 d-flex ">
+                            <img class="card-img card-img-left rounded object-fit-cover" style="margin-bottom: 0;"
                                 @isset($item->associatedModel->media[0])
                                     src="{{ asset('storage/retail-media/' . $item->associatedModel->media[0]->path) }}"
                                 @endisset
@@ -44,6 +44,9 @@
                                     class="btn btn-primary btn-icon input-number__minus" type="button"
                                     style="height:20px; width:20px;"><i class="ti ti-minus"></i></button>
                             </div>
+                            <div class="mt-4">
+                                <textarea class="form-control" wire:model="descriptions.{{ $item->id }}" rows="3" placeholder="توضیحات"></textarea>
+                              </div>
                         </div>
                     </div>
                 </div>
