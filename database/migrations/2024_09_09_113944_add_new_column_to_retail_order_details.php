@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('retail_order_details', function (Blueprint $table) {
 
             $table->string('description')->after('quantity')->nullable();
+            $table->string('size')->after('quantity')->nullable();
         });
     }
 

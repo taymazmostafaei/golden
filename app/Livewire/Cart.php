@@ -22,12 +22,14 @@ class Cart extends Component
     public $quantity;
     public $descriptions = [];
 
-    public function add(Retail $retail)
+    public function add(Retail $retail, $size)
     {
+        $size = $size * 1;
+        $retail->size = $size;
         CartFacade::session(auth()->user()->id)->add([
             'id' => $retail->id,
             'name' => $retail->name,
-            'price' => $retail->price,
+            'price' => $size,
             'quantity' => 1,
             'associatedModel' => $retail
         ]);
@@ -73,7 +75,8 @@ class Cart extends Component
                 'retail_id' => $item->id ,
                 'price' => $item->price ,
                 'quantity' => $item->quantity ,
-                'description' => $this->descriptions[$item->id]
+                'size' => $item->price ,
+                'description' => isset($this->descriptions[$item->id]) ? $this->descriptions[$item->id] : null
             ]);
         }
 

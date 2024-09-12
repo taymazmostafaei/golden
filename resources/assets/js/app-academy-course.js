@@ -44,10 +44,25 @@ Livewire.on('SaveCartSwal', function (data) {
   });
 });
 
+// When any select element with the class 'select2' is changed
+$('.select2').change(function () {
+  // Get the selected value
+  var selectedSize = $(this).val();
+
+  // Traverse to the parent element (div.mb-3), then move to the next sibling (.d-flex)
+  // and find the button inside it
+  var $button = $(this).closest('.mb-3').next('.d-flex').find('.add-to-cart');
+
+  // Update the 'data-size' attribute of the button
+  $button.attr('data-size', selectedSize);
+});
+
 
 $(".add-to-cart").on("click", function () {
   let clickedID = $(this).data('id');
-  Livewire.dispatch('addToCart', { retail: clickedID });
+  let selectedSize = $(this).attr('data-size');
+
+  Livewire.dispatch('addToCart', { retail: clickedID , size: selectedSize ?? false });
 });
 
 // Datatable (jquery)

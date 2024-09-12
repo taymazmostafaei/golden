@@ -166,24 +166,30 @@
                                 </div> --}}
                                     <a href="#" class="h5">{{ $retial->name }}</a>
                                     <p class="mt-2">{{ $retial->desc }}</p>
-                                    <div class="mb-3">
-                                        <label class="form-label mb-4" for="multicol-country">انتخاب سایز</label>
-                                        <select id="multicol-country" name="retail_category_id" class="select2 form-select">
-                                           
+                                    @if ($retial->moreoptions['type_bangle'])
+                                        <div class="mb-3">
+                                            <label class="form-label mb-4" for="multicol-country">انتخاب سایز</label>
+                                            <select id="multicol-country" name="retail_category_id" class="select2 form-select">
                                                 <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="1">5</option>
-                                          
-                                        </select>
-                                    </div>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>                                         
+                                            </select>
+                                        </div>
+                                    @endif
+
                                     {{-- <p class="d-flex align-items-center justify-content-end text-success">
                                         {{ $retial->priceFormated() }} ریال
                                     </p> --}}
                                     <div class="d-flex flex-column flex-md-row gap-2 text-nowrap">
                                         <div class="d-grid gap-2 col-12 mx-auto">
-                                            <button class="btn btn-primary add-to-cart" data-id="{{ $retial->id }}"
+                                            <button class="btn btn-primary add-to-cart"
+                                            @if ($retial->moreoptions['type_bangle'])
+                                                data-size="1" 
+                                            @endif
+                                                
+                                                data-id="{{ $retial->id }}"
                                                 type="button">
                                                 سفارش محصول
                                             </button>

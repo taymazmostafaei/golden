@@ -14,6 +14,7 @@ class RetailOrderDetail extends Model
         'retail_id',
         'price',
         'quantity',
+        'size',
         'description'
     ];
 

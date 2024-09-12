@@ -33,6 +33,7 @@ class Retail extends Model
         'price',
         'exsist',
         'desc',
-        'hide'
+        'hide',
+        'moreoptions'
     ];
 }

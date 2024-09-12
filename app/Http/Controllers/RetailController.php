@@ -47,6 +47,7 @@ class RetailController extends Controller
             //'price' => 'required|numeric',
             'desc' => 'required|string',
             'hide' => 'sometimes',
+            'type_bangle' => 'sometimes'
         ]);
 
         // Create a new Retail instance
@@ -58,6 +59,7 @@ class RetailController extends Controller
         $retail->price = 1;
         $retail->desc = $request->input('desc');
         $retail->hide = $request->has('hide');
+        $retail->moreoptions = ['type_bangle' => $request->has('type_bangle')];
 
         // Save the Retail instance
         $retail->save();

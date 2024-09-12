@@ -181,8 +181,8 @@
                                 <h6 class="mb-0">النگو</h6>
                                 <div class="w-25 d-flex justify-content-end">
                                     <label class="switch switch-primary switch-sm me-4 pe-2">
-                                        <input type="checkbox" class="switch-input" name="hide"
-                                            @checked($retail->hide)>
+                                        <input type="checkbox" class="switch-input" name="type_bangle"
+                                            @checked($retail->moreoptions['type_bangle'])>
                                         <span class="switch-toggle-slider">
                                             <span class="switch-on">
                                                 <span class="switch-off"></span>

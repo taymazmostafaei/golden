@@ -28,10 +28,16 @@
 
                             </div>
 
-                            <h5 class="card-title ms-3">{{ $item->name }}</h5>
-                            {{-- <p class="d-block text-muted mb-0 ms-3" style="font-size:15px;">
-                                {{ $item->associatedModel->priceFormated() }} ریال</p> --}}
+                            <h5 class="card-title ms-3">
+                                {{ $item->name }}
+                            </h5>
 
+                            @if ($item->associatedModel->size)
+                                <p class="d-block text-muted mb-0 ms-3" style="font-size:15px;">
+                                    سایز :   
+                                    {{$item->associatedModel->size}}
+                                </p>
+                            @endif
 
                             <div class="input-number d-flex gap-2 text-nowrap ms-3 mt-2">
                                 <button wire:click="increment({{ $item->id }})"

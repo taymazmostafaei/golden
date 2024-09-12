@@ -22,6 +22,9 @@
                 <h6 class="m-0">{{ $item->retail->name }}</h6>
                 <span class="text-muted">x</span><span class="text-muted">{{ $item->quantity }}</span>
             </div>
+            @if ($item->size)
+                <h6 class="m-0 d-none d-sm-block">سایز : {{ $item->size }}</h6>   
+            @endif
             <h6 class="m-0 d-none d-sm-block">تعداد : {{ $item->quantity }}</h6>
             
         </div>
