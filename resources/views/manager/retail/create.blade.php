@@ -115,6 +115,21 @@
                                     </div>
 
                                 </div>
+                                <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-4">
+                                    <h6 class="mb-0">النگو</h6>
+                                    <div class="w-25 d-flex justify-content-end">
+                                        <label class="switch switch-primary switch-sm me-4 pe-2">
+                                            <input type="checkbox" class="switch-input" name="hide">
+                                            <span class="switch-toggle-slider">
+                                                <span class="switch-on">
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                </div>
+                                
                                 <div class="input-group mt-4">
                                     <button class="btn btn-outline-primary waves-effect" type="button"
                                         id="button-addon2">مشاهده

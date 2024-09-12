@@ -6,7 +6,7 @@
     @livewireStyles
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/plyr/plyr.css') }}" />
-    <link rel="stylesheet" href="{{asset('assets/vendor/libs/sweetalert2/sweetalert2.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.css') }}" />
 @endsection
 
 @section('page-style')
@@ -18,7 +18,7 @@
     <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/plyr/plyr.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-    <script src="{{asset('assets/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
+    <script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
 @endsection
 
 @section('page-script')
@@ -68,24 +68,24 @@
 
         <div class="row mb-5">
             @foreach ($category->children as $categorych)
-            <div class="col-md-3 col-sm-4">
-                <a href="{{route('panel.user.retails.category', $categorych->id)}}">
-                    <div class="card mb-3" style="border-left: 5px solid var(--bs-primary)">
-                        <div class="row g-0 align-items-center">
-                            <div class="col-md-4 col-4">
-                                <img class="card-img card-img-left rounded" src="{{ asset('assets/img/elements/14.jpg') }}"
-                                    alt="Card image" />
-                            </div>
-                            <div class="col-md-8 col-8">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">{{$categorych->name}}</h5>
+                <div class="col-md-3 col-sm-4">
+                    <a href="{{ route('panel.user.retails.category', $categorych->id) }}">
+                        <div class="card mb-3" style="border-left: 5px solid var(--bs-primary)">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-md-4 col-4">
+                                    <img class="card-img card-img-left rounded"
+                                        src="{{ asset('assets/img/elements/14.jpg') }}" alt="Card image" />
+                                </div>
+                                <div class="col-md-8 col-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">{{ $categorych->name }}</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-        @endforeach
+                    </a>
+                </div>
+            @endforeach
         </div>
 
         <div class="card mb-4">
@@ -115,7 +115,7 @@
                     <div class="d-flex flex-column flex-md-row gap-2 text-nowrap">
                         <div class="d-grid gap-2 col-lg-12 mx-auto">
                             <span class="badge rounded-pill bg-danger text-white badge-notifications p-1"
-                                style="z-index: 1000" id="cartcounter">{{$cartcount}}</span>
+                                style="z-index: 1000" id="cartcounter">{{ $cartcount }}</span>
                             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasScroll" aria-controls="offcanvasScroll" style="z-index: 999"><i
                                     class="ti ti-shopping-cart"></i>سبدخرید</button>
@@ -126,8 +126,8 @@
                     <!-- Enable Body Scrolling Offcanvas -->
                     <div class="col-lg-4 col-md-6">
                         <div class="mt-3">
-                            <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScroll"
-                            aria-labelledby="offcanvasScrollLabel">
+                            <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false"
+                                tabindex="-1" id="offcanvasScroll" aria-labelledby="offcanvasScrollLabel">
                                 <livewire:cart>
                             </div>
                         </div>
@@ -143,11 +143,12 @@
                                 <div class="rounded-2 text-center mb-3">
                                     <div class="swiper-container swiper-container-horizontal swiper swiper-card-advance-bg"
                                         id="swiper-with-pagination-cards">
-                                    
+
                                         <swiper-container pagination="true">
                                             @foreach ($retial->media as $img)
                                                 <swiper-slide>
-                                                    <img class="img-fluid" src="{{ asset('storage/retail-media/' . $img->path) }}"
+                                                    <img class="img-fluid"
+                                                        src="{{ asset('storage/retail-media/' . $img->path) }}"
                                                         alt="tutor image 1" />
                                                 </swiper-slide>
                                             @endforeach
@@ -163,15 +164,27 @@
                                             class="text-muted">(1.23k)</span>
                                     </h6>
                                 </div> --}}
-                                    <a href="#"
-                                        class="h5">{{ $retial->name }}</a>
+                                    <a href="#" class="h5">{{ $retial->name }}</a>
                                     <p class="mt-2">{{ $retial->desc }}</p>
+                                    <div class="mb-3">
+                                        <label class="form-label mb-4" for="multicol-country">انتخاب سایز</label>
+                                        <select id="multicol-country" name="retail_category_id" class="select2 form-select">
+                                           
+                                                <option value="1">1</option>
+                                                <option value="1">2</option>
+                                                <option value="1">3</option>
+                                                <option value="1">4</option>
+                                                <option value="1">5</option>
+                                          
+                                        </select>
+                                    </div>
                                     {{-- <p class="d-flex align-items-center justify-content-end text-success">
                                         {{ $retial->priceFormated() }} ریال
                                     </p> --}}
                                     <div class="d-flex flex-column flex-md-row gap-2 text-nowrap">
                                         <div class="d-grid gap-2 col-12 mx-auto">
-                                            <button class="btn btn-primary add-to-cart" data-id="{{$retial->id}}" type="button">
+                                            <button class="btn btn-primary add-to-cart" data-id="{{ $retial->id }}"
+                                                type="button">
                                                 سفارش محصول
                                             </button>
                                         </div>
@@ -200,7 +213,7 @@
                     @empty
                         محصولی در این دسته بندی یافت نشد.
                     @endforelse
-                        
+
                 </div>
                 {{-- <nav aria-label="Page navigation" class="d-flex align-items-center justify-content-center">
                     <ul class="pagination">
