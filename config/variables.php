@@ -3,7 +3,7 @@
 return [
   'creatorName' => 'Pixinvent',
   'creatorUrl' => 'https://pixinvent.com',
-  'templateName' => 'سید قالیچی',
+  'templateName' => 'طلای سید قالیچی',
   'templateSuffix' => 'طلای',
   'templateVersion' => '1.0.0',
   'templateFree' => false,
