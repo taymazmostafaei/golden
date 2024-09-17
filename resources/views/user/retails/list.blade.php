@@ -167,8 +167,8 @@
                                     <a href="#" class="h5">{{ $retial->name }}</a>
                                     <p class="mt-2">{{ $retial->desc }}</p>
                                     @if ($retial->moreoptions['type_bangle'])
-                                        <div class="mb-3">
-                                            <label class="form-label mb-4" for="multicol-country">انتخاب سایز</label>
+                                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                                            <label class="form-label" for="multicol-country">انتخاب سایز</label>
                                             <select id="multicol-country" name="retail_category_id" class="select2 form-select">
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>

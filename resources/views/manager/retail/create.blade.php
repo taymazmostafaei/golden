@@ -30,122 +30,168 @@
 @section('content')
     <h4 class="py-3 mb-4"><span class="text-muted fw-light">محصولات بنکداری / </span>تعریف محصول</h4>
     @include('components.alert')
-        <div class="app-ecommerce">
-            <form action="{{route('retail.store')}}" method="post">
-                @csrf
+    <div class="app-ecommerce">
+        <form action="{{ route('retail.store') }}" method="post">
+            @csrf
 
-                <!-- Add Product -->
-                <div
-                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+            <!-- Add Product -->
+            <div
+                class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
 
-                    <div class="d-flex flex-column justify-content-center">
-                        {{-- <h4 class="mb-1 mt-3">یک وبلاگ جدید اضافه کنید</h4> --}}
-                        {{-- <p class="text-muted">Orders placed across your store</p> --}}
+                <div class="d-flex flex-column justify-content-center">
+                    {{-- <h4 class="mb-1 mt-3">یک وبلاگ جدید اضافه کنید</h4> --}}
+                    {{-- <p class="text-muted">Orders placed across your store</p> --}}
+                </div>
+                <div class="d-flex align-content-center flex-wrap gap-3">
+                    <div class="d-flex gap-3"><a href="{{ route('retail.index') }}" class="btn btn-label-secondary">لغو</a>
+                        {{-- <button class="btn btn-label-primary">ذخیره پیش نویس</button> --}}
                     </div>
-                    <div class="d-flex align-content-center flex-wrap gap-3">
-                        <div class="d-flex gap-3"><a href="{{route('retail.index')}}" class="btn btn-label-secondary">لغو</a>
-                            {{-- <button class="btn btn-label-primary">ذخیره پیش نویس</button> --}}
-                        </div>
-                        <button type="submit" class="btn btn-primary">ایجاد محصول</button>
-                    </div>
-
+                    <button type="submit" class="btn btn-primary">ایجاد محصول</button>
                 </div>
 
-                <div class="row">
+            </div>
 
-                    <!-- First column-->
-                    <div class="col-12 col-lg-8">
-                        <!-- Product Information -->
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h5 class="card-tile mb-0">اطلاعات محصول بنکداری</h5>
+            <div class="row">
+
+                <!-- First column-->
+                <div class="col-12 col-lg-8">
+                    <!-- Product Information -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-tile mb-0">اطلاعات محصول بنکداری</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label" for="ecommerce-product-name">نام</label>
+                                <input type="text" class="form-control" id="ecommerce-product-name"
+                                    placeholder="نام محصول بنکداری" name="name" aria-label="Product title">
                             </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label class="form-label" for="ecommerce-product-name">نام</label>
-                                    <input type="text" class="form-control" id="ecommerce-product-name"
-                                        placeholder="نام محصول بنکداری" name="name" aria-label="Product title">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="ecommerce-product-name">توضیح کوتاه</label>
-                                    <input type="text" class="form-control" id="ecommerce-product-name"
-                                        placeholder="توضیح کوتاه اختیاری است" name="desc"
-                                        aria-label="Product title">
-                                </div>
-                                {{-- <div class="mb-3">
+                            <div class="mb-3">
+                                <label class="form-label" for="ecommerce-product-name">توضیح کوتاه</label>
+                                <input type="text" class="form-control" id="ecommerce-product-name"
+                                    placeholder="توضیح کوتاه اختیاری است" name="desc" aria-label="Product title">
+                            </div>
+                            {{-- <div class="mb-3">
                                     <label class="form-label" for="ecommerce-product-name">قیمت (ریال)</label>
                                     <input type="number" class="form-control" id="ecommerce-product-name"
                                         placeholder="به ریال وارد کنید" name="price" aria-label="Product title">
                                 </div> --}}
-                                <div class="mb-3">
-                                    <label class="form-label" for="multicol-country">انتخاب دسته بتدی</label>
-                                    <select id="multicol-country" name="retail_category_id" class="select2 form-select" data-allow-clear="true">
-                                        @foreach ($cats as $cat)
-                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                        @endforeach
-                                    </select>
+                            <div class="mb-3">
+                                <label class="form-label" for="multicol-country">انتخاب دسته بتدی</label>
+                                <select id="multicol-country" name="retail_category_id" class="select2 form-select"
+                                    data-allow-clear="true">
+                                    @foreach ($cats as $cat)
+                                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class=" justify-content-between col-12 mb-3 dive-content" id="diveSection"
+                                style="display: none">
+                                <div>
+                                    <label class="form-label" for="ecommerce-product-name">شروع سایز</label>
+                                    <input type="number" class="form-control" id="ecommerce-product-name" placeholder="8"
+                                        name="desc" aria-label="Product title">
+                                </div>
+                                <div>
+                                    <label class="form-label" for="ecommerce-product-name">واحد سایز</label>
+                                    <input type="number" class="form-control" id="ecommerce-product-name" placeholder="5"
+                                        name="desc" aria-label="Product title">
+                                </div>
+                                <div>
+                                    <label class="form-label" for="ecommerce-product-name">پایان سایز</label>
+                                    <input type="number" class="form-control" id="ecommerce-product-name" placeholder="13"
+                                        name="desc" aria-label="Product title">
                                 </div>
                             </div>
                         </div>
-                        <!-- /Product Information -->
-                        <!-- Media -->
                     </div>
-                    <!-- /Second column -->
-
-                    <!-- Second column -->
-                    <div class="col-12 col-lg-4">
-                        <!-- امکانات Card -->
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">امکانات</h5>
-                            </div>
-                            <div class="card-body">
-                                <!-- Instock switch -->
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                    <h6 class="mb-0">عدم نمایش</h6>
-                                    <div class="w-25 d-flex justify-content-end">
-                                        <label class="switch switch-primary switch-sm me-4 pe-2">
-                                            <input type="checkbox" class="switch-input" name="hide">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on">
-                                                    <span class="switch-off"></span>
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-4">
-                                    <h6 class="mb-0">النگو</h6>
-                                    <div class="w-25 d-flex justify-content-end">
-                                        <label class="switch switch-primary switch-sm me-4 pe-2">
-                                            <input type="checkbox" class="switch-input" name="type_bangle">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on">
-                                                    <span class="switch-off"></span>
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-
-                                </div>
-                                
-                                <div class="input-group mt-4">
-                                    <button class="btn btn-outline-primary waves-effect" type="button"
-                                        id="button-addon2">مشاهده
-                                        محصول</button>
-                                    <input type="text" class="form-control" placeholder="آدرس محصول"
-                                        aria-label="Recipient's username" aria-describedby="button-addon2">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /امکانات Card -->
-                    </form>
-
-                    </div>
-                    <!-- /Second column -->
+                    <!-- /Product Information -->
+                    <!-- Media -->
                 </div>
-            
-        </div>
+                <!-- /Second column -->
 
-    @endsection
+                <!-- Second column -->
+                <div class="col-12 col-lg-4">
+                    <!-- امکانات Card -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">امکانات</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- Instock switch -->
+                            <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                                <h6 class="mb-0">عدم نمایش</h6>
+                                <div class="w-25 d-flex justify-content-end">
+                                    <label class="switch switch-primary switch-sm me-4 pe-2">
+                                        <input type="checkbox" class="switch-input" name="hide">
+                                        <span class="switch-toggle-slider">
+                                            <span class="switch-on">
+                                                <span class="switch-off"></span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-4">
+                                <h6 class="mb-0">النگو</h6>
+                                <div class="w-25 d-flex justify-content-end">
+                                    <label class="switch switch-primary switch-sm me-4 pe-2">
+                                        <input type="checkbox" class="switch-input" name="type_bangle">
+                                        <span class="switch-toggle-slider">
+                                            <span class="switch-on">
+                                                <span class="switch-off"></span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-4">
+                                <h6 class="mb-0">زنجیر</h6>
+                                <div class="w-25 d-flex justify-content-end">
+                                    <label class="switch switch-primary switch-sm me-4 pe-2">
+                                        <input type="checkbox" class="switch-input" id="toggle_btn" name="type_bangle">
+                                        <span class="switch-toggle-slider">
+                                            <span class="switch-on">
+                                                <span class="switch-off"></span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="input-group mt-4">
+                                <button class="btn btn-outline-primary waves-effect" type="button"
+                                    id="button-addon2">مشاهده
+                                    محصول</button>
+                                <input type="text" class="form-control" placeholder="آدرس محصول"
+                                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /امکانات Card -->
+        </form>
+
+    </div>
+    <!-- /Second column -->
+    </div>
+
+    </div>
+    <script>
+        const toggleButton = document.getElementById("toggle_btn");
+        const diveSection = document.getElementById("diveSection");
+
+        toggleButton.addEventListener('change', (e) => {
+            // Check if dive section is visible
+            if (diveSection.style.display === "none" || diveSection.style.display === "") {
+                // Show the dive section
+                diveSection.style.display = "flex";
+            } else {
+                // Hide the dive section
+                diveSection.style.display = "none";
+            }
+        })
+    </script>
+
+@endsection

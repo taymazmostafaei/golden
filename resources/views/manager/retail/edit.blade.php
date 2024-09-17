@@ -112,7 +112,24 @@
                                     @endforeach
                                 </select>
                             </div>
-                            
+                            <div class=" justify-content-between col-12 mb-3 dive-content" id="diveSection"
+                                style="display: none">
+                                <div>
+                                    <label class="form-label" for="ecommerce-product-name">شروع سایز</label>
+                                    <input type="number" class="form-control" id="ecommerce-product-name" placeholder="8"
+                                        name="desc" aria-label="Product title">
+                                </div>
+                                <div>
+                                    <label class="form-label" for="ecommerce-product-name">واحد سایز</label>
+                                    <input type="number" class="form-control" id="ecommerce-product-name" placeholder="5"
+                                        name="desc" aria-label="Product title">
+                                </div>
+                                <div>
+                                    <label class="form-label" for="ecommerce-product-name">پایان سایز</label>
+                                    <input type="number" class="form-control" id="ecommerce-product-name" placeholder="13"
+                                        name="desc" aria-label="Product title">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /Product Information -->
@@ -127,7 +144,8 @@
                                         <div class="dz-details">
                                             <div class="dz-thumbnail">
                                                 <img class="img-fluid mx-auto rounded"
-                                                    src="{{ asset('storage/retail-media/'.$media->path) }}" alt="Card image cap">
+                                                    src="{{ asset('storage/retail-media/' . $media->path) }}"
+                                                    alt="Card image cap">
                                                 <span class="dz-nopreview">No
                                                     preview</span>
                                                 <div class="dz-error-message"><span data-dz-errormessage=""></span></div>
@@ -138,10 +156,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a class="dz-remove text-danger" href="{{route('retail-media-destroy', $media->id)}}"
-                                            data-dz-remove=""><i class="ti ti-trash"></i></a>
+                                        <a class="dz-remove text-danger"
+                                            href="{{ route('retail-media-destroy', $media->id) }}" data-dz-remove=""><i
+                                                class="ti ti-trash"></i></a>
                                     </div>
-                                    
                                 @endforeach
 
                             </div>
@@ -174,7 +192,7 @@
                                         </span>
                                     </label>
                                 </div>
-                                
+
 
                             </div>
                             <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-4">
@@ -190,7 +208,21 @@
                                         </span>
                                     </label>
                                 </div>
-                                
+
+
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-4">
+                                <h6 class="mb-0">زنجیر</h6>
+                                <div class="w-25 d-flex justify-content-end">
+                                    <label class="switch switch-primary switch-sm me-4 pe-2">
+                                        <input type="checkbox" class="switch-input" id="toggle_btn" name="type_bangle">
+                                        <span class="switch-toggle-slider">
+                                            <span class="switch-on">
+                                                <span class="switch-off"></span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
 
                             </div>
                             <div class="input-group mt-4">
@@ -233,5 +265,19 @@
     </div>
 
     </div>
+    <script>
+        const toggleButton = document.getElementById("toggle_btn");
+        const diveSection = document.getElementById("diveSection");
 
+        toggleButton.addEventListener('change', (e) => {
+            // Check if dive section is visible
+            if (diveSection.style.display === "none" || diveSection.style.display === "") {
+                // Show the dive section
+                diveSection.style.display = "flex";
+            } else {
+                // Hide the dive section
+                diveSection.style.display = "none";
+            }
+        })
+    </script>
 @endsection
