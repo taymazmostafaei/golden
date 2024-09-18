@@ -24,7 +24,7 @@ class Cart extends Component
 
     public function add(Retail $retail, $size)
     {
-        $size = $size * 1;
+        //$size = $size * 1;
         $retail->size = $size;
         CartFacade::session(auth()->user()->id)->add([
             'id' => $retail->id,
@@ -67,13 +67,13 @@ class Cart extends Component
             'items_count' => $this->quantity,
             'full_price' => $this->cartTotal
         ]);
-
+        
         foreach ($this->cart as $item) {
 
             $retailOrderDetail = RetailOrderDetail::create([
                 'retail_order_id' => $retailOrder->id ,
                 'retail_id' => $item->id ,
-                'price' => $item->price ,
+                'price' => 1 ,
                 'quantity' => $item->quantity ,
                 'size' => $item->price ,
                 'description' => isset($this->descriptions[$item->id]) ? $this->descriptions[$item->id] : null

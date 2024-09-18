@@ -112,22 +112,28 @@
                                     @endforeach
                                 </select>
                             </div>
+                            
                             <div class=" justify-content-between col-12 mb-3 dive-content" id="diveSection"
-                                style="display: none">
+                                @if ($retail->moreoptions['type_chains'])
+                                    style="display: flex;"
+                                @else
+                                    style="display: none"
+                                @endif
+                                >
                                 <div>
                                     <label class="form-label" for="ecommerce-product-name">شروع سایز</label>
                                     <input type="number" class="form-control" id="ecommerce-product-name" placeholder="8"
-                                        name="desc" aria-label="Product title">
+                                        name="size_start" aria-label="Product title" value="{{$retail->moreoptions['size_start']}}">
                                 </div>
                                 <div>
                                     <label class="form-label" for="ecommerce-product-name">واحد سایز</label>
                                     <input type="number" class="form-control" id="ecommerce-product-name" placeholder="5"
-                                        name="desc" aria-label="Product title">
+                                        name="size_unit" aria-label="Product title" value="{{$retail->moreoptions['size_unit']}}">
                                 </div>
                                 <div>
                                     <label class="form-label" for="ecommerce-product-name">پایان سایز</label>
                                     <input type="number" class="form-control" id="ecommerce-product-name" placeholder="13"
-                                        name="desc" aria-label="Product title">
+                                        name="size_end" aria-label="Product title" value="{{$retail->moreoptions['size_end']}}">
                                 </div>
                             </div>
                         </div>
@@ -215,7 +221,7 @@
                                 <h6 class="mb-0">زنجیر</h6>
                                 <div class="w-25 d-flex justify-content-end">
                                     <label class="switch switch-primary switch-sm me-4 pe-2">
-                                        <input type="checkbox" class="switch-input" id="toggle_btn" name="type_bangle">
+                                        <input type="checkbox" class="switch-input" id="toggle_btn" name="type_chains" @checked($retail->moreoptions['type_chains'])>
                                         <span class="switch-toggle-slider">
                                             <span class="switch-on">
                                                 <span class="switch-off"></span>

@@ -47,7 +47,8 @@ class RetailController extends Controller
             //'price' => 'required|numeric',
             'desc' => 'required|string',
             'hide' => 'sometimes',
-            'type_bangle' => 'sometimes'
+            'type_bangle' => 'sometimes',
+            'type_chains' => 'sometimes'
         ]);
 
         // Create a new Retail instance
@@ -59,7 +60,13 @@ class RetailController extends Controller
         $retail->price = 1;
         $retail->desc = $request->input('desc');
         $retail->hide = $request->has('hide');
-        $retail->moreoptions = ['type_bangle' => $request->has('type_bangle')];
+        $retail->moreoptions = [
+            'type_bangle' => $request->has('type_bangle'),
+            'type_chains' => $request->has('type_chains'),
+            'size_start' => $request->input('size_start'),
+            'size_unit' => $request->input('size_unit'),
+            'size_end' => $request->input('size_end')
+        ];
 
         // Save the Retail instance
         $retail->save();
@@ -71,9 +78,7 @@ class RetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Retail $retail)
-    {
-    }
+    public function show(Retail $retail) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -96,6 +101,8 @@ class RetailController extends Controller
             //'price' => 'required|numeric',
             'desc' => 'required|string',
             'hide' => 'sometimes',
+            'type_bangle' => 'sometimes',
+            'type_chains' => 'sometimes'
         ]);
 
         // Update the attributes with data from the request
@@ -104,6 +111,13 @@ class RetailController extends Controller
         $retail->price = 1;
         $retail->desc = $request->input('desc');
         $retail->hide = $request->has('hide');
+        $retail->moreoptions = [
+            'type_bangle' => $request->has('type_bangle'),
+            'type_chains' => $request->has('type_chains'),
+            'size_start' => $request->input('size_start'),
+            'size_unit' => $request->input('size_unit'),
+            'size_end' => $request->input('size_end')
+        ];
 
         // Save the changes
         $retail->save();

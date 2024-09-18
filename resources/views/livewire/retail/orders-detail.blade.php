@@ -23,7 +23,11 @@
                 <span class="text-muted">x</span><span class="text-muted">{{ $item->quantity }}</span>
             </div>
             @if ($item->size)
-                <h6 class="m-0 d-none d-sm-block">سایز : {{ $item->size }}</h6>   
+                @if ($item->retail->moreoptions['type_chains'])
+                    <h6 class="m-0 d-none d-sm-block">سایز : {{ $item->size}}-{{$item->retail->moreoptions['size_unit'] + $item->size }}</h6>   
+                @else
+                    <h6 class="m-0 d-none d-sm-block">سایز : {{ $item->size }}</h6>   
+                @endif
             @endif
             <h6 class="m-0 d-none d-sm-block">تعداد : {{ $item->quantity }}</h6>
             

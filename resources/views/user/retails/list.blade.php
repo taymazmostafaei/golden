@@ -178,6 +178,16 @@
                                             </select>
                                         </div>
                                     @endif
+                                    @if ($retial->moreoptions['type_chains'])
+                                    <div class="mb-3 d-flex justify-content-between align-items-center">
+                                        <label class="form-label" for="multicol-country">انتخاب سایز</label>
+                                        <select id="multicol-country" name="retail_category_id" class="select2 form-select">
+                                            @for ($i = $retial->moreoptions['size_start']; $i < $retial->moreoptions['size_end']; $i += $retial->moreoptions['size_unit'])
+                                                <option value="{{$i}}-{{ $i + $retial->moreoptions['size_unit'] }}">{{ $i }} الی {{ $i + $retial->moreoptions['size_unit'] }}</option> 
+                                            @endfor                                    
+                                        </select>
+                                    </div>
+                                    @endif
 
                                     {{-- <p class="d-flex align-items-center justify-content-end text-success">
                                         {{ $retial->priceFormated() }} ریال
@@ -187,6 +197,9 @@
                                             <button class="btn btn-primary add-to-cart"
                                             @if ($retial->moreoptions['type_bangle'])
                                                 data-size="1" 
+                                            @endif
+                                            @if ($retial->moreoptions['type_chains'])
+                                                data-size="{{$retial->moreoptions['size_start']}}-{{$retial->moreoptions['size_start'] + $retial->moreoptions['size_unit']}}" 
                                             @endif
                                                 
                                                 data-id="{{ $retial->id }}"
