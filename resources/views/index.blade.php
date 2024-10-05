@@ -84,9 +84,7 @@
                         </a>
                     </div>
                 </div>
-                <span class="hero-btn-item position-absolute d-none d-md-flex text-heading">انتخاب کنید
-                    <img src="{{ asset('assets/img/front-pages/icons/Join-community-arrow.png') }}"
-                        alt="Join community arrow" class="scaleX-n1-rtl" /></span>
+
             </div>
         </div>
         <!-- Hero: End -->

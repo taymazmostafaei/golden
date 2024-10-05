@@ -101,9 +101,43 @@
                                         placeholder="آدرس" value="{{ old('address') }}">
                                 </div>
                             </div>
+                            <div class="mb-3 d-flex justify-content-between align-items-center">
+                                <label class="form-label" for="multicol-country">انتخاب شهرستان</label>
+                                @php
+                                $east_azerbaijan_cities = [
+                                    'تبریز',
+                                    'مراغه',
+                                    'مرند',
+                                    'میانه',
+                                    'اهر',
+                                    'سراب',
+                                    'بناب',
+                                    'کلیبر',
+                                    'هشترود',
+                                    'شبستر',
+                                    'ملکان',
+                                    'بستان‌آباد',
+                                    'عجب‌شیر',
+                                    'جلفا',
+                                    'ورزقان',
+                                    'اسکو',
+                                    'آذرشهر',
+                                    'خدا‌آفرین',
+                                    'چاراویماق',
+                                    'هریس',
+                                ];
+                            @endphp
+                                <select id="multicol-country" name="region" class="select2 form-select">
+                                    @foreach ($east_azerbaijan_cities as $city)
+                                        <option value="{{ $city }}" {{ old('region') == $city ? 'selected' : '' }}>
+                                            {{ $city }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-phone">عکس کارت زرگری یا پروانه کسب
-                                    <span> (jpg,jpeg) 500 kb </span>
+                                    <span> (jpg,jpeg) 500 kb </span> 
                                 </label>
                                 <div class="input-group">
                                     <span id="basic-icon-default-phone2" class="input-group-text"><i

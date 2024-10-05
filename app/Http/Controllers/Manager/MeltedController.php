@@ -46,7 +46,7 @@ class MeltedController extends Controller
         foreach ($orders as $order) {
 
             $response[] = [
-                'id' => $order->id ,
+                'id' => $order->id . ' - ' . $order->user->region ,
                 'type' => $order->type,
                 'full_name' => $order->user->firstname . $order->user->lastname ,
                 'phone' => $order->user->phone ,

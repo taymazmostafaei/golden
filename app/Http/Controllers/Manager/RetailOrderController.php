@@ -50,7 +50,7 @@ class RetailOrderController extends Controller
                 'phoneNum' => $order->user->phone ,
                 'date' => $order->created_at ,
                 'detail' => '<button data-bs-toggle="modal" data-id="'. $order->id . '" data-bs-target="#paymentMethods" class="btn btn-sm btn-icon btn-label-secondary waves-effect orderdetail"><i class="ti ti-eye"></i></button>' ,
-                'price' => $order->fullPriceFormated() . 'ریال',
+                'price' => $order->user->region,
                 'completed' => $order->completed ,
             ];
         }

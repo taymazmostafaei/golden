@@ -23,10 +23,12 @@ class User extends Authenticatable
         'firstname',
         'lastname',
         'address',
+        'region',
         'phone',
         'telphone',
         'national_id',
         'cert',
+        'status',
         'access'
     ];
 

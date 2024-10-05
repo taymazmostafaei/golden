@@ -68,6 +68,29 @@ class RegisterController extends Controller
             // return redirect()->back()->withErrors('fail', '');
         }
 
+        $east_azerbaijan_cities = [
+            "تبریز",
+            "مراغه",
+            "مرند",
+            "میانه",
+            "اهر",
+            "سراب",
+            "بناب",
+            "کلیبر",
+            "هشترود",
+            "شبستر",
+            "ملکان",
+            "بستان‌آباد",
+            "عجب‌شیر",
+            "جلفا",
+            "ورزقان",
+            "اسکو",
+            "آذرشهر",
+            "خدا‌آفرین",
+            "چاراویماق",
+            "هریس"
+        ];
+
         return Validator::make($data, [
             'firstname' => ['required', 'persian_alpha', 'string', 'max:23'],
             'lastname' => ['required', 'persian_alpha', 'string', 'max:23'],
@@ -75,7 +98,12 @@ class RegisterController extends Controller
             'phone' => ['required', 'ir_mobile:zero', 'unique:users'],
             'telphone' => ['required', 'ir_phone_with_code'],
             'address' => ['required', 'persian_alpha_eng_num', 'string', 'max:64'],
-            'cert' => 'required|image|mimes:jpeg,jpg|max:500'
+            'cert' => 'required|image|mimes:jpeg,jpg|max:500',
+            'region' => ['required', function ($attribute, $value, $fail) use ($east_azerbaijan_cities) {
+                if (!in_array($value, $east_azerbaijan_cities)) {
+                    $fail('شهر انتخاب شده معتبر نیست.');
+                }
+            }],
         ]);
     }
 
@@ -102,6 +130,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'telphone' => $data['telphone'],
             'address' => $data['address'],
+            'region' => $data['region'],
             'access' => [
                 'users' => 0,
                 'orders' => 0,
@@ -114,7 +143,7 @@ class RegisterController extends Controller
             'cert' => basename($path)
         ]);
 
-        (new TelegramService())->sendMessage("کاربر $user->firstname $user->lastname ثبت نام کرد.");
+        //(new TelegramService())->sendMessage("کاربر $user->firstname $user->lastname ثبت نام کرد.");
 
         Redirect::to('/login?s=1')->send();
 

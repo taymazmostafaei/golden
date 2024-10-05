@@ -47,18 +47,13 @@
                     <h6 class="footer-title mb-4">شبکه های اجتماعی</h6>
                     <ul class="list-unstyled d-flex justify-content-around">
                         <li class="mb-3">
-                            <a href="/demo-1" target="_blank" class="footer-link"><button type="button"
+                            <a href="https://www.instagram.com/seyed_ghalichi_gold?igsh=aGkwcGZrZGJmaWV0" target="_blank" class="footer-link"><button type="button"
                                     class="btn btn-icon rounded-pill btn-outline-instagram waves-effect btn-lg">
                                     <i class="tf-icons ti ti-brand-instagram"></i>
                                 </button></a>
                         </li>
                         <li class="mb-3">
-                            <a href="/demo-5" target="_blank" class="footer-link"><button type="button"
-                                    class="btn btn-icon rounded-pill btn-outline-vimeo waves-effect btn-lg"><i
-                                        class="tf-icons ti ti-brand-twitter"></i></button></a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="/demo-2" target="_blank" class="footer-link"><button type="button"
+                            <a href="https://t.me/GhalichiGold" target="_blank" class="footer-link"><button type="button"
                                     class="btn btn-icon rounded-pill btn-outline-vimeo waves-effect btn-lg"><i
                                         class="tf-icons ti ti-brand-telegram"></i></button></a>
                         </li>
