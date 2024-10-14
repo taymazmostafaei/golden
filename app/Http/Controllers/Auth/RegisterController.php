@@ -68,27 +68,38 @@ class RegisterController extends Controller
             // return redirect()->back()->withErrors('fail', '');
         }
 
-        $east_azerbaijan_cities = [
-            "تبریز",
-            "مراغه",
-            "مرند",
-            "میانه",
-            "اهر",
-            "سراب",
-            "بناب",
-            "کلیبر",
-            "هشترود",
-            "شبستر",
-            "ملکان",
-            "بستان‌آباد",
-            "عجب‌شیر",
-            "جلفا",
-            "ورزقان",
-            "اسکو",
-            "آذرشهر",
-            "خدا‌آفرین",
-            "چاراویماق",
-            "هریس"
+        $provinces = [
+            'آذربایجان شرقی',
+            'آذربایجان غربی',
+            'اردبیل',
+            'اصفهان',
+            'البرز',
+            'ایلام',
+            'بوشهر',
+            'تهران',
+            'چهارمحال و بختیاری',
+            'خراسان جنوبی',
+            'خراسان رضوی',
+            'خراسان شمالی',
+            'خوزستان',
+            'زنجان',
+            'سمنان',
+            'سیستان و بلوچستان',
+            'فارس',
+            'قزوین',
+            'قم',
+            'کردستان',
+            'کرمان',
+            'کرمانشاه',
+            'کهگیلویه و بویراحمد',
+            'گلستان',
+            'گیلان',
+            'لرستان',
+            'مازندران',
+            'مرکزی',
+            'هرمزگان',
+            'همدان',
+            'یزد'
         ];
 
         return Validator::make($data, [
@@ -99,11 +110,12 @@ class RegisterController extends Controller
             'telphone' => ['required', 'ir_phone_with_code'],
             'address' => ['required', 'persian_alpha_eng_num', 'string', 'max:64'],
             'cert' => 'required|image|mimes:jpeg,jpg|max:500',
-            'region' => ['required', function ($attribute, $value, $fail) use ($east_azerbaijan_cities) {
-                if (!in_array($value, $east_azerbaijan_cities)) {
-                    $fail('شهر انتخاب شده معتبر نیست.');
+            'region' => ['required', function ($attribute, $value, $fail) use ($provinces) {
+                if (!in_array($value, $provinces)) {
+                    $fail('استان  انتخاب شده معتبر نیست.');
                 }
             }],
+            'city' => ['sometimes']
         ]);
     }
 
@@ -130,7 +142,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'telphone' => $data['telphone'],
             'address' => $data['address'],
-            'region' => $data['region'],
+            'region' => $data['region'] . ' - ' . $data['city'] ,
             'access' => [
                 'users' => 0,
                 'orders' => 0,
@@ -143,7 +155,7 @@ class RegisterController extends Controller
             'cert' => basename($path)
         ]);
 
-        //(new TelegramService())->sendMessage("کاربر $user->firstname $user->lastname ثبت نام کرد.");
+        (new TelegramService())->sendMessage("کاربر $user->firstname $user->lastname ثبت نام کرد.");
 
         Redirect::to('/login?s=1')->send();
 

@@ -9,6 +9,7 @@
 @section('vendor-style')
     <!-- Vendor -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/@form-validation/umd/styles/index.min.css') }}" />
+    @livewireStyles
 @endsection
 
 @section('page-style')
@@ -20,6 +21,7 @@
     <script src="{{ asset('assets/vendor/libs/@form-validation/umd/bundle/popular.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/@form-validation/umd/plugin-bootstrap5/index.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/@form-validation/umd/plugin-auto-focus/index.min.js') }}"></script>
+    @livewireScripts
 @endsection
 
 @section('page-script')
@@ -101,43 +103,18 @@
                                         placeholder="آدرس" value="{{ old('address') }}">
                                 </div>
                             </div>
-                            <div class="mb-3 d-flex justify-content-between align-items-center">
-                                <label class="form-label" for="multicol-country">انتخاب شهرستان</label>
-                                @php
-                                $east_azerbaijan_cities = [
-                                    'تبریز',
-                                    'مراغه',
-                                    'مرند',
-                                    'میانه',
-                                    'اهر',
-                                    'سراب',
-                                    'بناب',
-                                    'کلیبر',
-                                    'هشترود',
-                                    'شبستر',
-                                    'ملکان',
-                                    'بستان‌آباد',
-                                    'عجب‌شیر',
-                                    'جلفا',
-                                    'ورزقان',
-                                    'اسکو',
-                                    'آذرشهر',
-                                    'خدا‌آفرین',
-                                    'چاراویماق',
-                                    'هریس',
-                                ];
-                            @endphp
-                                <select id="multicol-country" name="region" class="select2 form-select">
+                            <livewire:province-selection />
+                            {{-- <select id="multicol-country" name="region" class="select2 form-select">
                                     @foreach ($east_azerbaijan_cities as $city)
                                         <option value="{{ $city }}" {{ old('region') == $city ? 'selected' : '' }}>
                                             {{ $city }}
                                         </option>
                                     @endforeach
-                                </select>
-                            </div>
+                                </select> --}}
+
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-phone">عکس کارت زرگری یا پروانه کسب
-                                    <span> (jpg,jpeg) 500 kb </span> 
+                                    <span> (jpg,jpeg) 500 kb </span>
                                 </label>
                                 <div class="input-group">
                                     <span id="basic-icon-default-phone2" class="input-group-text"><i
