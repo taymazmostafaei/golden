@@ -24,10 +24,15 @@ class Cart extends Component
 
     public function add(Retail $retail, $size)
     {
-        //$size = $size * 1;
+        if($size==false){
+            $size = $size * 1;
+        }
+        if (str_contains($size, '-')) {
+            $size = str_replace('-', ',', $size);
+        }
         $retail->size = $size;
         CartFacade::session(auth()->user()->id)->add([
-            'id' => $retail->id,
+            'id' => $retail->id. ',' . $size,
             'name' => $retail->name,
             'price' => $size,
             'quantity' => 1,
@@ -36,23 +41,23 @@ class Cart extends Component
         $this->dispatch('AlertUser', type: 'success', title: 'به سبد خرید اضافه شد');
     }
 
-    public function increment(Retail $retail)
+    public function increment(Retail $retail, $size, $size2=false)
     {
-        CartFacade::session(auth()->user()->id)->update($retail->id, array(
+        CartFacade::session(auth()->user()->id)->update($retail->id. ',' . $size . ($size2 ? ",$size2" : ''), array(
             'quantity' => 1,
         ));
     }
 
-    public function decrement(Retail $retail)
+    public function decrement(Retail $retail, $size, $size2=false)
     {
-        CartFacade::session(auth()->user()->id)->update($retail->id, array(
+        CartFacade::session(auth()->user()->id)->update($retail->id. ',' . $size . ($size2 ? ",$size2" : ''), array(
             'quantity' => -1,
         ));
     }
 
-    public function remove(Retail $retail)
+    public function remove(Retail $retail, $size, $size2=false)
     {
-        CartFacade::session(auth()->user()->id)->remove($retail->id);
+        CartFacade::session(auth()->user()->id)->remove($retail->id. ',' . $size . ($size2 ? ",$size2" : ''));
     }
 
     public function save()
@@ -72,7 +77,7 @@ class Cart extends Component
 
             $retailOrderDetail = RetailOrderDetail::create([
                 'retail_order_id' => $retailOrder->id ,
-                'retail_id' => $item->id ,
+                'retail_id' => (int)explode(',',$item->id)[0],
                 'price' => 1 ,
                 'quantity' => $item->quantity ,
                 'size' => $item->price ,
@@ -91,6 +96,7 @@ class Cart extends Component
 
     public function render()
     {
+        // CartFacade::session(auth()->user()->id)->clear();
         $userId = auth()->user()->id;
         $this->cart = CartFacade::session($userId)->getContent();
         $this->cartTotal = CartFacade::session($userId)->getTotal();
