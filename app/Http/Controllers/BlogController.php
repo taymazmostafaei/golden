@@ -41,6 +41,7 @@ class BlogController extends Controller
             'desc' => 'required|string',
             'text' => 'required|string',
             'hide' => 'sometimes',
+            'isbrand' => 'sometimes',
         ]);
 
         // Create a new blog instance
@@ -51,6 +52,7 @@ class BlogController extends Controller
         $blog->desc = $request->input('desc');
         $blog->text = $request->input('text');
         $blog->hide = $request->has('hide');
+        $blog->isbrand = $request->has('isbrand');
 
         // Save the blog instance
         $blog->save();
@@ -114,6 +116,7 @@ class BlogController extends Controller
         $blog->desc = $request->input('desc');
         $blog->text = $request->input('text');
         $blog->hide = $request->has('hide');
+        $blog->isbrand = $request->has('isbrand');
 
         // Save the blog instance
         $blog->save();

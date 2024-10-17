@@ -24,7 +24,7 @@
         @foreach($galleries as $gallery)
             <div class="col-md-4 mb-3">
                 <div class="card">
-                    <img src="{{ asset('storage/' . $gallery->image_path) }}" class="card-img-top" alt="{{ $gallery->title }}">
+                    <img src="{{ asset('storage/' . $gallery->image_path) }}" loading="lazy" class="card-img-top" alt="{{ $gallery->title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $gallery->title }}</h5>
                         <p class="card-text">{{ Str::limit($gallery->description, 100) }}</p>

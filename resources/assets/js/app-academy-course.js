@@ -61,8 +61,9 @@ $('.select2').change(function () {
 $(".add-to-cart").on("click", function () {
   let clickedID = $(this).data('id');
   let selectedSize = $(this).attr('data-size');
+  let SelectedQuantity = $(this).attr('data-quantity') ?? 1;
 
-  Livewire.dispatch('addToCart', { retail: clickedID , size: selectedSize ?? false });
+  Livewire.dispatch('addToCart', { retail: clickedID , size: selectedSize ?? false , quantity: SelectedQuantity });
 });
 
 // Datatable (jquery)

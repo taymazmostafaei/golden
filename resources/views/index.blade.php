@@ -74,7 +74,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 col-xl-12 m-4">
-                        <a href="{{ route('panel.user.retails.categories') }}">
+                        <a href="{{ route('user.retails') }}">
                             <div class="card bg-primary text-white mb-3">
                                 <div class="card-header"></div>
                                 <div class="card-body">

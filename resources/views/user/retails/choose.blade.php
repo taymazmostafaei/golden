@@ -64,7 +64,7 @@
     
                                 <h5 class="my-3">برند</h5>
                                 <p class="mb-3">برند نشان‌دهنده هویت و اعتبار طلافروشی است که محصولات و خدمات آن را م</p>
-                                <a class="btn btn-sm btn-label-primary waves-effect" href="help-center-article.html">
+                                <a class="btn btn-sm btn-label-primary waves-effect" href="{{route('user.retail.brands.index')}}">
                                     <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M15 16l4 -4" /><path d="M15 8l4 4" /></svg>
                                 </a>
                             </div>

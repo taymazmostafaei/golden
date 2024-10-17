@@ -73,6 +73,16 @@
           "route":"blog.create",
           "name": "وبلاگ جدید",
           "slug": "blog.create"
+        },
+        {
+          "route":"gallery.index",
+          "name": "گالری بنکداری",
+          "slug": "gallery.index"
+        },
+        {
+          "route":"categories.index",
+          "name": "دسته بندی گالری بنکداری",
+          "slug": "categories.index"
         }
       ]
     },
@@ -97,9 +107,9 @@
       "badge": ["primary", "2"],
       "submenu": [
         {
-          "route":"panel.user.retails.categories",
+          "route":"user.retails",
           "name": "دسته بندی",
-          "slug": "panel.user.retails.categories"
+          "slug": "user.retails"
         }
       ]
     },

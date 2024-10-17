@@ -23,6 +23,36 @@
 
 @section('page-script')
     <script src="{{ asset('assets/js/app-academy-course.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            // Function to update the Add to Cart button with the current quantity
+            function updateCartButton($input) {
+                var quantity = $input.val();
+                var $addToCartButton = $input.closest('.card-body').find('.add-to-cart');
+                $addToCartButton.attr('data-quantity', quantity);  // Update data-quantity attribute
+            }
+
+            // Handle plus button click
+            $('.input-number__plus').click(function() {
+                var $input = $(this).closest('.input-number').find('.input-number__input');
+                var value = parseInt($input.val());
+                if (!isNaN(value) && value < 1000000) {
+                    $input.val(value + 1);
+                    updateCartButton($input);  // Update cart button after increment
+                }
+            });
+
+            // Handle minus button click
+            $('.input-number__minus').click(function() {
+                var $input = $(this).closest('.input-number').find('.input-number__input');
+                var value = parseInt($input.val());
+                if (!isNaN(value) && value > 1) { // Prevent value from going below 1
+                    $input.val(value - 1);
+                    updateCartButton($input);  // Update cart button after decrement
+                }
+            });
+        });
+    </script>
 @endsection
 <style>
     input::-webkit-outer-spin-button,
@@ -166,10 +196,19 @@
                                 </div> --}}
                                     <a href="#" class="h5">{{ $retial->name }}</a>
                                     <p class="mt-2">{{ $retial->desc }}</p>
+                                    <div class="mb-3 d-flex justify-content-between align-items-center">
+
+                                        {{-- <label class="form-label" for="multicol-country">انتخاب تعداد</label> --}}
+                                    </div>
                                     @if ($retial->moreoptions['type_bangle'])
                                         <div class="mb-3 d-flex justify-content-between align-items-center">
-                                            <label class="form-label" for="multicol-country">انتخاب سایز</label>
+                                            <div class="input-number d-flex gap-2 text-nowrap">
+                                                <button class="btn btn-primary btn-icon input-number__plus" type="button" style="height:20px; width:20px;"><i class="ti ti-plus"></i></button>
+                                                <input class="form-control text-center form__input input-number__input" min="0" max="1000000" type="number" id="html5-number-input" style="width: 30%; height:20px;" disabled="" value="1">
+                                                <button class="btn btn-primary btn-icon input-number__minus" type="button" style="height:20px; width:20px;"><i class="ti ti-minus"></i></button>
+                                            </div>
                                             <select id="multicol-country" name="retail_category_id" class="select2 form-select">
+                                                <option>انتخاب سایز</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -180,13 +219,27 @@
                                     @endif
                                     @if ($retial->moreoptions['type_chains'])
                                     <div class="mb-3 d-flex justify-content-between align-items-center">
-                                        <label class="form-label" for="multicol-country">انتخاب سایز</label>
+                                        <div class="input-number d-flex gap-2 text-nowrap">
+                                            <button class="btn btn-primary btn-icon input-number__plus" type="button" style="height:20px; width:20px;"><i class="ti ti-plus"></i></button>
+                                            <input class="form-control text-center form__input input-number__input" min="0" max="1000000" type="number" id="html5-number-input" style="width: 30%; height:20px;" disabled="" value="1">
+                                            <button class="btn btn-primary btn-icon input-number__minus" type="button" style="height:20px; width:20px;"><i class="ti ti-minus"></i></button>
+                                        </div>
                                         <select id="multicol-country" name="retail_category_id" class="select2 form-select">
+                                            <option>انتخاب سایز</option>
                                             @for ($i = $retial->moreoptions['size_start']; $i < $retial->moreoptions['size_end']; $i += $retial->moreoptions['size_unit'])
                                                 <option value="{{$i}}-{{ $i + $retial->moreoptions['size_unit'] }}">{{ $i }} الی {{ $i + $retial->moreoptions['size_unit'] }}</option> 
                                             @endfor                                    
                                         </select>
                                     </div>
+                                    @endif
+
+                                    @if (!$retial->moreoptions['type_bangle'] and !$retial->moreoptions['type_chains'])
+                                        <div class="input-number d-flex gap-2 text-nowrap">
+                                            <button class="btn btn-primary btn-icon input-number__plus" type="button" style="height:20px; width:20px;"><i class="ti ti-plus"></i></button>
+                                            <input class="form-control text-center form__input input-number__input" min="0" max="1000000" type="number" id="html5-number-input" style="width: 30%; height:20px;" disabled="" value="1">
+                                            <button class="btn btn-primary btn-icon input-number__minus" type="button" style="height:20px; width:20px;"><i class="ti ti-minus"></i></button>
+                                        </div>
+                                        <br>
                                     @endif
 
                                     {{-- <p class="d-flex align-items-center justify-content-end text-success">

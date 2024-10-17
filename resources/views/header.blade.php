@@ -39,7 +39,7 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
             <a class="nav-link fw-medium" href="{{route('melted.index')}}">آبشده</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" href="{{route('retail.index')}}">بنکداری</a>
+            <a class="nav-link fw-medium" href="{{route('user.retails')}}">بنکداری</a>
           </li>
         </ul>
       </div>

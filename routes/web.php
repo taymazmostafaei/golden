@@ -19,18 +19,18 @@ use App\Http\Controllers\RetailMediaController;
 use App\Http\Controllers\RetailOrderController;
 use App\Http\Controllers\SettingController;
 
-Route::get('/usr/brands', [BlogClientController::class, 'brands'])->name('user.retail.brands.index');
-Route::get('/usr/brands/{blog}', [BlogClientController::class, 'brandSingle'])->name('user.retail.brands.show');
-Route::get('/usr/categories', [CategoryController::class, 'userIndex'])->name('user.categories.index');
-Route::get('/usr/categories/{category}', [GalleryController::class, 'indexByCategory'])->name('user.categories.galleries');
-Route::resource('/gallery', GalleryController::class);
-Route::resource('/categories', CategoryController::class);
 
 Route::prefix('/panel/user')->middleware('auth')->group(function () {
 
+  # retails gallery
+  Route::get('/usr/brands', [BlogClientController::class, 'brands'])->name('user.retail.brands.index');
+  Route::get('/usr/brands/{blog}', [BlogClientController::class, 'brandSingle'])->name('user.retail.brands.show');
+  Route::get('/usr/categories', [CategoryController::class, 'userIndex'])->name('user.categories.index');
+  Route::get('/usr/categories/{category}', [GalleryController::class, 'indexByCategory'])->name('user.categories.galleries');
+
   # retails
   Route::get('/retails/categories', [RetailCategoryController::class, 'index'])->name('panel.user.retails.categories');
-  route::view('/retails',"user.retails.choose")->name('user.retails');
+  route::view('/retails', "user.retails.choose")->name('user.retails');
   Route::get('/retails/category/{retailCategory}', [RetailCategoryController::class, 'show'])->name('panel.user.retails.category');
   Route::resource('/retails/orders', RetailOrderController::class);
 
@@ -52,12 +52,11 @@ Route::prefix('/panel/manager')
 
     # setting
     Route::middleware('check.access:setting')->group(function () {
-      
+
       # users
       Route::get('/setting/setup', [SettingController::class, 'setup'])->name('setting.setup');
       Route::post('/setting/setup/save', [SettingController::class, 'storeSetup'])->name('setting.setup.save');
       Route::resource('/setting', SettingController::class);
-      
     });
 
     Route::middleware('check.access:users')->group(function () {
@@ -90,6 +89,9 @@ Route::prefix('/panel/manager')
       # blog
       Route::post('/blog/media/upload/{blog}', [BlogController::class, 'mediaUpload'])->name('blog-media-upload');
       Route::resource('/blog', BlogController::class);
+      # gallery
+      Route::resource('/gallery', GalleryController::class);
+      Route::resource('/categories', CategoryController::class);
     });
 
     Route::middleware('check.access:orders')->group(function () {
@@ -101,7 +103,6 @@ Route::prefix('/panel/manager')
       Route::get('/orders/retail/json', [ManagerRetailOrderController::class, 'indexJson'])->name('orders.retail.json');
       Route::resource('/orders/retail', ManagerRetailOrderController::class, ['as' => 'orders']);
     });
-    
   });
 
 Auth::routes();

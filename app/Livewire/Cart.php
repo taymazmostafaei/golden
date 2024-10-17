@@ -22,7 +22,7 @@ class Cart extends Component
     public $quantity;
     public $descriptions = [];
 
-    public function add(Retail $retail, $size)
+    public function add(Retail $retail, $size, $quantity)
     {
         if($size==false){
             $size = $size * 1;
@@ -35,7 +35,7 @@ class Cart extends Component
             'id' => $retail->id. ',' . $size,
             'name' => $retail->name,
             'price' => $size,
-            'quantity' => 1,
+            'quantity' => $quantity,
             'associatedModel' => $retail
         ]);
         $this->dispatch('AlertUser', type: 'success', title: 'به سبد خرید اضافه شد');

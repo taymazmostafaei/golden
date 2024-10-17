@@ -35,7 +35,9 @@
             });
 
             // Update hidden input with editor content
-            const editorContentInput = document.querySelector("body > div > div.layout-container > div > div > div.container-xxl.flex-grow-1.container-p-y > div.app-ecommerce > div.row > div.col-12.col-lg-8 > div > div.card-body > div:nth-child(3) > div > input[type=hidden]:nth-child(3)");
+            const editorContentInput = document.querySelector(
+                "body > div > div.layout-container > div > div > div.container-xxl.flex-grow-1.container-p-y > div.app-ecommerce > div.row > div.col-12.col-lg-8 > div > div.card-body > div:nth-child(3) > div > input[type=hidden]:nth-child(3)"
+                );
 
             quill.on('text-change', function() {
                 editorContentInput.value = quill.root.innerHTML;
@@ -165,7 +167,17 @@
                                     </span>
                                 </label>
                             </div>
-
+                            <h6 class="mb-0">برند بنکداری</h6>
+                            <div class="w-25 d-flex justify-content-end">
+                                <label class="switch switch-primary switch-sm me-4 pe-2">
+                                    <input type="checkbox" name="isbrand" class="switch-input" @checked($blog->isbrand)>
+                                    <span class="switch-toggle-slider">
+                                        <span class="switch-on">
+                                            <span class="switch-off"></span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
                         </div>
                         <div class="input-group mt-4">
                             <button class="btn btn-outline-primary waves-effect" type="button" id="button-addon2">مشاهده
@@ -175,7 +187,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+                </form>
                 <!-- /امکانات Card -->
                 <div class="card mb-4">
                     <h5 class="card-header">عکس وبلاگ</h5>
