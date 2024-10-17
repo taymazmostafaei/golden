@@ -1,5 +1,14 @@
 <div class="col-lg-4 col-sm-6">
-    <a href="{{route('news.show', $blog)}}">
+    
+        
+
+    <a 
+        @if ($isbrand)
+            href="{{route('user.retail.brands.show', $blog)}}"
+        @else
+            href="{{route('news.show', $blog)}}"
+        @endif
+    >
         <div class="card mb-3">
             <img class="card-img-top" src="{{ asset('storage/blog/' . $blog->media_path) }}"
                 alt="Card image cap" />

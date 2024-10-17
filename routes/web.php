@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BlogClientController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Manager\MeltedController as ManagerMeltedController;
 use App\Http\Controllers\Manager\RetailOrderController as ManagerRetailOrderController;
@@ -17,10 +19,18 @@ use App\Http\Controllers\RetailMediaController;
 use App\Http\Controllers\RetailOrderController;
 use App\Http\Controllers\SettingController;
 
+Route::get('/usr/brands', [BlogClientController::class, 'brands'])->name('user.retail.brands.index');
+Route::get('/usr/brands/{blog}', [BlogClientController::class, 'brandSingle'])->name('user.retail.brands.show');
+Route::get('/usr/categories', [CategoryController::class, 'userIndex'])->name('user.categories.index');
+Route::get('/usr/categories/{category}', [GalleryController::class, 'indexByCategory'])->name('user.categories.galleries');
+Route::resource('/gallery', GalleryController::class);
+Route::resource('/categories', CategoryController::class);
+
 Route::prefix('/panel/user')->middleware('auth')->group(function () {
 
   # retails
   Route::get('/retails/categories', [RetailCategoryController::class, 'index'])->name('panel.user.retails.categories');
+  route::view('/retails',"user.retails.choose")->name('user.retails');
   Route::get('/retails/category/{retailCategory}', [RetailCategoryController::class, 'show'])->name('panel.user.retails.category');
   Route::resource('/retails/orders', RetailOrderController::class);
 

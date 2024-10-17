@@ -11,7 +11,7 @@ class BlogCard extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $blog)
+    public function __construct(public $blog, public $isbrand=false)
     {}
 
     /**

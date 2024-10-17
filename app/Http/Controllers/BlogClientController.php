@@ -12,7 +12,7 @@ class BlogClientController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::latest()->paginate(30);
+        $blogs = Blog::where('isbrand', false)->latest()->paginate(30);
 
         return view('blog', ['blogs' => $blogs, 'pageConfigs' => ['myLayout' => 'front']]);
     }
@@ -22,8 +22,25 @@ class BlogClientController extends Controller
      */
     public function show(Blog $blog)
     {
-        $blogs = Blog::latest()->take(3)->get();
+        $blogs = Blog::where('isbrand', false)->latest()->take(3)->get();
 
         return view('blogSingle', ['blog' => $blog, 'blogs' => $blogs, 'pageConfigs' => ['myLayout' => 'front']]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function brands()
+    {
+        $blogs = Blog::where('isbrand', true)->latest()->paginate(30);
+
+        return view('user.brands.index', ['blogs' => $blogs]);
+    }
+
+    public function brandSingle(Blog $blog)
+    {
+        $blogs = Blog::where('isbrand', true)->latest()->take(3)->get();
+
+        return view('user.brands.show', ['blog' => $blog, 'blogs' => $blogs]);
     }
 }
